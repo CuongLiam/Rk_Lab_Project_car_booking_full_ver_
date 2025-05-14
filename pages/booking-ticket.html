@@ -1,11 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đặt vé</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/resetcss.css">
+    <link rel="stylesheet" href="../css/booking-ticket.css">
 </head>
-<body>
 
+<body>
+    <div id="sort">
+        <span>Sắp xếp theo tuyến đường</span>
+        <select name="" id="">
+            <option value="" selected>Giờ đi</option>
+            <option value="">0g</option>
+            <option value="">1g</option>
+            <option value="">2g</option>
+            <option value="">3g</option>
+            <option value="">4g</option>
+            <option value="">5g</option>
+            <option value="">6g</option>
+            <option value="">7g</option>
+            <option value="">8g</option>
+            <option value="">9g</option>
+            <option value="">10g</option>
+            <option value="">11g</option>
+            <option value="">12g</option>
+            <option value="">13g</option>
+            <option value="">14g</option>
+            <option value="">15g</option>
+            <option value="">16g</option>
+            <option value="">17g</option>
+            <option value="">18g</option>
+            <option value="">19g</option>
+            <option value="">20g</option>
+            <option value="">21g</option>
+            <option value="">22g</option>
+            <option value="">23g</option>
+        </select>
+        <select name="" id="">
+            <option value="" selected>Mức giá</option>
+            <option value="">Giá tăng dần</option>
+            <option value="">Giá giảm dần</option>
+        </select>
+    </div>
+    <div id="content">
+        <div id="left">
+            <p class="title">Tiêu chí phổ biến</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkboxType1">
+                <label class="form-check-label" for="checkboxType1">Chuyến giảm giá</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkboxType2">
+                <label class="form-check-label" for="checkboxType2">Xe VIP Limousine</label>
+            </div>
+
+            <div class="mb-2 fw-bold">Giờ đi</div>
+            <div class="slider-container mb-1">
+                <div class="range-track"></div>
+                <div class="range-active-track" id="active-track"></div>
+                <input type="range" id="min-time" min="0" max="1439" value="0">
+                <input type="range" id="max-time" min="0" max="1439" value="1439">
+            </div>
+            <div class="time-labels">
+                <span id="min-time-display">00:00</span>
+                <span id="max-time-display">23:59</span>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Giá vé</label>
+                <div class="slider-container position-relative">
+                    <div class="range-track"></div>
+                    <div class="range-active-track" id="price-active-track"></div>
+                    <input type="range" id="min-price" min="0" max="2000000" step="10000" value="0">
+                    <input type="range" id="max-price" min="0" max="2000000" step="10000" value="2000000">
+                </div>
+                <div class="d-flex justify-content-between mt-1 px-1 text-muted">
+                    <span id="min-price-label">0</span>
+                    <span id="max-price-label">2.000.000</span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Nhà xe</label>
+                <input type="text" class="form-control mb-2" placeholder="">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage1">
+                    <label class="form-check-label" for="checkboxGarage1">Anh Huy (Hải Phòng)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage2">
+                    <label class="form-check-label" for="checkboxGarage2">Anh Huy Đất Cảng</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage3">
+                    <label class="form-check-label" for="checkboxGarage3">Anh Huy Travel</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage4">
+                    <label class="form-check-label" for="checkboxGarage4">Bằng Phấn</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage5">
+                    <label class="form-check-label" for="checkboxGarage5">Cát Bà Express</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkboxGarage6">
+                    <label class="form-check-label" for="checkboxGarage6">Cát Bà Go Easy Limousine</label>
+                </div>
+
+                <button type="button" class="btn btn-light mt-3 w-100">Xoá đã chọn</button>
+            </div>
+
+        </div>
+        <div id="right">
+
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0 p-3">
+                    <div class="col-md-2">
+                        <img src="xe.jpg" class="img-fluid rounded" alt="xe">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-1">Vip Phương Huy Luxury <span
+                                        class="badge bg-primary">4.5</span></h5>
+                                <small class="text-muted">Limousine 9 chỗ</small><br>
+                                <strong>21:00</strong> → <strong>22:30</strong>
+                                <p class="mb-1"><a href="#">Hà Nội Office</a> → <a href="#">Hải Phòng</a></p>
+                                <small><em>*Thuộc chuyến 21:00 20-11-2024 Hà Nội - Hải Phòng <a data-bs-toggle="collapse" href="#detail1" role="button"
+                                    class="text-primary mt-1 d-inline-block">
+                                    Thông tin chi tiết
+                                </a></em></small>
+
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1 text-muted">Từ <strong>220.000 ₫</strong></p>
+                                <p class="mb-1 text-muted">10 Còn trống</p>
+                                <button class="btn btn-warning btn-sm">Chọn xe</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nội dung chi tiết -->
+                <div class="collapse border-top" id="detail1">
+                    <div class="p-3">
+                        <h6 class="mb-2">Hình ảnh</h6>
+                        <img src="xe-chi-tiet.jpg" class="img-fluid rounded">
+                        <!-- Bạn có thể thay bằng carousel hoặc thêm nội dung ở đây -->
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="../js/booking-ticket.js"></script>
 </body>
+
 </html>

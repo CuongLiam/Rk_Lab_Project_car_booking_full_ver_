@@ -1,0 +1,76 @@
+#sort{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+#sort span {
+    color: #428BCA;
+}
+.title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 12px;
+}
+#content{
+    display: flex;
+    justify-content: center;
+    gap: 21px;
+}
+#left{
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding: 24px;
+    height: 100%;
+}
+.font-size-12{
+    font-size: 12px;
+}
+.font-size-14 {
+    font-size: 14px;
+}
+.color767676{
+    color: #767676;
+}
+
+/*Range kéo*/
+.slider-container {
+  position: relative;
+  height: 35px;
+}
+input[type="range"] {
+  position: absolute; /*2 range chồng lên nhau*/
+  width: 100%;
+  pointer-events: none; /*Tắt sự kiển chỉ để núm trong tương tác. bỏ sự kiện click chuột để chỉnh range*/
+  -webkit-appearance: none; /* Tắt style mặc định của trình duyệt WebKit (Chrome, Safari) */
+  background: transparent;
+  top: 28px;
+}
+input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương tác với rangerange*/
+  pointer-events: all;
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: none;
+  margin-top: -8px;
+}
+.range-track {
+  position: absolute;
+  top: 28px;
+  height: 4px;
+  width: 100%;
+  background-color: #cfe2ff;
+  border-radius: 2px;
+  z-index: 0;
+}
+.range-active-track {
+  position: absolute;
+  top: 28px;
+  height: 4px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+  z-index: 1;
+}
