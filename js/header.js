@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add to clicked
       this.classList.add("active", "custom-active");
       // Redirect
-      const target = this.getAttribute("data-href");
+      const target = this.getAttribute("href");
       if (target) {
         window.location.href = target;
       }
