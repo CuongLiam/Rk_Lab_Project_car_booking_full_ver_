@@ -1,0 +1,283 @@
+.card {
+    width: 16.25rem;
+    /* 260px */
+    height: 15.625rem;
+    /* 250px */
+    border-radius: 0.625rem;
+    /* 10px */
+    border: 1px solid rgba(236, 238, 235, 1);
+    background: rgba(255, 255, 255, 0);
+    padding: 1rem;
+    /* 16px */
+    gap: 0.75rem;
+    /* 12px */
+    box-shadow: 0 0.3125rem 0.3125rem 0 rgba(76, 76, 76, 0.1);
+    /* 5px blur */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.card img {
+    width: 14.25rem;
+    /* 228px */
+    height: 9.9375rem;
+    /* 159px */
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.textInCard {
+    width: 14.25rem;
+    height: 2.9375rem;
+    /* 47px */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.textInCard p {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    /* 18px */
+    color: rgba(0, 97, 61, 1);
+}
+
+.textInCard span {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    /* 14px */
+    color: rgba(61, 84, 165, 1);
+}
+
+.linear_Popularity {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    width: 272;
+    height: 40;
+    top: 648px;
+    left: 170px;
+    gap: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    border-left-width: 4px;
+    border-left: 4px solid rgba(255, 169, 1, 1)
+}
+
+.h2 {
+    padding-left: 50px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+.arrow {
+    width: 32px;
+    height: 32px;
+
+}
+
+.boster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.Featured_Offers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bus-card {
+    width: 16.25rem;
+    /* 260px */
+    border-radius: 0.625rem;
+    /* 10px */
+    background-color: #ffffff;
+    box-shadow: 0px 5px 5px rgba(76, 76, 76, 0.1);
+    padding-bottom: 1rem;
+    /* 16px */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    /* 12px */
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.bus-card p {
+    font-family: Segoe UI;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    padding-left: 16px;
+}
+
+.Popular-Garages {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.all-Bus-Card {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.taitle_bus {
+    padding-left: 50px;
+}
+
+.top-Reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+}
+
+.gird-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* Bên trái nhỏ, bên phải lớn */
+    gap: 10px;
+
+}
+
+.left-images {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.grid-2 img {
+
+
+    border-radius: 8px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+
+}
+
+.all-Reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 1100px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+/* Features Section */
+
+.Featured_section {
+    width: 1100px;
+    height: 216px;
+
+}
+
+.feature-text h3 {
+    font-family: Segoe UI;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+}
+
+.feature-text p {
+    font-family: Segoe UI;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+
+}
+
+.features-list {
+    width: 1100px;
+    height: 216px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.feature-text {
+    width: 346;
+    height: 48;
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+}
+
+.media-mentions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 1110px;
+    height: 60px;
+}
+
+.media-logos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 43px;
+}
+
+.media-title {
+    padding-right: 760px;
+}
