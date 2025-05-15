@@ -43,7 +43,7 @@ input[type="range"] {
   position: absolute; /*2 range chồng lên nhau*/
   width: 100%;
   pointer-events: none; /*Tắt sự kiển chỉ để núm trong tương tác. bỏ sự kiện click chuột để chỉnh range*/
-  -webkit-appearance: none; /* Tắt style mặc định của trình duyệt WebKit (Chrome, Safari) */
+  -webkit-appearance: none; /* Tắt style mặc định của trình duyệt WebKit*/
   background: transparent;
   top: 28px;
 }
@@ -73,4 +73,16 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
   background-color: #0d6efd;
   border-radius: 2px;
   z-index: 1;
+}
+.detail{
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+}
+.moreDetail {
+  grid-column: span 2;
+}
+#banner{
+  display: block;
+  margin: 0 auto;
 }
