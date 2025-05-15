@@ -46,3 +46,11 @@
 .search-btn:hover {
     background: #ffa000;
 }
+
+/* force tablet */
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
