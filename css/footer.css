@@ -1,0 +1,10 @@
+footer{
+    background: #fff7f5;
+        padding: 48px 0;
+        width: 100vw;
+        margin: 0;
+        border-top: 1px solid #eee;
+}
+footer ul li {
+  line-height: 2;
+}
