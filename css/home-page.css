@@ -90,6 +90,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 64px;
+    margin-bottom: 80px;
 }
 
 .arrow {
