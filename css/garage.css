@@ -1,0 +1,30 @@
+.mainTitle{
+    text-align: center;
+    width: 122px;
+    border-left: 4px solid #FFA901;
+    padding: 4px;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 40px auto 24px auto;
+}
+.content{
+    display: grid;
+    grid-template-columns: repeat(4,260px);
+    gap: 20px;
+    justify-content: center;
+    
+}
+.card{
+    width: 260px;
+    height: 32px;
+}
+.detailTitle{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px auto 4px 16px;
+}
+.moreDetail{
+    font-size: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
