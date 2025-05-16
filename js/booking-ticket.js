@@ -71,18 +71,3 @@ window.addEventListener('load', () => {
   updateTimeSlider();
   updatePriceSlider();
 });
-
-///////////////UPDATE LẠI HEADER.JS
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("../pages/header.html")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to load header");
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById("header-container").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading header:", error));
-});
