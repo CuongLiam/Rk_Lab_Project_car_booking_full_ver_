@@ -9,14 +9,15 @@ body {
     align-items: center;
     margin-bottom: 96px;
     margin-top: 48px;
+    flex-direction: column; /* đảm bảo xuống hàng khi cần */
 }
 
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
     max-width: 80%;
+    width: 100%;
 }
 
 .form-container {
@@ -62,13 +63,14 @@ button {
 }
 
 .note b {
-    /* display: block; */
     margin-bottom: 5px;
     font-weight: bold;
 }
-.b2{
+
+.b2 {
     display: block;
 }
+
 .right-side {
     flex: 1;
 }
@@ -79,13 +81,14 @@ button {
     padding: 16px;
     font-size: 14.77px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .banner-container {
     width: 100%;
     height: 253px; 
     overflow: hidden;
-    margin-top: 24px;
+    margin-top: 12px;
 }
 
 .banner-container img {
@@ -93,8 +96,6 @@ button {
     height: 100%;
     object-fit: cover;
 }
-
-/* Media Queries for Responsiveness */
 
 /* Tablet (≤768px) */
 @media screen and (max-width: 768px) {
@@ -113,7 +114,7 @@ button {
     .right-side {
         width: 50%;
     }
- 
+
     .banner-container {
         width: 365px;
         height: 190px; 
@@ -122,13 +123,9 @@ button {
     .banner-container img {
         object-position:  65% center; 
     }
-
 }
 
-
-
-/* Mobile (≤390px) */
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 391px) {
     .container {
         flex-direction: column;
         align-items: center;
@@ -157,5 +154,9 @@ button {
         object-position: top center; 
     }
 }
+
+
+
+
 
 
