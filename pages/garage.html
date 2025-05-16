@@ -8,10 +8,9 @@
 </head>
 
 <body>
-    <div id="header-container"></div>
+    <iframe src="header.html" width="100%" frameborder="0"></iframe>
 
     <iframe src="footer.html" width="100%" frameborder="0" onload="resizeIframe(this)"></iframe>
-    <script src="../js/header.js"></script>
     <script>
         function resizeIframe(iframe) {
             iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
@@ -19,4 +18,4 @@
     </script>
 </body>
 
-</html>
+
