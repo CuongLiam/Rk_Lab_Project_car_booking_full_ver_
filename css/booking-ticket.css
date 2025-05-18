@@ -1,171 +1,249 @@
-.card {
-    width: 16.25rem;
-    /* 260px */
-    height: 15.625rem;
-    /* 250px */
-    border-radius: 0.625rem;
-    /* 10px */
-    border: 1px solid rgba(236, 238, 235, 1);
-    background: rgba(255, 255, 255, 0);
-    padding: 1rem;
-    /* 16px */
-    gap: 0.75rem;
-    /* 12px */
-    box-shadow: 0 0.3125rem 0.3125rem 0 rgba(76, 76, 76, 0.1);
-    /* 5px blur */
+body{
+  width: 100%;
+}
+.route {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1867AA;
+}
+#sort{
     display: flex;
-    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+#sort span {
+    color: #428BCA;
+}
+.title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 12px;
+}
+#content{
+    display: flex;
+    justify-content: center;
+}
+#left{
+    width: calc(260 / 16 * 1rem);
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding: 24px;
+    height: 100%;
+}
+.font-size-12{
+    font-size: 12px;
+}
+.font-size-14 {
+    font-size: 14px;
+}
+.font-size-20{
+  font-size: 20px;
+}
+.color767676{
+    color: #767676;
+}
+
+/*Range kéo*/
+.slider-container {
+  position: relative;
+  height: 35px;
+}
+input[type="range"] {
+  position: absolute; /*2 range chồng lên nhau*/
+  width: 100%;
+  pointer-events: none; /*Tắt sự kiển chỉ để núm trong tương tác. bỏ sự kiện click chuột để chỉnh range*/
+  -webkit-appearance: none; /* Tắt style mặc định của trình duyệt WebKit*/
+  background: transparent;
+  top: 28px;
+}
+input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương tác với rangerange*/
+  pointer-events: all;
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: none;
+  margin-top: -8px;
+}
+.range-track {
+  position: absolute;
+  top: 28px;
+  height: 4px;
+  width: 100%;
+  background-color: #cfe2ff;
+  border-radius: 2px;
+  z-index: 0;
+}
+.range-active-track {
+  position: absolute;
+  top: 28px;
+  height: 4px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+  z-index: 1;
+}
+.detail{
+  display: grid;
+  column-gap: 36px;
+  grid-template-columns: auto auto auto;
+}
+.itemGrid p{
+  margin: 0;
+}
+.arrow{
+  width: 43px;
+  height: 16px;
+}
+.moreDetail {
+  grid-column: span 2;
+  white-space: nowrap;
+}
+.italic{
+  font-style: italic;
+}
+#banner{
+  display: block;
+  margin: 0 auto;
+}
+.card{
+  width: calc(820 / 16 * 1rem);
+  height: calc(186 / 16 * 1rem);
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 24px;
+}
+.info{
+  width: calc(469 / 16 * 1 rem);
+}
+.price {
+  width: calc(111 / 16 * 1rem);
+  height: calc(118 / 16 * 1rem);
+  margin: 20px 0 0 48px;
+}
+.price p{
+  margin: 0;
+}
+.price .cost{
+  margin-bottom: 8px;
+}
+.price .slot{
+  margin-bottom: 26px;
+  text-align: end;
+}
+.btnChoose{
+  color: #767676;
+  width: calc(111 / 16 * 1rem);
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #E5A100;
+}
+
+.nav-tabs .nav-link {
+    color: black;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: #007bff !important;
+    border-bottom: 2px solid #007bff !important; /* Chỉ thêm viền dưới khi tab được chọn */
+}
+.imgCard{
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  /* margin: 24px 20px auto 24px; */
+}
+.detailCard{
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  column-gap: 24px;
+}
+@media (max-width: 768px) {
+  body {
+    width: 768px;
+  }
+  #left {
+      display: none;
+  }
+  #banner{
+    display: none;
+  }
+  .price{
+    grid-column: span 2;
+    margin: 0;
+    width: 100%;
+    height: 52px;
+    display: flex;
     justify-content: space-between;
-
+  }
+  .btnChoose{
+    width: 111px;
+    height: 40px;
+  }
+  .card{
+    width: calc(736 / 16 * 1rem);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .detailCard{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  column-gap: 24px;
+  }
+    .hide-div{
+    display: none !important;
+  }
 }
-
-.card img {
-    width: 14.25rem;
-    /* 228px */
-    height: 9.9375rem;
-    /* 159px */
-    object-fit: cover;
-    border-radius: 0.5rem;
-}
-
-.textInCard {
-    width: 14.25rem;
-    height: 2.9375rem;
-    /* 47px */
+@media (max-width: 390px) {
+  body {
+    width: 390px;
+  }
+  #left {
+      display: none;
+  }
+  #banner{
+    display: none;
+  }
+  .info{
+      width: 206px
+  }
+  .price{
+    grid-column: span 2;
+    margin: 0;
+    width: 100%;
+    height: 52px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    margin-top: 0.5rem;
-}
-
-.textInCard p {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 700;
-    font-size: 1.125rem;
-    /* 18px */
-    color: rgba(0, 97, 61, 1);
-}
-
-.textInCard span {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 400;
-    font-size: 0.875rem;
-    /* 14px */
-    color: rgba(61, 84, 165, 1);
-}
-
-.linear_Popularity {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.cards {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-}
-
-h2 {
-    width: 272;
-    height: 40;
-    top: 648px;
-    left: 170px;
-    gap: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 10px;
-    border-left-width: 4px;
-    border-left: 4px solid rgba(255, 169, 1, 1)
-}
-
-.h2 {
-    padding-left: 50px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 64px;
-    margin-bottom: 80px;
-}
-
-.arrow {
-    width: 32px;
-    height: 32px;
-
-}
-
-.boster {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.Featured_Offers {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.bus-card {
-    width: 16.25rem;
-    /* 260px */
-    border-radius: 0.625rem;
-    /* 10px */
-    background-color: #ffffff;
-    box-shadow: 0px 5px 5px rgba(76, 76, 76, 0.1);
-    padding-bottom: 1rem;
-    /* 16px */
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    /* 12px */
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.bus-card p {
-    font-family: Segoe UI;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle;
-    padding-left: 16px;
-}
-
-.Popular-Garages {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.all-Bus-Card {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.taitle_bus {
-    padding-left: 50px;
-}
-
-.top-Reviews {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    justify-content: center;
-}
-
-.gird-1 {
+  }
+  .btnChoose{
+    width: 111px;
+    height: 40px;
+  }
+  .card{
+    width: calc(358 / 16 * 1rem);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .detailCard{
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2,auto);
+    column-gap: 24px;
+  }
+  .info .detail{
+    width: 206px;
+    display: grid;
+    /* column-gap: 36px; */
+    grid-template-columns: auto auto auto;
+  }
+  .moreDetail {
+    grid-column: span 3;
+    text-wrap: wrap;
+  }
+  .hide-div{
+    display: none !important;
+  }
 }
-
