@@ -1,0 +1,130 @@
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card-img-top {
+  object-fit: cover;
+  height: 180px;
+}
+/* 1) Title + yellow bar */
+.mb-4.text-center {
+  position: relative;
+  padding-left: 24px;
+}
+
+.mb-4.text-center h2.fw-bold {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+}
+
+/* the yellow bar */
+.mb-4.text-center h2.fw-bold::before {
+  content: "";
+  position: absolute;
+  left: -24px; /* fill the room */
+
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 32px;
+
+  background-color: #ffb300;
+  border-radius: 2px;
+}
+
+/* 2) Circle‑style pagination */
+.pagination {
+  --bs-pagination-color: #000;
+  --bs-pagination-hover-color: #000;
+  --bs-pagination-hover-bg: #fff;
+  --bs-pagination-active-color: #fff;
+  --bs-pagination-active-bg: #2080f0; /* or your brand-blue */
+  --bs-pagination-border-width: 2px;
+}
+
+.pagination .page-link {
+  width: 36px;
+  height: 36px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0;
+  margin: 0 4px;
+  font-weight: 500;
+}
+
+/* make the “…” item look like the others */
+.pagination .page-item span.page-link {
+  cursor: default;
+}
+
+/* ensure the arrows follow the same sizing */
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+  width: 36px;
+  height: 36px;
+  line-height: 32px;
+}
+
+/* reduce the space around the pagination container */
+.pagination {
+  margin-top: 1rem;
+}
+
+/* Example override for the active button */
+.pagination .page-item.active .page-link {
+  background-color: var(--bs-pagination-active-bg);
+  border-color: var(--bs-pagination-active-bg);
+}
+
+/* —————————————————————————————
+   Shimmer swipe on card hover
+   ————————————————————————————— */
+.card {
+  position: relative;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+/* the shimmering stripe */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+}
+
+/* trigger the swipe */
+.card:hover::before {
+  animation: shimmer 0.8s ease-in-out forwards;
+}
+
+/* keyframes to move our pseudo-element right across */
+@keyframes shimmer {
+  from {
+    left: -150%;
+  }
+  to {
+    left: 150%;
+  }
+}
+
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .row.g-4 > [class^="col-"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
