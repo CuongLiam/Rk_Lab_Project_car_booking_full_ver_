@@ -6,7 +6,7 @@ body{
 .banner{
     width: 100%;
     height: 300px;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 .containerBanner {
   position: relative;
@@ -46,4 +46,51 @@ body{
   font-size: 20px;
   font-weight: bold;
   max-width: 800px;
+}
+.font-bold{
+  font-weight: 700;
+}
+.font-24px{
+  font-size: 24px;
+}
+.font-18px{
+  font-size: 18px;
+}
+.content{
+  width: calc(726 / 16 * 1rem);
+  margin: 56px auto 56px auto;
+}
+.mb-8px{
+  margin-bottom: 8px;
+}
+.mb-16px{
+  margin-bottom: 16px;
+}
+.mb-24px{
+  margin-bottom: 24px;
+}
+.mb-48px{
+  margin-bottom: 48px;
+}
+.imgContent{
+  width: calc(726 / 16 * 1rem);
+  height: 465px;
+}
+@media (max-width: 768px) {
+.content{
+  width: calc(736 / 16 * 1rem);
+}
+.imgContent{
+  width: calc(726 / 16 * 1rem);
+  height: 471px;
+}
+}
+@media (max-width: 390px) {
+.content{
+  width: calc(358 / 16 * 1rem);
+}
+.imgContent{
+  width: calc(358 / 16 * 1rem);
+  height: 229px;
+}
 }
