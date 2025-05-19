@@ -15,9 +15,13 @@
     justify-content: center;
     margin-bottom: 80px;
 }
+img{
+    width: 260px;
+    height: 170px;
+}
 .card{
     width: 260px;
-    height: 32px;
+    height: 286px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: #fff;
@@ -36,6 +40,7 @@
     font-size: 12px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-bottom: 11.4px;
 }
 .page{
     grid-column: span 4;
@@ -56,6 +61,10 @@
     grid-column: span 3;
 }
 @media (max-width: 768px) {
+    img{
+        width: 358px;
+        height: 170px;
+    }
     .content{
     grid-template-columns: repeat(2,358px);
     margin: 0 auto;
