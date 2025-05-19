@@ -7,7 +7,9 @@
   color: #fff;
   text-decoration: none;
 } */
- 
+ header{
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
 .top-bar {
   background-color: #2196f3;
   color: #fff;
@@ -34,8 +36,8 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 300px;
+  padding-right: 100px;
 }
 
 .main-navbar {
@@ -51,22 +53,23 @@
 }
 
 .main-navbar .header-container {
-  height: 90px;
+  height: 60px;
   align-items: center;
   padding-left: 32px;
   padding-right: 32px;
 }
 
 .navbar-brand img {
-  height: 56px;
-  width: auto;
+  height: 60px;
+  width: 100px;
 }
 
 .nav-main .nav-link {
   color: #2196f3;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1.1rem;
+  
+  font-size: 14px;
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   transition: background 0.2s, color 0.2s;
@@ -98,7 +101,7 @@
   padding: 0.5rem 0.8rem;
   border-radius: 8px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
   transition: background 0.2s;
 
 }
@@ -119,17 +122,38 @@
     padding-right: 16px;
   }
 }
-
+  
 @media (max-width: 991.98px) {
-  .main-navbar, .main-navbar .header-container {
-    height: auto;
-    min-height: unset;
-    padding: 0 8px;
+  .main-navbar .header-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
-  .navbar-brand img {
-    height: 40px;
+  .main-navbar .navbar-brand {
+    margin-left: auto !important; /* Push logo to the right */
+    order: 2;
+  }
+  .main-navbar .btn.d-lg-none {
+    order: 1;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .main-navbar .navbar-collapse {
+    order: 3;
   }
 }
+/* @media (min-width: 992px) {
+  .main-navbar .navbar-brand {
+    margin-left: 0 !important;
+    order: 1;
+  }
+  .main-navbar .btn.d-lg-none {
+    display: none !important;
+  }
+  .main-navbar .navbar-collapse {
+    order: 2;
+  }
+} */
 
 /*======================== Offcanvas sidebar styling ========================== */
 

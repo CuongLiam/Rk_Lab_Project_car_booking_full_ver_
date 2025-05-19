@@ -80,3 +80,13 @@ footer a{
     margin-bottom: 0;
   }
 }
+@media (max-width: 391px) {
+  footer .row:first-of-type {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+  footer .row:first-of-type > .col-md-4 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
