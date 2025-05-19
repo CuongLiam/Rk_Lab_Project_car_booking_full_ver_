@@ -17,7 +17,7 @@ document.querySelectorAll('.dropdown-list .item').forEach(item => {
     const list = e.target.parentElement;
     const trigger = list.previousElementSibling.previousElementSibling;
     const inputName = trigger.getAttribute('data-input');// <p>
-    
+
     // set values
     trigger.textContent = txt;
     trigger.classList.remove('text-muted');
@@ -28,4 +28,17 @@ document.querySelectorAll('.dropdown-list .item').forEach(item => {
 
 document.addEventListener('click', () => {
   document.querySelectorAll('.dropdown-list').forEach(dl => dl.style.display = 'none');
+});
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("../pages/search-tab.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load search-tab");
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("search-tab-container").innerHTML = data;
+        })
+        .catch(error => console.error("Error loading search-tab:", error));
 });
