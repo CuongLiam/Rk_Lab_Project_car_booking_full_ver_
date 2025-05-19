@@ -1,3 +1,19 @@
+p{
+font-family: Segoe UI;
+}
+span{
+font-family: Segoe UI;
+}
+body{
+ width: 100%;
+}
+main{
+margin-top: 64px;
+margin-bottom: 120px;
+}
+h2{
+font-family: Segoe UI;
+}
 .card {
 width: 16.25rem;
 height: 15.625rem;
@@ -56,7 +72,7 @@ align-items: center;
 }
 
 h2 {
-width: 272;
+width: 272px;
 height: 40;
 top: 648px;
 left: 170px;
@@ -474,7 +490,7 @@ width: 100%;
 
 
 body{
-width: 768px;
+    width: 100%;
 }
 
 
@@ -1033,7 +1049,7 @@ width: 390px;
 @media (max-width: 390px) {
 
 body{
-width: 390px;
+    width: 100%;
 }
 .top-Reviews {
 width: 390px;
@@ -1132,33 +1148,4 @@ width: 390px;
 width: 100%;
 margin-right: 20px;
 }
-}
-
-
-
-
-p{
-font-family: Segoe UI;
-}
-
-span{
-font-family: Segoe UI;
-}
-
-
-
-body{
-width: 1440px;
-}
-
-
-
-main{
-margin-top: 64px;
-margin-bottom: 120px;
-}
-
-
-h2{
-font-family: Segoe UI;
 }

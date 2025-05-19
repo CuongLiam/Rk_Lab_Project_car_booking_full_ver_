@@ -4,22 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/route.css">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/route.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 
 <body>
-    <iframe src="header.html" width="100%" frameborder="0"></iframe>
-
-
-
-
-
-
-
+    <div id="header-container"></div>
 
     <main>
-
         <div class="route">
             <div class="route-title">
                 <h2>Tuyến đường</h2>
@@ -120,38 +114,16 @@
         </div>
 
 
-
-
-
     </main>
 
 
+    <div id="footer-container"></div>
 
-
-
-
-
-
-
-
-
-
-    <iframe src="footer.html" width="100%" frameborder="0" onload="resizeIframe(this)"></iframe>
-
-
-
-
-
-
-
-
-
-
-    <script>
-        function resizeIframe(iframe) {
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
 
 </body>
 
