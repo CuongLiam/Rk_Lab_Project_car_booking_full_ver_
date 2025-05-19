@@ -7,14 +7,24 @@ body{
     color: #1867AA;
 }
 #sort{
+    width: 364px;
     display: flex;
     gap: 16px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    margin: auto auto 16px auto;
 }
 #sort span {
     color: #428BCA;
+}
+#timeStart{
+  width: 77px;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+#sortPrice{
+  width: 90px;
+  border-radius: 4px;
 }
 .title {
     font-weight: bold;
@@ -26,10 +36,15 @@ body{
     justify-content: center;
 }
 #left{
-    width: calc(260 / 16 * 1rem);
+    width: 260px;
     border: 1px solid lightgray;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 24px;
+    height: 656px;
+}
+#right{
+    width: 820px;
+    border-radius: 15px;
     height: 100%;
 }
 .font-size-12{
@@ -109,18 +124,19 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
   margin: 0 auto;
 }
 .card{
-  width: calc(820 / 16 * 1rem);
-  height: calc(186 / 16 * 1rem);
-  border-radius: 5px;
+  width: 820px;
+  height: 186px;
+  border-radius: 8px;
   margin-left: 20px;
   padding: 24px;
+  margin-bottom: 16px;
 }
 .info{
-  width: calc(469 / 16 * 1 rem);
+  width: 469px;
 }
 .price {
-  width: calc(111 / 16 * 1rem);
-  height: calc(118 / 16 * 1rem);
+  width: 111px;
+  height: 118px;
   margin: 20px 0 0 48px;
 }
 .price p{
@@ -135,7 +151,7 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
 }
 .btnChoose{
   color: #767676;
-  width: calc(111 / 16 * 1rem);
+  width: 111px;
   padding: 10px 16px;
   border: none;
   border-radius: 5px;
@@ -162,32 +178,60 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
   grid-template-columns: repeat(3,auto);
   column-gap: 24px;
 }
+#sortKit{
+  display: none;
+}
+.timeAvg{
+  height: 34px;
+}
 @media (max-width: 768px) {
   body {
     width: 768px;
   }
+  #sort{
+    width: 736px;
+  }
+  #sortKit{
+  display: block;
+  }
+  #sortKitTitle{
+    display: none;
+  }
   #left {
       display: none;
+  }
+  #right{
+    margin-bottom: 64px;
   }
   #banner{
     display: none;
   }
+  #sort{
+    justify-content: space-between;
+  }
   .price{
     grid-column: span 2;
     margin: 0;
-    width: 100%;
+    width: 692px;
     height: 52px;
     display: flex;
     justify-content: space-between;
+  }
+  .cost{
+    width: 102px;
   }
   .btnChoose{
     width: 111px;
     height: 40px;
   }
+  .info{
+    width: 568px;
+  }
   .card{
-    width: calc(736 / 16 * 1rem);
+    width: 736px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-bottom: 20px;
   }
   .detailCard{
   display: grid;
@@ -202,6 +246,22 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
   body {
     width: 390px;
   }
+  #sort{
+    width: 358px;
+  }
+  #right{
+    width: 390px;
+  }
+  .card-title{
+    font-size: 16px;
+  }
+  .detail{
+    height: 102px;
+    column-gap: 0px;
+  }
+  .moreDetail{
+    font-size: 12px;
+  }
   #left {
       display: none;
   }
@@ -209,12 +269,13 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
     display: none;
   }
   .info{
-      width: 206px
+      width: 206px;
+      height: 176px;
   }
   .price{
     grid-column: span 2;
-    margin: 0;
-    width: 100%;
+    margin: 10.4px 0 0 0;
+    width: 326px;
     height: 52px;
     display: flex;
     justify-content: space-between;
@@ -224,19 +285,24 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
     height: 40px;
   }
   .card{
-    width: calc(358 / 16 * 1rem);
+    width: 358px;
+    height: 272px;
+    padding: 16px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-bottom: 16px;
+  }
+  .card-title{
+    margin: 0;
   }
   .detailCard{
     display: grid;
     grid-template-columns: repeat(2,auto);
-    column-gap: 24px;
+    column-gap: 20px;
   }
   .info .detail{
     width: 206px;
     display: grid;
-    /* column-gap: 36px; */
     grid-template-columns: auto auto auto;
   }
   .moreDetail {
@@ -245,5 +311,10 @@ input[type="range"]::-webkit-slider-thumb { /*Chỉ có núm tròn mới tương
   }
   .hide-div{
     display: none !important;
+  }
+  .timeAvg{
+    height: 34px;
+    width: 43px;
+    text-align: center;
   }
 }

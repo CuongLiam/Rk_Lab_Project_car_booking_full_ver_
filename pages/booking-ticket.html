@@ -11,50 +11,55 @@
     <link rel="stylesheet" href="../css/booking-ticket.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/seaarch-tab.css">
 </head>
 
 <body>
     <div id="header-container"></div>
 
     <div class="route text-center">
-        <p class="font-size-20"><b>Hà Nội</b> Đến <b>Hải Phòng</b></p class="font-size-20">
+        <p class="font-size-20" style="margin-top: 48px;"><b>Hà Nội</b> Đến <b>Hải Phòng</b></p class="font-size-20">
     </div>
+    <div id="search-tab-container"></div>
 
 
     <div id="sort">
-        <span>Sắp xếp theo tuyến đường</span>
-        <select name="" id="">
-            <option value="" selected>Giờ đi</option>
-            <option value="">0g</option>
-            <option value="">1g</option>
-            <option value="">2g</option>
-            <option value="">3g</option>
-            <option value="">4g</option>
-            <option value="">5g</option>
-            <option value="">6g</option>
-            <option value="">7g</option>
-            <option value="">8g</option>
-            <option value="">9g</option>
-            <option value="">10g</option>
-            <option value="">11g</option>
-            <option value="">12g</option>
-            <option value="">13g</option>
-            <option value="">14g</option>
-            <option value="">15g</option>
-            <option value="">16g</option>
-            <option value="">17g</option>
-            <option value="">18g</option>
-            <option value="">19g</option>
-            <option value="">20g</option>
-            <option value="">21g</option>
-            <option value="">22g</option>
-            <option value="">23g</option>
-        </select>
-        <select name="" id="">
-            <option value="" selected>Mức giá</option>
-            <option value="">Giá tăng dần</option>
-            <option value="">Giá giảm dần</option>
-        </select>
+        <span id="sortKitTitle" class="font-size-14">Sắp xếp theo tuyến đường</span>
+        <p id="sortKit"><b>Bộ lọc</b></p>
+        <div>
+            <select name="" id="timeStart">
+                <option value="" selected>Giờ đi</option>
+                <option value="">0g</option>
+                <option value="">1g</option>
+                <option value="">2g</option>
+                <option value="">3g</option>
+                <option value="">4g</option>
+                <option value="">5g</option>
+                <option value="">6g</option>
+                <option value="">7g</option>
+                <option value="">8g</option>
+                <option value="">9g</option>
+                <option value="">10g</option>
+                <option value="">11g</option>
+                <option value="">12g</option>
+                <option value="">13g</option>
+                <option value="">14g</option>
+                <option value="">15g</option>
+                <option value="">16g</option>
+                <option value="">17g</option>
+                <option value="">18g</option>
+                <option value="">19g</option>
+                <option value="">20g</option>
+                <option value="">21g</option>
+                <option value="">22g</option>
+                <option value="">23g</option>
+            </select>
+            <select name="" id="sortPrice">
+                <option value="" selected>Mức giá</option>
+                <option value="">Giá tăng dần</option>
+                <option value="">Giá giảm dần</option>
+            </select>
+        </div>
     </div>
     <div id="content">
         <div id="left">
@@ -127,24 +132,24 @@
 
         </div>
         <div id="right">
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png" alt="img">
                     <div class="info">
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
-                            <div class="itemGrid text-center">
-                                <p>1h30</p>
+                            <div class="itemGrid text-center timeAvg">
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
-                            <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
+                            <div class="itemGrid font-size-12 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
+                            <div class="itemGrid font-size-12 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
                             </div>
@@ -157,7 +162,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -202,7 +207,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -210,16 +215,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -233,7 +238,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -278,7 +283,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -286,16 +291,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -309,7 +314,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -354,7 +359,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -362,16 +367,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -385,7 +390,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -430,7 +435,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -438,16 +443,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -461,7 +466,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -506,7 +511,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -514,16 +519,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -537,7 +542,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -582,7 +587,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -590,16 +595,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -613,7 +618,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -658,7 +663,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3">
+            <div class="card">
                 <div class="detailCard">
                     <img class="img-fluid rounded imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png"
                         alt="img">
@@ -666,16 +671,16 @@
                         <h5 class="card-title mb-1">Vip Phương Huy Luxury <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
-                        <span class="text-muted">Limousine 9 chỗ</span><br>
+                        <span class="text-muted font-size-12">Limousine 9 chỗ</span><br>
                         <div class="detail">
                             <div class="itemGrid color767676"><b>21:00</b></div>
                             <div class="itemGrid text-center">
-                                <p>1h30</p>
+                                <p class="font-size-12">1h30</p>
                                 <img class="arrow" src="../assets/imgs/dat_ve/from-to2.png.png" alt="arrow">
                             </div>
                             <div class="itemGrid color767676 text-end"><b>22:30</b></div>
-                            <div class="itemGrid font-size-14 text-primary">Hà Nội Office</div>
-                            <div class="itemGrid text-center">-</div>
+                            <div class="itemGrid font-size-14 text-primary text-nowrap">Hà Nội Office</div>
+                            <div class="itemGrid text-center ">-</div>
                             <div class="itemGrid font-size-14 text-primary text-end">Hải Phòng</div>
                             <div class="itemGrid moreDetail font-size-14 italic">*Thuộc chuyến 21:00 20-11-2024
                                 Hà Nội - Hải Phòng
@@ -689,7 +694,7 @@
                     </div>
                     <div class="price">
                         <div>
-                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000đ</b></p>
+                            <p class="cost text-nowrap">Từ <b class="font-size-20">220.000</b>đ</p>
                             <p class="font-size-14 slot">10 Còn trống</p>
                         </div>
                         <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
@@ -746,6 +751,7 @@
         crossorigin="anonymous"></script>
     <script src="../js/booking-ticket.js"></script>
     <script src="../js/header.js"></script>
+    <script src="../js/search-tab.js"></script>
     <script src="../js/footer.js"></script>
 </body>
 
