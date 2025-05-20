@@ -1,3 +1,4 @@
+
 /* .top-bar {
   background-color: #2196f3;
   color: #fff;
@@ -37,7 +38,7 @@
   margin-right: auto;
   width: 100%;
   padding-left: 300px;
-  padding-right: 100px;
+  padding-right: 120px;
 }
 
 .main-navbar {
@@ -88,11 +89,50 @@
 }
 
 .nav-main .nav-item{
-  margin: 0 0.5rem;
+  margin: 0 0.2rem;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 .nav-main .nav-item:last-child .btn-search {
   margin-left: 0.2rem; /* Small gap if needed */
+}
+
+#home-page-link{
+  width: 105px;
+
+  display: flex;
+  justify-content: center;
+}
+#introduce-link{
+  width: 94px;
+
+  display: flex;
+  justify-content: center;
+}
+#house-car-link{
+  width: 176px;
+
+  display: flex;
+  justify-content: center;
+}
+#garage-link{
+  width: 66px;
+
+  display: flex;
+  justify-content: center;
+}
+#route-link{
+  width: 143px;
+  display: flex;
+  justify-content: center;
+}
+#check-ticket-link{
+  width: 105px;
+
+  display: flex;
+  justify-content: center;
 }
 
 .btn-search {
@@ -104,6 +144,10 @@
   font-size: 0.2rem;
   transition: background 0.2s;
 
+  width: 39px;
+
+  display: flex;
+  justify-content: center;
 }
 
 .btn-search i {
@@ -229,4 +273,3 @@
     justify-content: center !important;
   }
 }
-
