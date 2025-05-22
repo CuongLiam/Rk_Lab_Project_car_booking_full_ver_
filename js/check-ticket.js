@@ -32,7 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Lấy giá trị từ các ô nhập liệu
         const enteredTicketId = ticketIdInput.value.trim(); // .trim() để loại bỏ khoảng trắng thừa
         const enteredPhone = phoneInput.value.trim();
-
+         // Kiểm tra nếu ô nhập liệu trống
+        if (enteredTicketId === '' || enteredPhone === '') {
+            greenBanner.textContent = 'Vui lòng nhập vào thông tin và bấm kiểm tra vé';
+            greenBanner.style.backgroundColor = '#DFF0D8'; 
+            greenBanner.style.color = '#3C763D';
+            return; 
+        }
         // Tìm kiếm vé trong mảng 'tickets'
         // Sử dụng phương thức .find() để tìm vé đầu tiên khớp với cả mã vé và số điện thoại
         const foundTickets = tickets.filter(ticket => {
