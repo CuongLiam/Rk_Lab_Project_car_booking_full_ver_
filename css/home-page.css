@@ -22,7 +22,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   width: 100%;
   max-width: 260px;
-  height: auto;
+  height: 219px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0);
   border: 1px solid rgba(236, 238, 235, 1);
@@ -35,7 +35,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   width: 100%;
   max-width: 260px;
-  height: auto;
+  height: 250px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0);
   border: 1px solid rgba(236, 238, 235, 1);
@@ -50,6 +50,16 @@ body {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 0.5rem;
+}
+
+.bus-card img {
+  height: 159px;
+  width: 228px;
+}
+
+.bus-card-lac img {
+  height: 170px;
+  width: 260px;
 }
 
 .textInCard {
@@ -74,7 +84,7 @@ body {
 
 .bus-card-lac p {
   color: #000000;
-  padding: 10px;
+  padding: 10px 0px 0px 10px;
 }
 
 .textInCard span {
@@ -125,11 +135,11 @@ main {
   padding: 0 16px;
 }
 
-.all-Bus-Card {
+.all-Bus-Card,
+.all-Bus-Card-lac {
   display: flex;
   gap: 20px;
   justify-content: center;
-  width: 100%;
   max-width: 1100px;
 }
 
@@ -157,7 +167,7 @@ main {
 .lac {
   width: 100%;
   max-width: 1110px;
-  height: auto;
+  height: 146px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -188,11 +198,34 @@ main {
   .all-Bus-Card .bus-card-lac:nth-child(n+4) {
     display: none;
   }
-  .bus-card{
-    max-width: 232px;
-    max-width: 100%;
+
+  .all-Bus-Card-lac .bus-card:nth-child(n+4) {
+    display: none;
   }
- 
+
+  .all-Bus-Card-lac .bus-card-lac:nth-child(n+4) {
+    display: none;
+  }
+
+  .bus-card {
+    max-width: 232px;
+  }
+
+  .bus-card img {
+    width: 200px;
+    height: 159px;
+  }
+
+  .bus-card-lac img {
+    width: 232px;
+    height: 170px;
+  }
+
+  .bus-card-lac {
+    max-width: 232px;
+    height: 219px;
+  }
+
   .bus-garages,
   .bus {
     flex-wrap: wrap;
@@ -212,26 +245,19 @@ main {
   }
 
   .all-Bus-Card,
-  .bus {
+  .all-Bus-Card-lac {
     max-width: 100%;
   }
 
-
-
+  .lac {
+    width: 736px;
+    height: 98px;
+  }
 
 }
 
 @media (max-width: 391px) {
-  .all-Bus-Card {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .bus-card,
-  .bus-card-lac {
-    width: 100%;
-    max-width: 100%;
-  }
 
   .all-Bus-Card .bus-card:nth-child(n+2) {
     display: none;
@@ -242,24 +268,79 @@ main {
   }
 
 
-.lac{
-  width: 358px;
+  .all-Bus-Card-lac .bus-card:nth-child(n+2) {
+    display: none;
+  }
+
+  .all-Bus-Card-lac .bus-card-lac:nth-child(n+2) {
+    display: none;
+  }
+
+
+  .all-Bus-Card {
+    width: 358px;
+    height: 250px;
+    min-width: 358px;
+    max-width: 358px;
+    overflow-x: auto;
+  }
+
+  .bus-card {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 250px;
+    box-sizing: border-box;
+  }
+
+  .bus-card img {
+    width: 326px;
+    min-width: 326px;
+    max-width: 326px;
+    height: 159px;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+
+
+
+
+  .lac {
+    width: 358px;
+  }
+
+
+
+
+
+  .bus-card-lac {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 219px;
+    box-sizing: border-box;
+  }
+
+
+
+  .all-Bus-Card-lac {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 219px;
+    box-sizing: border-box;
+  }
+
+  .bus-card-lac img {
+    width: 358px;
+    min-width: 326px;
+    max-width: 358px;
+    height: 170px;
+    box-sizing: border-box;
+  }
+
+
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -359,6 +440,7 @@ main {
   .grid-3 {
     width: 100%;
     gap: 8px;
+    height: 240px;
   }
 
 }
@@ -377,14 +459,12 @@ main {
   }
 
   .all-Reviews {
-    width: 100%;
     gap: 3.25px;
   }
 
   .gird-1,
   .grid-2,
   .grid-3 {
-    width: 100%;
     gap: 3.25px;
   }
 
@@ -393,7 +473,30 @@ main {
 
 
 
+@media (max-width: 391px) {
+  .all-Reviews {
+    gap: 3.25px;
+  }
+  .gird-1,
+  .grid-2,
+  .grid-3 {
+    
+    width: 100%;
+    gap: 3.25px;
+    height: auto; 
+  }
+  .gird-1 img,
+  .grid-2 img,
+  .grid-3 img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
 
+.left-images{
+  gap: 3.25px;
+}
 
 
 
@@ -418,6 +521,7 @@ main {
 .Featured_section {
   width: 100%;
   max-width: 1100px;
+  height: 216px;
 }
 
 
@@ -429,7 +533,11 @@ main {
   letter-spacing: 0%;
   vertical-align: middle;
   text-transform: uppercase;
+}
 
+.feature-heading {
+  padding: 0px;
+  margin: 0px;
 }
 
 .feature-text p {
@@ -439,14 +547,15 @@ main {
   line-height: 20px;
   letter-spacing: 0%;
   vertical-align: middle;
-
+  padding: 0px;
+  margin: 0px;
 }
 
 .features-list {
   max-width: 1100px;
   width: 100%;
   height: auto;
-  height: 216px;
+  height: 152px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 210px;
@@ -460,10 +569,18 @@ main {
   gap: 20px;
 }
 
-.feature-text {
-  gap: 4px;
+.right-feature-item {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: auto;
+  gap: 20px;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .feature-item {
@@ -478,7 +595,8 @@ main {
   .Featured_section {
     margin-bottom: 100px;
   }
-  .features-list{
+
+  .features-list {
     gap: 20px;
   }
 }
@@ -490,7 +608,8 @@ main {
     grid-template-columns: repeat(1, 1fr);
 
   }
-  .features-list{
+
+  .features-list {
     gap: 20px;
   }
 
