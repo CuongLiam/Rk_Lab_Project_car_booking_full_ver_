@@ -78,7 +78,7 @@ let schedule = [
     "id": 1,
     "routeId": 2,
     "busId": 4,
-    "departureTime": "2025-05-22T08:00:00.000Z",
+    "departureTime": "2025-05-22T07:00:00.000Z",
     "arrivalTime": "2025-05-22T16:00:00.000Z",
     "availableSeats": 15,
     "totalSeats": 42,
@@ -90,7 +90,7 @@ let schedule = [
     "id": 2,
     "routeId": 1,
     "busId": 1,
-    "departureTime": "2025-05-23T08:00:00.000Z",
+    "departureTime": "2025-05-23T07:00:00.000Z",
     "arrivalTime": "2025-05-23T16:00:00.000Z",
     "availableSeats": 0,
     "totalSeats": 40,
@@ -102,7 +102,7 @@ let schedule = [
     "id": 3,
     "routeId": 3,
     "busId": 3,
-    "departureTime": "2025-05-24T08:00:00.000Z",
+    "departureTime": "2025-05-24T07:00:00.000Z",
     "arrivalTime": "2025-05-24T16:00:00.000Z",
     "availableSeats": 10,
     "totalSeats": 20,
@@ -415,6 +415,7 @@ let stations = [
 let right = document.getElementById("right");
 let data = schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
 let timeStartSelect = document.getElementById("timeStart");
+let sortPriceSelect = document.getElementById("sortPrice");
 
 //Hàm lấy giá trị giờ phút
 const getHoursAndMinutes = (datetimeString) => {
@@ -516,15 +517,38 @@ const renderDashboard = () => {
 const processData = () => {
   data = schedule // Lấy lại dữ liệu để xử lý
 
+  //Lọc giờ đi
   const timeStartValue = timeStartSelect.value;
   if (timeStartValue !== "Giờ đi") {
     data = data.filter(item => parseInt(timeStartValue.split(":")[0], 10) <= parseInt(getHoursAndMinutes(item.departureTime).split(":")[0], 10))
+  }
+
+  //Sắp xếp theo mức giá
+  let sortPriceDirection = sortPriceSelect.value;
+  if (sortPriceDirection !== "Mức giá") {
+    if (sortPriceDirection === "true") {
+      data = data.sort((a, b) => {
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
+        return priceA - priceB
+      })
+    } else {
+      data = data.sort((a, b) => {
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
+        return priceB - priceA
+      })
+    }
   }
 
   renderDashboard();
 }
 //Lọc giờ đi
 timeStartSelect.addEventListener("change", () => {
+  processData();
+})
+//Sắp xếp theo mức giá
+sortPriceSelect.addEventListener("change", () => {
   processData();
 })
 
