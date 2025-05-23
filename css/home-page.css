@@ -1,8 +1,13 @@
 main {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 64px;
+  margin-bottom: 80px;
+  width: 100%;
+  padding: 0 16px;
+  margin-top: 60px;
 }
 
 body {
@@ -17,32 +22,25 @@ body {
   box-sizing: border-box;
 }
 
-.bus-card-lac {
+.bus-card-lac,
+.bus-card {
   padding: 0px;
   font-family: 'Segoe UI', sans-serif;
   width: 100%;
   max-width: 260px;
-  height: 219px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0);
   border: 1px solid rgba(236, 238, 235, 1);
   box-shadow: 0px 5px 5px 0px rgba(76, 76, 76, 0.1);
 }
-
-
-
+.bus-card-lac {
+  padding: 0px;
+  height: 219px;
+}
 .bus-card {
-  font-family: 'Segoe UI', sans-serif;
-  width: 100%;
-  max-width: 260px;
   height: 250px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(236, 238, 235, 1);
-  box-shadow: 0px 5px 5px 0px rgba(76, 76, 76, 0.1);
   padding: 16px;
 }
-
 .bus-card img,
 .bus-card-lac img {
   width: 100%;
@@ -51,26 +49,20 @@ body {
   object-fit: cover;
   border-radius: 0.5rem;
 }
-
 .bus-card img {
   height: 159px;
   width: 228px;
 }
-
 .bus-card-lac img {
   height: 170px;
   width: 260px;
 }
-
 .textInCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-
-
-
 .textInCard p,
 .bus-card p,
 .bus-card-lac p {
@@ -81,12 +73,10 @@ body {
   margin: 0px;
   width: 100%;
 }
-
 .bus-card-lac p {
   color: #000000;
   padding: 10px 0px 0px 10px;
 }
-
 .textInCard span {
   font-family: 'Segoe UI', sans-serif;
   font-weight: 400;
@@ -94,8 +84,8 @@ body {
   color: rgba(61, 84, 165, 1);
   width: 100%;
 }
-
-.Popular-Garages {
+.popular-section	,
+.featured-promotions{
   width: 100%;
   height: auto;
   display: flex;
@@ -104,6 +94,15 @@ body {
 
 }
 
+.all-Bus-Card-benxe {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1100px;
+  width: 100%;
+}
 .title-bus {
   font-family: 'Segoe UI', sans-serif;
   font-size: 1.5rem;
@@ -115,26 +114,13 @@ body {
   margin: 0 auto;
   margin-bottom: 24px;
 }
-
-.bus-garages {
+.popular-list {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   gap: 16px;
 }
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 64px;
-  margin-bottom: 80px;
-  width: 100%;
-  padding: 0 16px;
-}
-
 .all-Bus-Card,
 .all-Bus-Card-lac {
   display: flex;
@@ -143,66 +129,13 @@ main {
   max-width: 1100px;
 }
 
-.Feature-offers {
-  width: 100%;
-  padding: 0 16px;
-}
 
-.lac {
-  width: 100%;
-  max-width: 1110px;
-}
-
-.bus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.lac {
-  width: 100%;
-  max-width: 1110px;
-  height: 146px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-
-.bus {
-  max-width: 1196px;
-  width: 100%;
-}
-
-.bus .so2 {
-  max-width: 1px;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
 
 /* ===================== Responsive ===================== */
-
-
-
 @media (max-width: 768px) {
-
-  .all-Bus-Card .bus-card:nth-child(n+4) {
-    display: none;
-  }
-
-  .all-Bus-Card .bus-card-lac:nth-child(n+4) {
-    display: none;
-  }
-
-  .all-Bus-Card-lac .bus-card:nth-child(n+4) {
-    display: none;
-  }
-
+  .all-Bus-Card .bus-card:nth-child(n+4),
+  .all-Bus-Card .bus-card-lac:nth-child(n+4),
+  .all-Bus-Card-lac .bus-card:nth-child(n+4),
   .all-Bus-Card-lac .bus-card-lac:nth-child(n+4) {
     display: none;
   }
@@ -226,7 +159,7 @@ main {
     height: 219px;
   }
 
-  .bus-garages,
+  .popular-list,
   .bus {
     flex-wrap: wrap;
     justify-content: center;
@@ -254,24 +187,18 @@ main {
     height: 98px;
   }
 
+  .banner-image{
+    max-width: 736px;
+    width: 100%;
+  }
+
 }
 
 @media (max-width: 391px) {
 
-
-  .all-Bus-Card .bus-card:nth-child(n+2) {
-    display: none;
-  }
-
-  .all-Bus-Card .bus-card-lac:nth-child(n+2) {
-    display: none;
-  }
-
-
-  .all-Bus-Card-lac .bus-card:nth-child(n+2) {
-    display: none;
-  }
-
+  .all-Bus-Card .bus-card:nth-child(n+2),
+  .all-Bus-Card .bus-card-lac:nth-child(n+2),
+  .all-Bus-Card-lac .bus-card:nth-child(n+2),
   .all-Bus-Card-lac .bus-card-lac:nth-child(n+2) {
     display: none;
   }
@@ -299,14 +226,18 @@ main {
     max-width: 326px;
     height: 159px;
     object-fit: cover;
-    box-sizing: border-box;
+  }
+
+  .featured-promotions {
+    height: auto;
   }
 
 
 
-
-  .lac {
+  .banner-image {
     width: 358px;
+    max-height: 98px;
+    height: 98px;
   }
 
 
@@ -318,7 +249,6 @@ main {
     min-width: 358px;
     max-width: 358px;
     height: 219px;
-    box-sizing: border-box;
   }
 
 
@@ -328,7 +258,6 @@ main {
     min-width: 358px;
     max-width: 358px;
     height: 219px;
-    box-sizing: border-box;
   }
 
   .bus-card-lac img {
@@ -336,7 +265,6 @@ main {
     min-width: 326px;
     max-width: 358px;
     height: 170px;
-    box-sizing: border-box;
   }
 
 
@@ -477,14 +405,16 @@ main {
   .all-Reviews {
     gap: 3.25px;
   }
+
   .gird-1,
   .grid-2,
   .grid-3 {
-    
+
     width: 100%;
     gap: 3.25px;
-    height: auto; 
+    height: auto;
   }
+
   .gird-1 img,
   .grid-2 img,
   .grid-3 img {
@@ -494,37 +424,18 @@ main {
   }
 }
 
-.left-images{
+.left-images {
   gap: 3.25px;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-main {
-  margin-top: 60px;
-}
-
-
-
-
-.Featured_section {
+/* =================featured-promotions ================= */
+.featured_section {
   width: 100%;
   max-width: 1100px;
   height: 216px;
 }
-
-
 .feature-text h3 {
   font-family: Segoe UI;
   font-weight: 700;
@@ -668,4 +579,149 @@ main {
   .media-mentions {
     margin-top: 200px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= animation ================= */
+.lac {
+  width: 100%;
+  max-width: 1110px;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popular-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.arrow-left-2,
+.arrow-right-2 {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.arrow-left-2:hover,
+.arrow-right-2:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+@media (max-width: 1440px) {
+   .all-Bus-Card .bus-card:nth-child(n+5),
+  .all-Bus-Card .bus-card-lac:nth-child(n+5),
+  .all-Bus-Card-lac .bus-card:nth-child(n+5),
+  .all-Bus-Card-lac .bus-card-lac:nth-child(n+5) {
+    display: none;
+  }
+}
+
+
+
+
+.popular-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.all-Bus-Card-lac {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+
+
+.all-Bus-Card {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s cubic-bezier(.4,1,.7,1);
+  will-change: transform;
+}
+
+
+@media (max-width: 768px) {
+}
+
+/* Đưa arrow xuống dưới khi mobile/tablet */
+@media (max-width: 768px) {
+  
+  .arrow-left-1, .arrow-right-1 {
+    display: block;
+    position: static;
+  }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  #all-Bus-Card-benxe .bus-card-lac:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .all-Bus-Card-lac .bus-card-lac:nth-child(n+4) {
+    display: none;
+  }
+}
+
+#all-Bus-Card-benxe {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
 }
