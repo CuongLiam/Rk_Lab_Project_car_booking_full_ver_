@@ -342,7 +342,7 @@ export const fakeData = {
         {
             id: 1,
             companyName: "Thanh Nhung",
-            image: "../assets/imgs/nha_xe/nha-xe-thanh-nhung.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-thanh-nhung-bac-giang-lao-cai-414x297.jpg.png",
             descriptions: "Trụ sở: Cà Mau",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -350,7 +350,7 @@ export const fakeData = {
         {
             id: 2,
             companyName: "An Hòa",
-            image: "../assets/imgs/nha_xe/nha-xe-an-hoa.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Kon Tum",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -358,7 +358,7 @@ export const fakeData = {
         {
             id: 3,
             companyName: "Mai Linh",
-            image: "../assets/imgs/nha_xe/nha-xe-mai-linh.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: TP. HCM",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -366,7 +366,7 @@ export const fakeData = {
         {
             id: 4,
             companyName: "Phương Trang",
-            image: "../assets/imgs/nha_xe/nha-xe-phuong-trang.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: TP. HCM",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -374,7 +374,7 @@ export const fakeData = {
         {
             id: 5,
             companyName: "Thành Bưởi",
-            image: "../assets/imgs/nha_xe/nha-xe-thanh-buoi.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Đà Lạt",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -382,7 +382,7 @@ export const fakeData = {
         {
             id: 6,
             companyName: "Hoàng Long",
-            image: "../assets/imgs/nha_xe/nha-xe-hoang-long.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Hải Phòng",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -390,7 +390,7 @@ export const fakeData = {
         {
             id: 7,
             companyName: "Sao Việt",
-            image: "../assets/imgs/nha_xe/nha-xe-sao-viet.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Hà Nội",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -398,7 +398,7 @@ export const fakeData = {
         {
             id: 8,
             companyName: "Hạnh Cafe",
-            image: "../assets/imgs/nha_xe/nha-xe-hanh-cafe.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: TP. HCM",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -406,7 +406,7 @@ export const fakeData = {
         {
             id: 9,
             companyName: "Liên Hưng",
-            image: "../assets/imgs/nha_xe/nha-xe-lien-hung.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Nha Trang",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -414,7 +414,7 @@ export const fakeData = {
         {
             id: 10,
             companyName: "Cúc Tùng",
-            image: "../assets/imgs/nha_xe/nha-xe-cuc-tung.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Bình Định",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -422,7 +422,7 @@ export const fakeData = {
         {
             id: 11,
             companyName: "Phúc Xuyên",
-            image: "../assets/imgs/nha_xe/nha-xe-phuc-xuyen.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Quảng Ninh",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -430,7 +430,7 @@ export const fakeData = {
         {
             id: 12,
             companyName: "Minh Quốc",
-            image: "../assets/imgs/nha_xe/nha-xe-minh-quoc.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Gia Lai",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -438,7 +438,7 @@ export const fakeData = {
         {
             id: 13,
             companyName: "Bình An",
-            image: "../assets/imgs/nha_xe/nha-xe-binh-an.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Cần Thơ",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -446,7 +446,7 @@ export const fakeData = {
         {
             id: 14,
             companyName: "Hưng Long",
-            image: "../assets/imgs/nha_xe/nha-xe-hung-long.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Vũng Tàu",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -454,7 +454,7 @@ export const fakeData = {
         {
             id: 15,
             companyName: "Trọng Minh",
-            image: "../assets/imgs/nha_xe/nha-xe-trong-minh.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: An Giang",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -462,7 +462,7 @@ export const fakeData = {
         {
             id: 16,
             companyName: "Ngọc Ánh",
-            image: "../assets/imgs/nha_xe/nha-xe-ngoc-anh.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Bắc Giang",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -470,7 +470,7 @@ export const fakeData = {
         {
             id: 17,
             companyName: "Kim Chi",
-            image: "../assets/imgs/nha_xe/nha-xe-kim-chi.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Hà Tĩnh",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -478,7 +478,7 @@ export const fakeData = {
         {
             id: 18,
             companyName: "Việt Tân Phát",
-            image: "../assets/imgs/nha_xe/nha-xe-viet-tan-phat.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Đồng Nai",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -486,7 +486,7 @@ export const fakeData = {
         {
             id: 19,
             companyName: "Hải Âu",
-            image: "../assets/imgs/nha_xe/nha-xe-hai-au.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Nam Định",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"
@@ -494,7 +494,7 @@ export const fakeData = {
         {
             id: 20,
             companyName: "Thuận Thảo",
-            image: "../assets/imgs/nha_xe/nha-xe-thuan-thao.jpg",
+            image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
             descriptions: "Trụ sở: Phú Yên",
             createdAt: "2025-05-23T08:00:00.000Z",
             updatedAt: "2025-05-23T08:00:00.000Z"

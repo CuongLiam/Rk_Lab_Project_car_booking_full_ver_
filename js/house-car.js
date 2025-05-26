@@ -1,43 +1,26 @@
-class BusCompany {
-  static lastIdBusCompany = 0;
-  constructor(companyName, image, descriptions) {
-    BusCompany.lastIdBusCompany++;
-    const now = new Date().toISOString();
-    this.id           = BusCompany.lastIdBusCompany;
-    this.companyName  = companyName;
-    this.image        = image;
-    this.descriptions = descriptions;
-    this.createdAt    = now;
-    this.updatedAt    = now;
-  }
-}
-let busCompanies = [
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-  new BusCompany("Phương Trang", "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg", "Trụ sở: 274-276 Đề Thám, Quận 1, TP.HCM"),
-];
+// class BusCompany {
+//   static lastIdBusCompany = 0;
+//   constructor(companyName, image, descriptions) {
+//     BusCompany.lastIdBusCompany++;
+//     const now = new Date().toISOString();
+//     this.id           = BusCompany.lastIdBusCompany;
+//     this.companyName  = companyName;
+//     this.image        = image;
+//     this.descriptions = descriptions;
+//     this.createdAt    = now;
+//     this.updatedAt    = now;
+//   }
+// }
+import { fakeData } from "./fake-data.js";
+// let busCompanies = [
+  
+// ];
+
+const busCompanies = fakeData.busCompanies;
+
+// const busCompanies = fakeData.busCompanies.map(
+//   c => new BusCompany(c.id, c.companyName, c.image, c.descriptions)
+// );
 
 // loadFromLocalStorage();
 
