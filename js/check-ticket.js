@@ -2,7 +2,7 @@
 const tickets = [
     {
         ticketId: 'ABC123',
-        phone: '0901234567',
+        phone: '0123456789',
         status: 'BOOKED',
         departure: 'Hà Nội',
         arrival: 'Sài Gòn',
@@ -10,8 +10,8 @@ const tickets = [
         price: 500000
     },
     {
-        ticketId: 'DEF456',
-        phone: '0917654321',
+        ticketId: 'ABC456',
+        phone: '9876543210',
         status: 'CANCELLED',
         departure: 'Đà Nẵng',
         arrival: 'Huế',
@@ -23,7 +23,7 @@ const tickets = [
 document.addEventListener('DOMContentLoaded', function () {
     // Lấy tham chiếu đến các phần tử HTML
     const checkButton = document.querySelector('button'); // Nút "Kiểm tra vé"
-    const ticketIdInput = document.querySelector('.id'); // Ô nhập Mã Vé
+    const ticketIdInput = document.querySelector('.TicketId'); // Ô nhập Mã Vé
     const phoneInput = document.querySelector('.phone'); // Ô nhập Số điện thoại
     const greenBanner = document.querySelector('.green-banner'); // Banner màu xanh lá cây
 
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
          // Kiểm tra nếu ô nhập liệu trống
         if (enteredTicketId === '' || enteredPhone === '') {
             greenBanner.textContent = 'Vui lòng nhập vào thông tin và bấm kiểm tra vé';
-            greenBanner.style.backgroundColor = '#DFF0D8'; 
-            greenBanner.style.color = '#3C763D';
+            greenBanner.style.backgroundColor = '#F2DEDE'; 
+            greenBanner.style.color = '#A94442';
             return; 
         }
         // Tìm kiếm vé trong mảng 'tickets'

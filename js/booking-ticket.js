@@ -73,347 +73,348 @@ window.addEventListener('load', () => {
 });
 
 //=================================FAKE-DATA========================================
-let schedule = [
-  {
-    "id": 1,
-    "routeId": 2,
-    "busId": 4,
-    "departureTime": "2025-05-22T07:00:00.000Z",
-    "arrivalTime": "2025-05-22T16:00:00.000Z",
-    "availableSeats": 15,
-    "totalSeats": 42,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 2,
-    "routeId": 1,
-    "busId": 1,
-    "departureTime": "2025-05-23T07:00:00.000Z",
-    "arrivalTime": "2025-05-23T16:00:00.000Z",
-    "availableSeats": 0,
-    "totalSeats": 40,
-    "status": "FULL",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 3,
-    "routeId": 3,
-    "busId": 3,
-    "departureTime": "2025-05-24T07:00:00.000Z",
-    "arrivalTime": "2025-05-24T16:00:00.000Z",
-    "availableSeats": 10,
-    "totalSeats": 20,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 4,
-    "routeId": 4,
-    "busId": 2,
-    "departureTime": "2025-05-25T08:00:00.000Z",
-    "arrivalTime": "2025-05-25T16:00:00.000Z",
-    "availableSeats": 5,
-    "totalSeats": 30,
-    "status": "CANCELLED",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 5,
-    "routeId": 5,
-    "busId": 5,
-    "departureTime": "2025-05-26T08:00:00.000Z",
-    "arrivalTime": "2025-05-26T16:00:00.000Z",
-    "availableSeats": 18,
-    "totalSeats": 35,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 6,
-    "routeId": 2,
-    "busId": 1,
-    "departureTime": "2025-05-27T08:00:00.000Z",
-    "arrivalTime": "2025-05-27T16:00:00.000Z",
-    "availableSeats": 8,
-    "totalSeats": 40,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 7,
-    "routeId": 3,
-    "busId": 2,
-    "departureTime": "2025-05-28T08:00:00.000Z",
-    "arrivalTime": "2025-05-28T16:00:00.000Z",
-    "availableSeats": 0,
-    "totalSeats": 30,
-    "status": "FULL",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 8,
-    "routeId": 1,
-    "busId": 3,
-    "departureTime": "2025-05-29T08:00:00.000Z",
-    "arrivalTime": "2025-05-29T16:00:00.000Z",
-    "availableSeats": 4,
-    "totalSeats": 20,
-    "status": "CANCELLED",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 9,
-    "routeId": 4,
-    "busId": 4,
-    "departureTime": "2025-05-30T08:00:00.000Z",
-    "arrivalTime": "2025-05-30T16:00:00.000Z",
-    "availableSeats": 30,
-    "totalSeats": 42,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 10,
-    "routeId": 5,
-    "busId": 5,
-    "departureTime": "2025-05-31T08:00:00.000Z",
-    "arrivalTime": "2025-05-31T16:00:00.000Z",
-    "availableSeats": 0,
-    "totalSeats": 35,
-    "status": "FULL",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 11,
-    "routeId": 1,
-    "busId": 1,
-    "departureTime": "2025-06-01T08:00:00.000Z",
-    "arrivalTime": "2025-06-01T16:00:00.000Z",
-    "availableSeats": 35,
-    "totalSeats": 40,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 12,
-    "routeId": 2,
-    "busId": 2,
-    "departureTime": "2025-06-02T08:00:00.000Z",
-    "arrivalTime": "2025-06-02T16:00:00.000Z",
-    "availableSeats": 12,
-    "totalSeats": 30,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 13,
-    "routeId": 3,
-    "busId": 3,
-    "departureTime": "2025-06-03T08:00:00.000Z",
-    "arrivalTime": "2025-06-03T16:00:00.000Z",
-    "availableSeats": 3,
-    "totalSeats": 20,
-    "status": "FULL",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 14,
-    "routeId": 4,
-    "busId": 4,
-    "departureTime": "2025-06-04T08:00:00.000Z",
-    "arrivalTime": "2025-06-04T16:00:00.000Z",
-    "availableSeats": 20,
-    "totalSeats": 42,
-    "status": "AVAILABLE",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  },
-  {
-    "id": 15,
-    "routeId": 5,
-    "busId": 5,
-    "departureTime": "2025-06-05T08:00:00.000Z",
-    "arrivalTime": "2025-06-05T16:00:00.000Z",
-    "availableSeats": 5,
-    "totalSeats": 35,
-    "status": "CANCELLED",
-    "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2025-05-22T00:00:00.000Z"
-  }
-]
-let routes = [
-  {
-    id: 1,
-    departureStationId: 1,
-    arrivalStationId: 4,
-    price: 500000,
-    duration: "30h",
-    distance: 1700,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 2,
-    departureStationId: 2,
-    arrivalStationId: 3,
-    price: 350000,
-    duration: "18h",
-    distance: 960,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 3,
-    departureStationId: 3,
-    arrivalStationId: 4,
-    price: 300000,
-    duration: "16h",
-    distance: 780,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 4,
-    departureStationId: 1,
-    arrivalStationId: 5,
-    price: 250000,
-    duration: "6h",
-    distance: 300,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 5,
-    departureStationId: 5,
-    arrivalStationId: 2,
-    price: 200000,
-    duration: "5h",
-    distance: 220,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  }
-];
-let buses = [
-  {
-    id: 1,
-    name: "Xe giường nằm A",
-    description: "Xe giường nằm 42 chỗ đời mới",
-    licensePlate: "51A-12345",
-    capacity: 42,
-    companyId: 1,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 2,
-    name: "Xe ghế ngồi B",
-    description: "Xe ghế ngồi 30 chỗ",
-    licensePlate: "51B-67890",
-    capacity: 30,
-    companyId: 1,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 3,
-    name: "Xe limousine C",
-    description: "Limousine 20 chỗ cao cấp",
-    licensePlate: "51C-54321",
-    capacity: 20,
-    companyId: 2,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 4,
-    name: "Xe giường nằm D",
-    description: "Xe giường nằm 40 chỗ",
-    licensePlate: "51D-98765",
-    capacity: 40,
-    companyId: 2,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 5,
-    name: "Xe mini E",
-    description: "Xe mini 15 chỗ",
-    licensePlate: "51E-11111",
-    capacity: 15,
-    companyId: 3,
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  }
-];
-let stations = [
-  {
-    id: 1,
-    name: "Bến xe Miền Đông",
-    image: "mien_dong.jpg",
-    wallpaper: "mien_dong_wallpaper.jpg",
-    descriptions: "Bến xe lớn nhất TP.HCM, phục vụ các tuyến đi miền Trung và Bắc.",
-    location: "TP.Hồ Chí Minh",
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 2,
-    name: "Bến xe Miền Tây",
-    image: "mien_tay.jpg",
-    wallpaper: "mien_tay_wallpaper.jpg",
-    descriptions: "Chuyên phục vụ các tuyến xe đi miền Tây Nam Bộ.",
-    location: "TP.Hồ Chí Minh",
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 3,
-    name: "Bến xe Trung tâm Đà Nẵng",
-    image: "da_nang.jpg",
-    wallpaper: "da_nang_wallpaper.jpg",
-    descriptions: "Bến xe chính của thành phố Đà Nẵng, kết nối miền Trung với cả nước.",
-    location: "Đà Nẵng",
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 4,
-    name: "Bến xe Mỹ Đình",
-    image: "my_dinh.jpg",
-    wallpaper: "my_dinh_wallpaper.jpg",
-    descriptions: "Một trong những bến xe lớn nhất miền Bắc, phục vụ các tỉnh phía Bắc và miền Trung.",
-    location: "Hà Nội",
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  },
-  {
-    id: 5,
-    name: "Bến xe Cần Thơ",
-    image: "can_tho.jpg",
-    wallpaper: "can_tho_wallpaper.jpg",
-    descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
-    location: "Cần Thơ",
-    createdAt: "2025-05-22T00:00:00.000Z",
-    updatedAt: "2025-05-22T00:00:00.000Z"
-  }
-];
+import { fakeData } from "./fake-data.js";
+// let schedule = [
+//   {
+//     "id": 1,
+//     "routeId": 2,
+//     "busId": 4,
+//     "departureTime": "2025-05-22T07:00:00.000Z",
+//     "arrivalTime": "2025-05-22T16:00:00.000Z",
+//     "availableSeats": 15,
+//     "totalSeats": 42,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 2,
+//     "routeId": 1,
+//     "busId": 1,
+//     "departureTime": "2025-05-23T07:00:00.000Z",
+//     "arrivalTime": "2025-05-23T16:00:00.000Z",
+//     "availableSeats": 0,
+//     "totalSeats": 40,
+//     "status": "FULL",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 3,
+//     "routeId": 3,
+//     "busId": 3,
+//     "departureTime": "2025-05-24T07:00:00.000Z",
+//     "arrivalTime": "2025-05-24T16:00:00.000Z",
+//     "availableSeats": 10,
+//     "totalSeats": 20,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 4,
+//     "routeId": 4,
+//     "busId": 2,
+//     "departureTime": "2025-05-25T08:00:00.000Z",
+//     "arrivalTime": "2025-05-25T16:00:00.000Z",
+//     "availableSeats": 5,
+//     "totalSeats": 30,
+//     "status": "CANCELLED",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 5,
+//     "routeId": 5,
+//     "busId": 5,
+//     "departureTime": "2025-05-26T08:00:00.000Z",
+//     "arrivalTime": "2025-05-26T16:00:00.000Z",
+//     "availableSeats": 18,
+//     "totalSeats": 35,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 6,
+//     "routeId": 2,
+//     "busId": 1,
+//     "departureTime": "2025-05-27T08:00:00.000Z",
+//     "arrivalTime": "2025-05-27T16:00:00.000Z",
+//     "availableSeats": 8,
+//     "totalSeats": 40,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 7,
+//     "routeId": 3,
+//     "busId": 2,
+//     "departureTime": "2025-05-28T08:00:00.000Z",
+//     "arrivalTime": "2025-05-28T16:00:00.000Z",
+//     "availableSeats": 0,
+//     "totalSeats": 30,
+//     "status": "FULL",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 8,
+//     "routeId": 1,
+//     "busId": 3,
+//     "departureTime": "2025-05-29T08:00:00.000Z",
+//     "arrivalTime": "2025-05-29T16:00:00.000Z",
+//     "availableSeats": 4,
+//     "totalSeats": 20,
+//     "status": "CANCELLED",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 9,
+//     "routeId": 4,
+//     "busId": 4,
+//     "departureTime": "2025-05-30T08:00:00.000Z",
+//     "arrivalTime": "2025-05-30T16:00:00.000Z",
+//     "availableSeats": 30,
+//     "totalSeats": 42,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 10,
+//     "routeId": 5,
+//     "busId": 5,
+//     "departureTime": "2025-05-31T08:00:00.000Z",
+//     "arrivalTime": "2025-05-31T16:00:00.000Z",
+//     "availableSeats": 0,
+//     "totalSeats": 35,
+//     "status": "FULL",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 11,
+//     "routeId": 1,
+//     "busId": 1,
+//     "departureTime": "2025-06-01T08:00:00.000Z",
+//     "arrivalTime": "2025-06-01T16:00:00.000Z",
+//     "availableSeats": 35,
+//     "totalSeats": 40,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 12,
+//     "routeId": 2,
+//     "busId": 2,
+//     "departureTime": "2025-06-02T08:00:00.000Z",
+//     "arrivalTime": "2025-06-02T16:00:00.000Z",
+//     "availableSeats": 12,
+//     "totalSeats": 30,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 13,
+//     "routeId": 3,
+//     "busId": 3,
+//     "departureTime": "2025-06-03T08:00:00.000Z",
+//     "arrivalTime": "2025-06-03T16:00:00.000Z",
+//     "availableSeats": 3,
+//     "totalSeats": 20,
+//     "status": "FULL",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 14,
+//     "routeId": 4,
+//     "busId": 4,
+//     "departureTime": "2025-06-04T08:00:00.000Z",
+//     "arrivalTime": "2025-06-04T16:00:00.000Z",
+//     "availableSeats": 20,
+//     "totalSeats": 42,
+//     "status": "AVAILABLE",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     "id": 15,
+//     "routeId": 5,
+//     "busId": 5,
+//     "departureTime": "2025-06-05T08:00:00.000Z",
+//     "arrivalTime": "2025-06-05T16:00:00.000Z",
+//     "availableSeats": 5,
+//     "totalSeats": 35,
+//     "status": "CANCELLED",
+//     "createdAt": "2025-05-22T00:00:00.000Z",
+//     "updatedAt": "2025-05-22T00:00:00.000Z"
+//   }
+// ]
+// let routes = [
+//   {
+//     id: 1,
+//     departureStationId: 1,
+//     arrivalStationId: 4,
+//     price: 500000,
+//     duration: "30h",
+//     distance: 1700,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 2,
+//     departureStationId: 2,
+//     arrivalStationId: 3,
+//     price: 350000,
+//     duration: "18h",
+//     distance: 960,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 3,
+//     departureStationId: 3,
+//     arrivalStationId: 4,
+//     price: 300000,
+//     duration: "16h",
+//     distance: 780,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 4,
+//     departureStationId: 1,
+//     arrivalStationId: 5,
+//     price: 250000,
+//     duration: "6h",
+//     distance: 300,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 5,
+//     departureStationId: 5,
+//     arrivalStationId: 2,
+//     price: 200000,
+//     duration: "5h",
+//     distance: 220,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   }
+// ];
+// let buses = [
+//   {
+//     id: 1,
+//     name: "Xe giường nằm A",
+//     description: "Xe giường nằm 42 chỗ đời mới",
+//     licensePlate: "51A-12345",
+//     capacity: 42,
+//     companyId: 1,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 2,
+//     name: "Xe ghế ngồi B",
+//     description: "Xe ghế ngồi 30 chỗ",
+//     licensePlate: "51B-67890",
+//     capacity: 30,
+//     companyId: 1,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 3,
+//     name: "Xe limousine C",
+//     description: "Limousine 20 chỗ cao cấp",
+//     licensePlate: "51C-54321",
+//     capacity: 20,
+//     companyId: 2,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 4,
+//     name: "Xe giường nằm D",
+//     description: "Xe giường nằm 40 chỗ",
+//     licensePlate: "51D-98765",
+//     capacity: 40,
+//     companyId: 2,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 5,
+//     name: "Xe mini E",
+//     description: "Xe mini 15 chỗ",
+//     licensePlate: "51E-11111",
+//     capacity: 15,
+//     companyId: 3,
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   }
+// ];
+// let stations = [
+//   {
+//     id: 1,
+//     name: "Bến xe Miền Đông",
+//     image: "mien_dong.jpg",
+//     wallpaper: "mien_dong_wallpaper.jpg",
+//     descriptions: "Bến xe lớn nhất TP.HCM, phục vụ các tuyến đi miền Trung và Bắc.",
+//     location: "TP.Hồ Chí Minh",
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 2,
+//     name: "Bến xe Miền Tây",
+//     image: "mien_tay.jpg",
+//     wallpaper: "mien_tay_wallpaper.jpg",
+//     descriptions: "Chuyên phục vụ các tuyến xe đi miền Tây Nam Bộ.",
+//     location: "TP.Hồ Chí Minh",
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 3,
+//     name: "Bến xe Trung tâm Đà Nẵng",
+//     image: "da_nang.jpg",
+//     wallpaper: "da_nang_wallpaper.jpg",
+//     descriptions: "Bến xe chính của thành phố Đà Nẵng, kết nối miền Trung với cả nước.",
+//     location: "Đà Nẵng",
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 4,
+//     name: "Bến xe Mỹ Đình",
+//     image: "my_dinh.jpg",
+//     wallpaper: "my_dinh_wallpaper.jpg",
+//     descriptions: "Một trong những bến xe lớn nhất miền Bắc, phục vụ các tỉnh phía Bắc và miền Trung.",
+//     location: "Hà Nội",
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   },
+//   {
+//     id: 5,
+//     name: "Bến xe Cần Thơ",
+//     image: "can_tho.jpg",
+//     wallpaper: "can_tho_wallpaper.jpg",
+//     descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
+//     location: "Cần Thơ",
+//     createdAt: "2025-05-22T00:00:00.000Z",
+//     updatedAt: "2025-05-22T00:00:00.000Z"
+//   }
+// ];
 //=================================Chức năng========================================
 let right = document.getElementById("right");
-let data = schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
+let data = fakeData.schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
 let timeStartSelect = document.getElementById("timeStart");
 let sortPriceSelect = document.getElementById("sortPrice");
 
@@ -429,16 +430,16 @@ const renderDashboard = () => {
   let html = '';
 
   data.forEach(item => {
-    let currRoute = routes.find(route => route.id == item.routeId);
-    let currBus = buses.find(bus => bus.id == item.busId);
-    let departureStation = stations.find(station => station.id == currRoute.departureStationId);
-    let arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
+    let currRoute = fakeData.routes.find(route => route.id == item.routeId);
+    let currBus = fakeData.buses.find(bus => bus.id == item.busId);
+    let departureStation = fakeData.stations.find(station => station.id == currRoute.departureStationId);
+    let arrivalStation = fakeData.stations.find(station => station.id == currRoute.arrivalStationId);
 
     html += ` <div class="card">
                 <div class="detailCard">
                     <img class="imgCard imgInfo" src="../assets/imgs/header/1725701779816.jpeg.png" alt="img">
                     <div class="info">
-                        <h5 class="card-title mb-1">${currBus.name}<span class="badge bg-primary">4.5</span><span
+                        <h5 class="card-title mb-1">${currBus.name} <span class="badge bg-primary">4.5</span><span
                                 class="font-size-14 color767676">* 21
                                 bài đánh giá</span></h5>
                         <span class="text-muted font-size-12">${currBus.description}</span><br>
@@ -515,7 +516,7 @@ const renderDashboard = () => {
 
 // Hàm xử lý chung
 const processData = () => {
-  data = schedule // Lấy lại dữ liệu để xử lý
+  data = fakeData.schedule // Lấy lại dữ liệu để xử lý
 
   //Lọc giờ đi
   const timeStartValue = timeStartSelect.value;
@@ -528,14 +529,14 @@ const processData = () => {
   if (sortPriceDirection !== "Mức giá") {
     if (sortPriceDirection === "true") {
       data = data.sort((a, b) => {
-        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
         return priceA - priceB
       })
     } else {
       data = data.sort((a, b) => {
-        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
         return priceB - priceA
       })
     }
