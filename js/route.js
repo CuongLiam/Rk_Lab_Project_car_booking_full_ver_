@@ -39,7 +39,7 @@ const routesData = [
         title: "Đặt vé xe từ Vũng Tàu đi Sân bay Tân Sơn Nhất",
         desc: "Bạn đang tìm kiếm chuyến xe chất lượng trên tuyến đường Bình Thuận..."
     },
-   
+
     {
         img: "../assets/imgs/tuyen_duong/nha-xe-minh-ha-tuyen-ben-xe-nga-tu-ga-di-bac-giang-414x283.jpg.png",
         title: "Đặt vé xe tuyến Bến xe Ngã Tư Ga đi Bắc Giang",
@@ -90,7 +90,7 @@ const routesData = [
         title: "Đặt vé xe từ Vũng Tàu đi Sân bay Tân Sơn Nhất",
         desc: "Bạn đang tìm kiếm chuyến xe chất lượng trên tuyến đường Bình Thuận..."
     },
-   
+
     // ... bạn có thể thêm nhiều dữ liệu hơn
 ];
 
@@ -142,7 +142,7 @@ function renderPagination() {
         const page = document.createElement("div");
         page.className = "pageItem";
         page.innerText = i;
-        if (i === currentPage) page.style.backgroundColor = "#1295DB", page.style.color = "#FFFFFF"; 
+        if (i === currentPage) page.style.backgroundColor = "#1295DB", page.style.color = "#FFFFFF";
         page.onclick = () => {
             currentPage = i;
             renderRoutes(currentPage);

@@ -42,6 +42,21 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       document.getElementById("search-tab-container").innerHTML = data;
       initSearchTabDropdown();
+      // Đặt ở đây để đảm bảo nút đã có trên DOM
+      const btn = document.getElementById("findRoute");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const from = document.getElementById("from")?.value || "";
+        const to = document.getElementById("to")?.value || "";
+        const date = document.getElementById("date")?.value || "";
+
+        if (from && to) {
+          sessionStorage.setItem('from', from);
+          sessionStorage.setItem('to', to);
+          sessionStorage.setItem('date', JSON.stringify(date));
+          window.location.href = `../pages/booking-ticket.html`;
+        }
+      });
     })
     .catch(error => console.error("Error loading search-tab:", error));
 });
