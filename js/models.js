@@ -291,3 +291,19 @@ class CancellationPolicy {
         this.updatedAt = new Date().toISOString();
     }
 }
+
+class Article {
+    static lastId = 0;
+    constructor(banner, subTitle, title, phone, address, content) {
+        Article.lastId++;
+        this.id = Article.lastId;
+        this.banner = banner;
+        this.subTitle = subTitle;
+        this.title = title;
+        this.phone = phone;
+        this.address = address;
+        this.content = content;
+        this.createdAt = new Date().toISOString();
+        this.updatedAt = new Date().toISOString();
+    }
+}
