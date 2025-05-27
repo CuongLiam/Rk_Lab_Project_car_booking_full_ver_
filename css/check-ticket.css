@@ -1,6 +1,5 @@
 body {
     font-family: 'Segoe UI';
-    margin: 0;
 }
 
 .wrapper {
@@ -10,7 +9,7 @@ body {
     margin-bottom: 96px;
     margin-top: 48px;
     flex-direction: column; /* đảm bảo xuống hàng khi cần */
-    padding: 32px 16px 64px 16px;
+    /* padding: 32px 16px 64px 16px; */
 }
 
 .container {
@@ -33,7 +32,7 @@ h2 {
     text-align: center;
 }
 
-.TicketId,
+.ticketId,
 .phone {
     padding: 12px;
     margin: 0px 0px 12px 0px;
@@ -52,10 +51,10 @@ h2 {
     cursor: pointer;
     font-size: 16px;
 }
-.TicketId,.phone,.note,.checkBtn,h2{
+.ticketId,.phone,.note,.checkBtn,h2{
     width: 353px;
 }
-.TicketId,.phone,.checkBtn,.green-banner{
+.ticketId,.phone,.checkBtn,.green-banner{
         height: 40px;
     }   
 .note {
@@ -111,14 +110,14 @@ h2 {
         align-items: flex-start;
         max-width: 95%;
     }
-     .TicketId,.phone,.note,.checkBtn,h2{
+     .ticketId,.phone,.note,.checkBtn,h2{
         width: 232px;
     }
     .note{
         height: 128px;
         font-size: 12px;
     }
-    .TicketId,.phone,.checkBtn{
+    .ticketId,.phone,.checkBtn{
         height: 40px;
     }
     h2{
@@ -128,11 +127,11 @@ h2 {
     }
     .form-container {
         width: 232px;
-        margin-right: 2%;
+        margin-right: 20px;
     }
     
     .right-side {
-        width: 50%;
+        width: calc(100% - 232px - 20px);
     }
     .green-banner{
         width: 484px;
@@ -170,13 +169,13 @@ h2 {
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-    .TicketId, .phone, .note, .checkBtn, h2 {
+    .ticketId, .phone, .note, .checkBtn, h2 {
         width: 100vw !important;
         max-width: 358px !important;
         min-width: 0;
         box-sizing: border-box;
     }
-    .TicketId, .phone, .checkBtn {
+    .ticketId, .phone, .checkBtn {
         height: 40px;
     }
     .note {
