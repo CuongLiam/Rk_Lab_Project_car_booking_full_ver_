@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/icons/header/logo-vivutoday-moi.png.png">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+    <!--Main-->
+    <div class="container">
+        <form>
+            <img src="../assets/icons/header/logo-vivutoday-moi.png.png" alt="logo">
+            <p id="please">Please sign in</p>
+            <div id="information">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email address">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div id="remember-area" class="form-check remember-area">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label id="remember" class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+                <p id="changePage">Don't have an account, <a id="swapPageLogin" href="#">click here</a></p>
+                <button id="submit" type="submit" class="btn btn-primary">Sign in</button>
+                <p>&copy 2025 - Rikkei Education</p>
+            </form>
+    </div>
+    <!--Toast Error-->
+    <div class="toast-container position-fixed top-0 right-0 p-3" style="z-index: 1100;">
+        <div id="errorToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" data-bs-delay="3000" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <img class="notice" src="../assets/icons/toast/remove_circle.png" alt="remove_circle"> Error
+                    <p id="error-notice">Mật khẩu không được bỏ trống <br> Email không được bỏ trống</p> <!--Js để chỉnh sữa-->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--Toast Success-->
+    <div class="toast-container position-fixed top-0 right-0 p-3" style="z-index: 1100;">
+        <div id="successToast" class="toast align-items-center border-0" role="alert" aria-live="assertive"
+            data-bs-delay="2000" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <img class="notice" src="../assets/icons/toast/check_circle.png" alt="check_circle"> Đăng nhập thành công!
+                    <p id="success-notice"></p>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>
