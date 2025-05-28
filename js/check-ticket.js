@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lấy modal Bootstrap
     const modal = document.getElementById('ticketModal');
-    const modalTitle = modal.querySelector('.modal-title');
     const modalBody = modal.querySelector('.modal-body');
     const bootstrapModal = new bootstrap.Modal(modal);
 
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const ticket = foundTickets[0];
 
             // Đặt nội dung cho modal
-            modalTitle.textContent = 'Thông tin vé';
             modalBody.innerHTML = `
                 <p><strong>Mã vé:</strong> ${ticket.ticketId}</p>
                 <p><strong>Tuyến:</strong> ${ticket.departure} → ${ticket.arrival}</p>
