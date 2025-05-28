@@ -336,7 +336,46 @@ export const fakeData = {
             createdAt: "2025-05-22T00:00:00.000Z",
             updatedAt: "2025-05-22T00:00:00.000Z"
         },
-
+        // {
+        //     id: 5,
+        //     name: "Bến xe Cần Thơ",
+        //     image: "../assets/imgs/ben_xe/dongmoi.png",
+        //     wallpaper: "can_tho_wallpaper.jpg",
+        //     descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
+        //     location: "Cần Thơ",
+        //     createdAt: "2025-05-22T00:00:00.000Z",
+        //     updatedAt: "2025-05-22T00:00:00.000Z"
+        // },
+        // {
+        //     id: 5,
+        //     name: "Bến xe Cần Thơ",
+        //     image: "../assets/imgs/ben_xe/dongmoi.png",
+        //     wallpaper: "can_tho_wallpaper.jpg",
+        //     descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
+        //     location: "Cần Thơ",
+        //     createdAt: "2025-05-22T00:00:00.000Z",
+        //     updatedAt: "2025-05-22T00:00:00.000Z"
+        // },
+        // {
+        //     id: 5,
+        //     name: "Bến xe Cần Thơ",
+        //     image: "../assets/imgs/ben_xe/dongmoi.png",
+        //     wallpaper: "can_tho_wallpaper.jpg",
+        //     descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
+        //     location: "Cần Thơ",
+        //     createdAt: "2025-05-22T00:00:00.000Z",
+        //     updatedAt: "2025-05-22T00:00:00.000Z"
+        // },
+        // {
+        //     id: 5,
+        //     name: "Bến xe Cần Thơ",
+        //     image: "../assets/imgs/ben_xe/dongmoi.png",
+        //     wallpaper: "can_tho_wallpaper.jpg",
+        //     descriptions: "Bến xe hiện đại tại trung tâm miền Tây Nam Bộ.",
+        //     location: "Cần Thơ",
+        //     createdAt: "2025-05-22T00:00:00.000Z",
+        //     updatedAt: "2025-05-22T00:00:00.000Z"
+        // },
     ],
     busCompanies: [
         {
