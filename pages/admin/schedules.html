@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules</title>
+    <link rel="stylesheet" href="../../css/admin/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin/schedules.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <nav>
+                <ul>
+                    <li id="dashboard" class="active">Dashboard</li>
+                    <li id="schedules">Schedules</li>
+                    <li id="routes">Routes</li>
+                    <li id="stations">Stations</li>
+                    <li id="busCompanies">Bus Companies</li>
+                    <li id="tickets">Tickets</li>
+                </ul>
+            </nav>
+        </div>
+        <main class="main-content">
+                <div class="admin-header">
+                    <h1>Schedules</h1>
+                    <button class="btn btn-primary " id="add-schedule">Add Schedule</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Route</th> 
+                            <th>Bus</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Status</th>
+                            <th>Available Seats</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="schedule-list">    </tbody>
+                </table>
+
+
+
+
+                <div class="add-schedule-modal" id="add-modal" style="display:none;">
+                    <div class="modal-content">
+                        <h3>Thêm Lịch Trình Mới</h3>
+                        <form id="add-schedule-form">
+                            <label>Tuyến:</label>
+                            <input type="text" name="routeName" required placeholder="Nhập tên tuyến">
+                            <label>Nhà xe:</label>
+                            <input type="text" name="busName" required placeholder="Nhập tên nhà xe">
+                            <label>Departure Time:</label>
+                            <input type="datetime-local" name="departureTime" required>
+                            <label>Arrival Time:</label>
+                            <input type="datetime-local" name="arrivalTime" required>
+                            <label>Status:</label>
+                            <select name="status">
+                                <option value="AVAILABLE">AVAILABLE</option>
+                                <option value="UNAVAILABLE">UNAVAILABLE</option>
+                                <option value="CANCELED">CANCELED</option>
+                            </select>
+                            <label>Available Seats:</label>
+                            <input type="number" name="availableSeats" min="0" required>
+                            <div class="modal-actions">
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <button type="button" id="close-add-modal" class="btn btn-secondary">Hủy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+                  <div class="overlay" id="overlay" style="display:none;"></div>
+                <div class="delete-modal" id="delete-modal" style="display:none;">
+                    <div class="modal-content">
+                        <h3>Are you sure you want to delete this schedule?</h3>
+                        <button class="btn btn-secondary" id="close-modal-schedule">Hủy bỏ</button>
+                        <button class="btn btn-sesucc" id="delete-schedule">Delete</button>
+                    </div>
+                </div>
+
+                <div class="edit-schedule-modal col-md-6 col-lg-4 col-xl-3" id="edit-modal">
+                </div>
+        </main>
+
+        <script src="../../js/admin/nav.js"></script>
+        <script type="module" src="../../js/admin/schedules.js"></script>
+    </div>
+</body>
+
+</html>

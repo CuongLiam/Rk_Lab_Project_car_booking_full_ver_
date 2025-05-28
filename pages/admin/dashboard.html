@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../css/admin/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <nav>
+                <ul>
+                    <li id="dashboard" class="active">Dashboard</li>
+                    <li id="schedules">Schedules</li>
+                    <li id="routes">Routes</li>
+                    <li id="stations">Stations</li>
+                    <li id="busCompanies">Bus Companies</li>
+                    <li id="tickets">Tickets</li>
+                </ul>
+            </nav>
+        </div>
+        <main class="main-content">
+            <div class="summary-cards">
+                <div class="card">
+                    <div class="value">150</div>
+                    <div class="label">Schedules</div>
+                </div>
+                <div class="card">
+                    <div class="value">25</div>
+                    <div class="label">Routes</div>
+                </div>
+                <div class="card">
+                    <div class="value">40</div>
+                    <div class="label">Stations</div>
+                </div>
+                <div class="card">
+                    <div class="value">12</div>
+                    <div class="label">Buses Companies</div>
+                </div>
+                <div class="card">
+                    <div class="value">850</div>
+                    <div class="label">Tickets Sold</div>
+                </div>
+            </div>
+
+            <div class="tables">
+                <div class="table-wrapper">
+                    <h3>Schedules</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Route</th>
+                                <th>Bus</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>New York to Washington</td>
+                                <td>Bus 101</td>
+                                <td>2024-05-10 08:00</td>
+                                <td>12:00</td>
+                            </tr>
+                            <tr>
+                                <td>Los Angeles-San Francisco</td>
+                                <td>Bus 202</td>
+                                <td>2024-05-11 08:30</td>
+                                <td>14:50</td>
+                            </tr>
+                            <tr>
+                                <td>Chicago to Detroit</td>
+                                <td>Bus 303</td>
+                                <td>2024-05-12 07:45</td>
+                                <td>11:15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrapper">
+                    <h3>Routes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>New York</td>
+                                <td>Washington</td>
+                                <td>360 km</td>
+                            </tr>
+                            <tr>
+                                <td>Los Angeles</td>
+                                <td>San Francisco</td>
+                                <td>500 km</td>
+                            </tr>
+                            <tr>
+                                <td>Chicago</td>
+                                <td>Detroit</td>
+                                <td>450 km</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrapper">
+                    <h3>Bus Companies</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Headquarters</th>
+                                <th>Logo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Express Lines</td>
+                                <td>New York</td>
+                                <td>🚍</td>
+                            </tr>
+                            <tr>
+                                <td>City Transit</td>
+                                <td>Los Angeles</td>
+                                <td>🚌</td>
+                            </tr>
+                            <tr>
+                                <td>Rapid Transit</td>
+                                <td>Chicago</td>
+                                <td>🚎</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <script src="../../js/admin/nav.js"></script>
+        <script src="../../js/admin/dashboard.js"></script>
+    </div>
+</body>
+
+</html>
