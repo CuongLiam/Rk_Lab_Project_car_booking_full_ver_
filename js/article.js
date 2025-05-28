@@ -76,25 +76,38 @@ import { fakeData } from "./fake-data.js";
 
 const articles = fakeData.articles;
 
-function renderArticles() {
-    const container = document.querySelector('.content');
-    if (!container) return;
-
-    container.innerHTML = articles.map(article => `
-        <div class="containerBanner">
-            <img src="${article.banner}" class="banner" alt="picture">
-            <div class="overlay">
-                <p class="sub-title">${article.subTitle}</p>
-                <h2 class="title">${article.title}</h2>
-            </div>
-        </div>
-        <div class="content">
-            <p class="font-bold mb-8px">Điện thoại: ${article.phone}</p>
-            <p class="font-bold mb-16px">Địa chỉ: ${article.address}</p>
-            ${article.content.map(p => `<p>${p}</p>`).join('')}
-        </div>
-        <hr>
-    `).join('');
+function getArticleIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return Number(params.get("id"));
 }
 
-window.addEventListener('DOMContentLoaded', renderArticles);
+function renderArticle() {
+    const articleId = getArticleIdFromUrl();
+    const article = articles.find(a => a.id === articleId);
+
+    const containerBanner = document.querySelector('.containerBanner');
+    const contentDiv = document.querySelector('.content');
+
+    if (!article || !containerBanner || !contentDiv) {
+        if (contentDiv) contentDiv.innerHTML = "<p>Không tìm thấy bài viết.</p>";
+        return;
+    }
+
+    // Render banner
+    containerBanner.innerHTML = `
+        <img src="${article.banner}" class="banner" alt="picture">
+        <div class="overlay">
+            <p class="sub-title">${article.subTitle}</p>
+            <h2 class="title">${article.title}</h2>
+        </div>
+    `;
+
+    // Render content
+    contentDiv.innerHTML = `
+        <p class="font-bold mb-8px">Điện thoại: ${article.phone}</p>
+        <p class="font-bold mb-16px">Địa chỉ: ${article.address}</p>
+        ${article.content.map(p => `<p>${p}</p>`).join('')}
+    `;
+}
+
+window.addEventListener('DOMContentLoaded', renderArticle);

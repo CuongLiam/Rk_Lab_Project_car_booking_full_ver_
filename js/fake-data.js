@@ -1165,6 +1165,7 @@ export const fakeData = {
     ],
     articles: [
     {
+        id: 1,
         banner: "../assets/imgs/bai_viet/BX-GIA-LAM-6-2.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Gia Lâm – thông tin địa điểm, giá vé 16 hãng xe đi từ bến",
@@ -1179,6 +1180,7 @@ export const fakeData = {
         ]
     },
     {
+        id: 2,
         banner: "../assets/imgs/bai_viet/Frame 53.png",
         subTitle: "BẾN XE",
         title: "Bến xe Mỹ Đình – thông tin địa điểm, giá vé các hãng xe nổi bật",
@@ -1193,6 +1195,7 @@ export const fakeData = {
         ]
     },
     {
+        id: 3,
         banner: "../assets/imgs/bai_viet/oho-1.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Nước Ngầm – thông tin địa điểm, giá vé các tuyến miền Trung",
@@ -1207,6 +1210,7 @@ export const fakeData = {
         ]
     },
     {
+        id: 4,
         banner: "../assets/imgs/bai_viet/BX-GIA-LAM-6-2.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Giáp Bát – thông tin địa điểm, giá vé các tuyến phía Nam",
@@ -1221,6 +1225,7 @@ export const fakeData = {
         ]
     },
     {
+        id: 5,
         banner: "../assets/imgs/bai_viet/Frame 53.png",
         subTitle: "BẾN XE",
         title: "Bến xe Yên Nghĩa – thông tin địa điểm, giá vé các tuyến phía Tây",

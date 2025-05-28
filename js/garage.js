@@ -9,17 +9,14 @@ const pageEl = document.querySelector(".page");
 const loremEl = document.querySelector(".lorem");
 
 function renderGarage() {
-  // clear
   contentEl.innerHTML = "";
   pageEl.innerHTML = "";
   loremEl.style.display = "none";
 
-  // calculate slice
   const start = (currentPage - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   const slice = stations.slice(start, end);
 
-  // cards
   slice.forEach((station) => {
     const col = document.createElement("div");
     col.className = "card";
@@ -28,13 +25,16 @@ function renderGarage() {
       <p class="detailTitle">${station.name}</p>
       <p class="moreDetail">${station.descriptions}</p>
     `;
+    // Make card clickable: redirect to article.html?id=station.id
+    col.style.cursor = "pointer";
+    col.addEventListener("click", () => {
+      window.location.href = `article.html?id=${station.id}`;
+    });
     contentEl.appendChild(col);
   });
 
-  // pagination
   renderPagination();
 
-  // show lorem below
   loremEl.style.display = "block";
 }
 
