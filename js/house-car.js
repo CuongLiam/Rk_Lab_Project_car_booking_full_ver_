@@ -11,18 +11,25 @@
 //     this.updatedAt    = now;
 //   }
 // }
-import { fakeData } from "./fake-data.js";
+// import { fakeData } from "./fake-data.js";
 // let busCompanies = [
   
 // ];
 
-const busCompanies = fakeData.busCompanies;
+// const busCompanies = fakeData.busCompanies;
 
 // const busCompanies = fakeData.busCompanies.map(
 //   c => new BusCompany(c.id, c.companyName, c.image, c.descriptions)
 // );
 
 // loadFromLocalStorage();
+
+let busCompanies = [];
+try {
+  busCompanies = JSON.parse(localStorage.getItem("busCompanies")) || [];
+} catch {
+  busCompanies = [];
+}
 
 let currentPage = 1;
 const itemsPerPage = 8;
