@@ -1,6 +1,14 @@
-import { fakeData } from "./fake-data.js";
+// import { fakeData } from "./fake-data.js";
 
-const stations = fakeData.stations;
+let stations = [];
+
+try{
+  stations = JSON.parse(localStorage.getItem("stations")) || [];
+} catch {
+  stations = [];
+}
+
+// const stations = fakeData.stations;
 let currentPage = 1;
 const itemsPerPage = 8;
 
