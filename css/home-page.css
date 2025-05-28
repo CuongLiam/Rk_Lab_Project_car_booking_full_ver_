@@ -1,13 +1,10 @@
 main {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 64px;
   margin-bottom: 80px;
   width: 100%;
   padding: 0 16px;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 body {
@@ -22,6 +19,46 @@ body {
   box-sizing: border-box;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.header-banner {
+  position: relative;
+  z-index: 1;
+}
+
+.search-tab-container {
+  width: 100%;
+
+
+}
+
+.bc-1 {
+  z-index: 2;
+  position: absolute;
+  width: 1200px;
+  height: 209.52999877929688px;
+  max-width: 1200px;
+  gap: 20px;
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-right: 15px;
+  padding-bottom: 32.53px;
+  padding-left: 15px;
+  background-color: #FFFFFF66;
+  border: 1px solid #E0E0E0;
+  top: 250px;
+  left: 120px;
+
+
+}
+
+
+
 .bus-card-lac,
 .bus-card {
   padding: 0px;
@@ -33,36 +70,42 @@ body {
   border: 1px solid rgba(236, 238, 235, 1);
   box-shadow: 0px 5px 5px 0px rgba(76, 76, 76, 0.1);
 }
+
 .bus-card-lac {
   padding: 0px;
   height: 219px;
 }
+
 .bus-card {
   height: 250px;
   padding: 16px;
 }
+
 .bus-card img,
 .bus-card-lac img {
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
   border-radius: 0.5rem;
 }
+
 .bus-card img {
   height: 159px;
   width: 228px;
 }
+
 .bus-card-lac img {
   height: 170px;
   width: 260px;
 }
+
 .textInCard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
+
 .textInCard p,
 .bus-card p,
 .bus-card-lac p {
@@ -73,10 +116,12 @@ body {
   margin: 0px;
   width: 100%;
 }
+
 .bus-card-lac p {
   color: #000000;
   padding: 10px 0px 0px 10px;
 }
+
 .textInCard span {
   font-family: 'Segoe UI', sans-serif;
   font-weight: 400;
@@ -84,17 +129,17 @@ body {
   color: rgba(61, 84, 165, 1);
   width: 100%;
 }
-.popular-section	,
-.featured-promotions{
+
+.popular-bus-operators,
+.popular-bus-stations .featured-promotions {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
-.all-Bus-Card-benxe {
+.station-cards-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -103,6 +148,7 @@ body {
   max-width: 1100px;
   width: 100%;
 }
+
 .title-bus {
   font-family: 'Segoe UI', sans-serif;
   font-size: 1.5rem;
@@ -114,6 +160,7 @@ body {
   margin: 0 auto;
   margin-bottom: 24px;
 }
+
 .popular-list {
   display: flex;
   align-items: center;
@@ -121,8 +168,10 @@ body {
   width: 100%;
   gap: 16px;
 }
+
 .all-Bus-Card,
-.all-Bus-Card-lac {
+.all-Bus-Card-lac,
+.station-cards-container {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -131,155 +180,43 @@ body {
 
 
 
-/* ===================== Responsive ===================== */
-@media (max-width: 768px) {
-  .all-Bus-Card .bus-card:nth-child(n+4),
-  .all-Bus-Card .bus-card-lac:nth-child(n+4),
-  .all-Bus-Card-lac .bus-card:nth-child(n+4),
-  .all-Bus-Card-lac .bus-card-lac:nth-child(n+4) {
-    display: none;
-  }
 
-  .bus-card {
-    max-width: 232px;
-  }
 
-  .bus-card img {
-    width: 200px;
-    height: 159px;
-  }
 
-  .bus-card-lac img {
-    width: 232px;
-    height: 170px;
-  }
-
-  .bus-card-lac {
-    max-width: 232px;
-    height: 219px;
-  }
-
-  .popular-list,
-  .bus {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-  }
-
-  .so2 {
-    flex-basis: 100%;
-    order: 1;
-  }
-
-  .so1,
-  .so3 {
-    order: 2;
-  }
-
-  .all-Bus-Card,
-  .all-Bus-Card-lac {
-    max-width: 100%;
-  }
-
-  .lac {
-    width: 736px;
-    height: 98px;
-  }
-
-  .banner-image{
-    max-width: 736px;
-    width: 100%;
-  }
-
+/* ===============media-mention ================ */
+.media-mentions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-@media (max-width: 391px) {
-
-  .all-Bus-Card .bus-card:nth-child(n+2),
-  .all-Bus-Card .bus-card-lac:nth-child(n+2),
-  .all-Bus-Card-lac .bus-card:nth-child(n+2),
-  .all-Bus-Card-lac .bus-card-lac:nth-child(n+2) {
-    display: none;
-  }
-
-
-  .all-Bus-Card {
-    width: 358px;
-    height: 250px;
-    min-width: 358px;
-    max-width: 358px;
-    overflow-x: auto;
-  }
-
-  .bus-card {
-    width: 358px;
-    min-width: 358px;
-    max-width: 358px;
-    height: 250px;
-    box-sizing: border-box;
-  }
-
-  .bus-card img {
-    width: 326px;
-    min-width: 326px;
-    max-width: 326px;
-    height: 159px;
-    object-fit: cover;
-  }
-
-  .featured-promotions {
-    height: auto;
-  }
-
-
-
-  .banner-image {
-    width: 358px;
-    max-height: 98px;
-    height: 98px;
-  }
-
-
-
-
-
-  .bus-card-lac {
-    width: 358px;
-    min-width: 358px;
-    max-width: 358px;
-    height: 219px;
-  }
-
-
-
-  .all-Bus-Card-lac {
-    width: 358px;
-    min-width: 358px;
-    max-width: 358px;
-    height: 219px;
-  }
-
-  .bus-card-lac img {
-    width: 358px;
-    min-width: 326px;
-    max-width: 358px;
-    height: 170px;
-  }
-
-
+.media-logos {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  gap: 15px;
+  width: 100%;
+  max-width: 1110px;
+  justify-content: start;
 }
 
+.media-logo-wrapper {
+  flex: 0 0 auto;
+  width: 179px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-
-
-
-
-
-
-
-
-
+.media-logo {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
 
 
 /* ================= Top Reviews ================= */
@@ -336,97 +273,9 @@ body {
 .all-Reviews img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
 }
 
-
-
-/* ================= Responsive Tablet ================= */
-
-@media (max-width: 768px) {
-
-  body,
-  main {
-    width: 100%;
-  }
-
-  .top-Reviews {
-    width: 100%;
-
-  }
-
-
-
-  .all-Reviews {
-    width: 100%;
-    gap: 8px;
-  }
-
-  .gird-1,
-  .grid-2,
-  .grid-3 {
-    width: 100%;
-    gap: 8px;
-    height: 240px;
-  }
-
-}
-
-/* ================= Responsive Mobile ================= */
-
-@media (max-width: 391px) {
-
-  body,
-  main {
-    width: 100%;
-  }
-
-  .top-Reviews {
-    width: 100%;
-  }
-
-  .all-Reviews {
-    gap: 3.25px;
-  }
-
-  .gird-1,
-  .grid-2,
-  .grid-3 {
-    gap: 3.25px;
-  }
-
-}
-
-
-
-
-@media (max-width: 391px) {
-  .all-Reviews {
-    gap: 3.25px;
-  }
-
-  .gird-1,
-  .grid-2,
-  .grid-3 {
-
-    width: 100%;
-    gap: 3.25px;
-    height: auto;
-  }
-
-  .gird-1 img,
-  .grid-2 img,
-  .grid-3 img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-.left-images {
-  gap: 3.25px;
-}
 
 
 
@@ -436,6 +285,7 @@ body {
   max-width: 1100px;
   height: 216px;
 }
+
 .feature-text h3 {
   font-family: Segoe UI;
   font-weight: 700;
@@ -498,23 +348,210 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-
-
 }
 
+.left-images {
+  gap: 3.25px;
+}
+
+.banner-image{
+  max-width: 1110px;
+  width: 100%;
+  height: 146px;
+}
+
+
+/* ===================== Responsive ===================== */
+
+/* ================= Responsive Tablet ================= */
+
 @media (max-width: 768px) {
+   body,main {width: 100%;}
+
+  .bus-card {max-width: 232px;}
+
+  .bus-card img {
+    width: 200px;
+    height: 159px;
+  }
+
+  .bus-card-lac img {
+    width: 232px;
+    height: 170px;
+  }
+
+  .bus-card-lac {
+    max-width: 232px;
+    height: 219px;
+  }
+
+  .popular-list,
+  .bus {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .oder2{
+    flex-basis: 100%;
+    order: 1;
+  }
+  .oder1,.oder3 {
+    order: 2;
+  }
+
+  .all-Bus-Card,.all-Bus-Card-lac,.station-cards-container {max-width: 100%;}
+
+  .lac {width: 736px;height: 98px;}
+
+
+  .search-tab-container {width: 736px;height: 428px;}
+
+  .banner-image {
+    max-width: 736px;
+    width: 100%;
+  }
+
+  .bc-1 {
+    width: 768px;
+    height: 428px;
+    gap: 12px;
+    border-radius: 12px;
+    border-width: 1px;
+    padding: 16px;
+    margin-top: 32px;
+    position: static;
+    border: none;
+  }
+  .top-Reviews {
+    width: 100%;
+  }
+  .all-Reviews {
+    width: 100%;
+    gap: 8px;
+  }
+  .gird-1,
+  .grid-2,
+  .grid-3 {
+    width: 100%;
+    gap: 4px;
+    height: 240px;
+  }
   .Featured_section {
     margin-bottom: 100px;
   }
-
   .features-list {
     gap: 20px;
   }
 }
 
-
-
+/* ================= Responsive Mobile ================= */
 @media (max-width: 391px) {
+  body,
+  main {
+    width: 100%;
+  }
+  .top-Reviews {
+    width: 100%;
+  }
+
+  .all-Reviews {
+    gap: 3.25px;
+  }
+  .gird-1,
+  .grid-2,
+  .grid-3 {
+    gap: 3.25px;
+  }
+  .all-Bus-Card {
+    width: 358px;
+    height: 250px;
+    min-width: 358px;
+    max-width: 358px;
+    overflow-x: auto;
+  }
+  .bus-card {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 250px;
+    box-sizing: border-box;
+  }
+  .bus-card img {
+    width: 326px;
+    min-width: 326px;
+    max-width: 326px;
+    height: 159px;
+  }
+  .featured-promotions {
+    height: auto;
+  }
+  .banner-image {
+    width: 358px;
+    max-height: 98px;
+    height: 98px;
+  }
+  .bus-card-lac {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 219px;
+  }
+  .all-Bus-Card-lac,
+  .station-cards-container {
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    height: 219px;
+  }
+
+  .bus-card-lac img {
+    width: 358px;
+    min-width: 326px;
+    max-width: 358px;
+    height: 170px;
+  }
+
+  .header-banner {
+    width: 390px;
+    height: 240px;
+  }
+
+  .search-tab-container {
+    width: 358px;
+    height: 428px;
+    gap: 12px;
+    border-radius: 12px;
+    border-width: 1px;
+  }
+
+  .bc-1 {
+    width: 390px;
+    border: none;
+  }
+
+  .all-Reviews {
+    gap: 3.25px;
+  }
+
+  .gird-1,
+  .grid-2,
+  .grid-3 {
+
+    width: 100%;
+    gap: 3.25px;
+    height: auto;
+  }
+
+  .gird-1 img,
+  .grid-2 img,
+  .grid-3 img {
+    width: 100%;
+    display: block;
+  }
+
+
   .features-list {
     grid-template-columns: repeat(1, 1fr);
 
@@ -527,94 +564,11 @@ body {
   .Featured_section {
     margin-bottom: 100px;
   }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-.media-mentions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.media-logos {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  gap: 15px;
-  width: 100%;
-  max-width: 1110px;
-  justify-content: start;
-}
-
-.media-logo-wrapper {
-  flex: 0 0 auto;
-  width: 179px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.media-logo {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-@media (max-width: 391px) {
   .media-mentions {
     margin-top: 200px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ================= animation ================= */
 .lac {
@@ -624,17 +578,8 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-.popular-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
 .arrow-left-2,
 .arrow-right-2 {
-  width: 32px;
-  height: 32px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -644,21 +589,6 @@ body {
   transform: scale(1.1);
 }
 
-
-
-
-@media (max-width: 1440px) {
-   .all-Bus-Card .bus-card:nth-child(n+5),
-  .all-Bus-Card .bus-card-lac:nth-child(n+5),
-  .all-Bus-Card-lac .bus-card:nth-child(n+5),
-  .all-Bus-Card-lac .bus-card-lac:nth-child(n+5) {
-    display: none;
-  }
-}
-
-
-
-
 .popular-list {
   display: flex;
   flex-direction: row;
@@ -667,7 +597,8 @@ body {
   gap: 10px;
 }
 
-.all-Bus-Card-lac {
+.all-Bus-Card-lac,
+.station-cards-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -677,47 +608,14 @@ body {
 }
 
 
-
 .all-Bus-Card {
   display: flex;
   gap: 20px;
-  transition: transform 0.4s cubic-bezier(.4,1,.7,1);
+  transition: transform 0.4s cubic-bezier(.4, 1, .7, 1);
   will-change: transform;
 }
 
-
-@media (max-width: 768px) {
-}
-
-/* Đưa arrow xuống dưới khi mobile/tablet */
-@media (max-width: 768px) {
-  
-  .arrow-left-1, .arrow-right-1 {
-    display: block;
-    position: static;
-  }
-}
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  #all-Bus-Card-benxe .bus-card-lac:nth-child(n+4) {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .all-Bus-Card-lac .bus-card-lac:nth-child(n+4) {
-    display: none;
-  }
-}
-
-#all-Bus-Card-benxe {
+#station-cards-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
