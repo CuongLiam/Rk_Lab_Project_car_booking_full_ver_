@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const redirected = sessionStorage.getItem(DONE_KEY);
       // if you have a saved page, haven't yet redirected,
       // and you're not already there → do one replace
-      if (savedHref
-       && !window.location.href.endsWith(savedHref)
-       && !redirected
-      ) {
-        sessionStorage.setItem(DONE_KEY, "1");
-        return window.location.replace(savedHref);
-      }
+      // if (savedHref
+      //  && !window.location.href.endsWith(savedHref)
+      //  && !redirected
+      // ) {
+      //   sessionStorage.setItem(DONE_KEY, "1");
+      //   return window.location.replace(savedHref);
+      // }
 
       initNavLinks();
     })
