@@ -1,25 +1,38 @@
-// import { fakeData } from "../fake-data.js";
-
-// const stations = fakeData.stations;
-
-let stations = [];
-
-try {
-    stations = JSON.parse(localStorage.getItem("stations")) || [];
-} catch {
-    stations = [];
+function loadStations() {
+    try {
+        return JSON.parse(localStorage.getItem("stations")) || [];
+    } catch {
+        return [];
+    }
 }
+function saveStations(data) {
+    localStorage.setItem("stations", JSON.stringify(data));
+}
+
+// Use these helpers everywhere
+let stations = loadStations();
 
 let currentPage = 1;
 const itemsPerPage = 10;
 
+let searchKeyword = "";
 
-// Render table
+// Update renderStations to use filtered data
 function renderStations() {
+    stations = loadStations(); // Always reload latest
+
+    // Filter by id or name (case-insensitive)
+    let filtered = stations.filter(item => {
+        return (
+            String(item.id).includes(searchKeyword) ||
+            item.name.toLowerCase().includes(searchKeyword)
+        );
+    });
+
     const tbody = document.getElementById('station-list');
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedStations = stations.slice(start, end);
+    const paginatedStations = filtered.slice(start, end);
 
     tbody.innerHTML = paginatedStations.map(s => `
         <tr>
@@ -29,17 +42,18 @@ function renderStations() {
             <td>${s.wallpaper}</td>
             <td>${s.descriptions}</td>
             <td>${s.location}</td>
-            <td colspan="2" class="d-flex justify-space-between p-2" style="gap: 10px;">
-                <button class="btn btn-warning btn-sm" disabled>Edit</button>
-                <button class="btn btn-danger btn-sm" disabled>Delete</button>
+            <td colspan="2" class="d-flex justify-content-between p-2">
+                <button class="btn btn-warning btn-sm">Edit</button>
+                <button class="btn btn-danger btn-sm">Delete</button>
             </td>
         </tr>
     `).join('');
 
-    renderPagination();
+    renderPagination(filtered.length);
 }
 
-function renderPagination() {
+// Update renderPagination to accept totalItems
+function renderPagination(totalItems) {
     let pagination = document.getElementById('station-pagination');
     if (!pagination) {
         pagination = document.createElement('div');
@@ -48,16 +62,16 @@ function renderPagination() {
         document.querySelector('.main-content').appendChild(pagination);
     }
 
-    const totalPages = Math.ceil(stations.length / itemsPerPage);
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
     let html = '';
 
-    html += `<button class="btn btn-sm btn-outline-primary me-2" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">&lt;</button>`;
+    html += `<button class="btn btn-sm btn-outline-primary me-2" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">&lt;&lt;</button>`;
 
     for (let i = 1; i <= totalPages; i++) {
         html += `<button class="btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-outline-primary'} mx-1" data-page="${i}">${i}</button>`;
     }
 
-    html += `<button class="btn btn-sm btn-outline-primary ms-2" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">&gt;</button>`;
+    html += `<button class="btn btn-sm btn-outline-primary ms-2" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">&gt;&gt;</button>`;
 
     pagination.innerHTML = html;
 
@@ -73,4 +87,206 @@ function renderPagination() {
     });
 }
 
+// Listen for search input changes
+document.getElementById('search-station').addEventListener('input', function (e) {
+    searchKeyword = e.target.value.toLowerCase().trim();
+    currentPage = 1; // Reset to first page on search
+    renderStations();
+});
+
+// ...rest of your code...
+
+
 document.addEventListener('DOMContentLoaded', renderStations);
+
+// Modal elements
+const stationModal = document.getElementById('station-modal');
+const stationForm = document.getElementById('station-form');
+const stationModalTitle = document.getElementById('station-modal-title');
+const closeModalBtn = document.getElementById('close-modal');
+const cancelModalBtn = document.getElementById('cancel-modal');
+const addStationBtn = document.getElementById('add-station');
+
+const deleteModal = document.getElementById('delete-modal');
+const cancelDeleteBtn = document.getElementById('cancel-delete');
+const confirmDeleteBtn = document.getElementById('confirm-delete');
+
+let editingStationId = null;
+let deletingStationId = null;
+
+// Show/Hide modal helpers (unchanged)
+function showModal(modal) {
+    modal.style.display = 'block';
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+    modal.setAttribute('aria-modal', 'true');
+    modal.removeAttribute('aria-hidden');
+    document.body.classList.add('modal-open');
+    modal._outsideClickHandler = function(e) {
+        if (e.target === modal) {
+            hideModal(modal);
+        }
+    };
+    modal.addEventListener('mousedown', modal._outsideClickHandler);
+}
+function hideModal(modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
+    document.body.classList.remove('modal-open');
+    if (modal._outsideClickHandler) {
+        modal.removeEventListener('mousedown', modal._outsideClickHandler);
+        modal._outsideClickHandler = null;
+    }
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 250);
+}
+
+// Add Station
+addStationBtn.addEventListener('click', () => {
+    editingStationId = null;
+    stationForm.reset();
+    stationModalTitle.textContent = 'Add Station';
+    document.getElementById('station-error').innerHTML = ""; // Clear error
+    showModal(stationModal);
+});
+
+// Edit/Delete Station
+document.getElementById('station-list').addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-warning')) {
+        const tr = e.target.closest('tr');
+        const id = Number(tr.children[0].textContent);
+        const station = stations.find(s => s.id === id);
+        if (station) {
+            editingStationId = id;
+            document.getElementById('station-id').value = station.id;
+            document.getElementById('station-name').value = station.name;
+            document.getElementById('station-image').value = station.image;
+            document.getElementById('station-wallpaper').value = station.wallpaper;
+            document.getElementById('station-descriptions').value = station.descriptions;
+            document.getElementById('station-location').value = station.location;
+            stationModalTitle.textContent = 'Edit Station';
+            document.getElementById('station-error').innerHTML = ""; // Clear error
+            showModal(stationModal);
+        }
+    }
+    if (e.target.classList.contains('btn-danger')) {
+        const tr = e.target.closest('tr');
+        const id = Number(tr.children[0].textContent);
+        deletingStationId = id;
+        showModal(deleteModal);
+    }
+});
+
+// Close modals
+closeModalBtn.addEventListener('click', () => hideModal(stationModal));
+cancelModalBtn.addEventListener('click', () => hideModal(stationModal));
+cancelDeleteBtn.addEventListener('click', () => hideModal(deleteModal));
+
+// Add/Edit logic with validation
+stationForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('station-id').value;
+    const name = document.getElementById('station-name').value.trim();
+    const image = document.getElementById('station-image').value;
+    const wallpaper = document.getElementById('station-wallpaper').value;
+    const descriptions = document.getElementById('station-descriptions').value;
+    const location = document.getElementById('station-location').value;
+    const errorEl = document.getElementById('station-error');
+
+    let data = loadStations();
+
+    // Validation: name must be unique (case-insensitive, except for editing itself)
+    const nameExists = data.some(
+        s => s.name.trim().toLowerCase() === name.toLowerCase() && (!editingStationId || s.id !== editingStationId)
+    );
+    if (nameExists) {
+        errorEl.innerHTML = "Stations names cannot be repeated";
+        return;
+    }
+
+    // Validation: id must be unique when adding (not editing)
+    if (!editingStationId && data.some(s => String(s.id) === id && id !== "")) {
+        errorEl.innerHTML = "Station ID must be unique!";
+        return;
+    }
+
+    // Clear error if passed validation
+    errorEl.innerHTML = "";
+
+    if (editingStationId) {
+        // Edit
+        const idx = data.findIndex(s => s.id === editingStationId);
+        if (idx !== -1) {
+            data[idx] = {
+                ...data[idx],
+                name, image, wallpaper, descriptions, location
+            };
+        }
+    } else {
+        // Add
+        const newId = data.length ? Math.max(...data.map(s => s.id)) + 1 : 1;
+        data.push({
+            id: newId,
+            name, image, wallpaper, descriptions, location
+        });
+    }
+    saveStations(data);
+    hideModal(stationModal);
+    renderStations();
+});
+
+// Delete logic with reindexing
+confirmDeleteBtn.addEventListener('click', function() {
+    let data = loadStations();
+    // Find the deleted station's id
+    const deletedIdx = data.findIndex(s => s.id === deletingStationId);
+    if (deletedIdx === -1) {
+        hideModal(deleteModal);
+        return;
+    }
+    // Remove the station
+    data.splice(deletedIdx, 1);
+    // Reindex: set id = index+1 for all
+    // data = data.map((s, idx) => ({ ...s, id: idx + 1 }));
+    saveStations(data);
+    hideModal(deleteModal);
+    renderStations();
+});
+
+// function renderPagination() {
+//     let pagination = document.getElementById('station-pagination');
+//     if (!pagination) {
+//         pagination = document.createElement('div');
+//         pagination.id = 'station-pagination';
+//         pagination.className = 'd-flex justify-content-center mt-3';
+//         document.querySelector('.main-content').appendChild(pagination);
+//     }
+
+//     const totalPages = Math.ceil(stations.length / itemsPerPage);
+//     let html = '';
+
+//     html += `<button class="btn btn-sm btn-outline-primary me-2" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">&lt;&lt;</button>`;
+
+//     for (let i = 1; i <= totalPages; i++) {
+//         html += `<button class="btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-outline-primary'} mx-1" data-page="${i}">${i}</button>`;
+//     }
+
+//     html += `<button class="btn btn-sm btn-outline-primary ms-2" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">&gt;&gt;</button>`;
+
+//     pagination.innerHTML = html;
+
+//     // Add event listeners
+//     pagination.querySelectorAll('button[data-page]').forEach(btn => {
+//         btn.onclick = function () {
+//             const page = Number(this.getAttribute('data-page'));
+//             if (page >= 1 && page <= totalPages) {
+//                 currentPage = page;
+//                 renderStations();
+//             }
+//         };
+//     });
+// }
+

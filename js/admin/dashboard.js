@@ -21,6 +21,13 @@ let currentPageStations = 1;
 let currentPageBusCompanies = 1;
 let currentPageTickets = 1;
 const itemsPerPage = 5;
+let schedulesSearch = document.getElementById("schedulesSearch");
+let routesSearch = document.getElementById("routesSearch")
+let stationsSearch = document.getElementById("stationsSearch")
+let busCompaniesSearch = document.getElementById("busCompaniesSearch")
+let ticketsSearch = document.getElementById("ticketsSearch");
+
+let keyword = ""
 let data;
 
 //Hàm lấy yyyy-mm-dd
@@ -43,12 +50,26 @@ const getHoursAndMinutes = (datetimeString) => {
     return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 }
 
+const renderTotalQuantity = () => {
+    document.getElementById("totalSchedules").innerText = schedules.length;
+    document.getElementById("totalRoutes").innerText = routes.length;
+    document.getElementById("totalStations").innerText = stations.length;
+    document.getElementById("totalBusCompanies").innerText = busCompanies.length;
+    document.getElementById("totalTickets").innerText = tickets.length;
+}
+
 const renderSchedules = () => {
+    let filtered = schedules.filter(item => {
+        let currRoute = routes.find(route => route.id == item.routeId);
+        let departureStation = stations.find(station => station.id == currRoute.departureStationId);
+        let arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
+        return String(item.id).includes(keyword) ||
+            (`${departureStation.location} - ${arrivalStation.location}`.toLowerCase().includes(keyword));
+    });
     const start = (currentPageSchedules - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    data = schedules;
-    data = data.slice(start,end)
-    let html = ""
+    data = filtered.slice(start, end);
+    let html = "";
     html = data.reduce((html, schedule) => {
         let currRoute = routes.find(route => route.id == schedule.routeId);
         let currBus = buses.find(bus => bus.id == schedule.busId);
@@ -67,36 +88,42 @@ const renderSchedules = () => {
         return html
     }, "")
     schedulesArea.innerHTML = html;
-    renderPaginationSchedules(schedules.length)
+    renderPaginationSchedules(filtered.length)
 }
 const renderRoutes = () => {
+    let filtered = routes.filter(item => {
+        let departureStation = stations.find(station => station.id == item.departureStationId);
+        let arrivalStation = stations.find(station => station.id == item.arrivalStationId);
+        return String(item.id).includes(keyword) || (`${departureStation.name} - ${departureStation.location}`.toLowerCase().includes(keyword)) || (`${arrivalStation.name} - ${arrivalStation.location}`.toLowerCase().includes(keyword));;
+    });
     const start = (currentPageRoutes - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    data = routes;
-    data = data.slice(start,end)
+    data = filtered.slice(start, end)
     let html = ""
     html = data.reduce((html, route) => {
         let departureStation = stations.find(station => station.id == route.departureStationId);
         let arrivalStation = stations.find(station => station.id == route.arrivalStationId);
         html += `<tr>
-        <th scope="row">${route.id}</th>
-        <td>${departureStation.name}</td>
-        <td>${arrivalStation.name}</td>
-        <td>${route.price} VND</td>
-        <td>${route.duration}</td>
-        <td>${route.distance}km</td>
-        </tr>`
+                    <th scope="row">${route.id}</th>
+                    <td>${departureStation.name} - ${departureStation.location}</td>
+                    <td>${arrivalStation.name} - ${arrivalStation.location}</td>
+                    <td>${route.price} VND</td>
+                    <td>${route.duration}</td>
+                    <td>${route.distance}km</td>
+                </tr>`
         return html
     }, "")
     routesArea.innerHTML = html;
-    renderPaginationRoutes(routes.length)
+    renderPaginationRoutes(filtered.length)
 }
 const renderStations = () => {
+    let filtered = stations.filter(item => {
+        return String(item.id).includes(keyword) || item.name.toLowerCase().includes(keyword) || item.location.toLowerCase().includes(keyword);
+    });
     const start = (currentPageStations - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     let html = ""
-    data = stations;
-    data = data.slice(start,end)
+    data = filtered.slice(start, end)
     html = data.reduce((html, station) => {
         html += `   <tr>
         <th scope="row">${station.id}</th>
@@ -107,14 +134,14 @@ const renderStations = () => {
         return html
     }, "")
     stationsArea.innerHTML = html;
-    renderPaginationStations(stations.length)
+    renderPaginationStations(filtered.length)
 }
 const renderBusCompanies = () => {
+    let filtered = busCompanies.filter(item => String(item.id).includes(keyword) || item.companyName.toLowerCase().includes(keyword) || item.descriptions.toLowerCase().includes(keyword));
     const start = (currentPageBusCompanies - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     let html = ""
-    data = busCompanies;
-    data = data.slice(start,end)
+    data = filtered.slice(start, end)
     html = data.reduce((html, busCompany) => {
         html += `           <tr>
         <th scope="row">${busCompany.id}</th>
@@ -124,14 +151,14 @@ const renderBusCompanies = () => {
         return html
     }, "")
     busCompaniesArea.innerHTML = html;
-    renderPaginationBusCompanies(busCompanies.length)
+    renderPaginationBusCompanies(filtered.length)
 }
 const renderTickets = () => {
+    let filtered = tickets.filter(item => String(item.id).includes(keyword));
     const start = (currentPageTickets - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     let html = ""
-    data = tickets;
-    data = data.slice(start,end)
+    data = filtered.slice(start, end)
     html = data.reduce((html, ticket) => {
         html += `<tr>
                     <th scope="row">${ticket.id}</th>
@@ -146,7 +173,7 @@ const renderTickets = () => {
         return html
     }, "")
     ticketsArea.innerHTML = html;
-    renderPaginationTickets(tickets.length)
+    renderPaginationTickets(filtered.length)
 }
 
 // Hàm hiển thị phân trang
@@ -301,6 +328,29 @@ function changePageTickets(page) {
     renderTickets();
 }
 
+//Search
+schedulesSearch.addEventListener("input", function (e) {
+    keyword = schedulesSearch.value.toLowerCase().trim();
+    renderSchedules();
+});
+routesSearch.addEventListener("input", function (e) {
+    keyword = routesSearch.value.toLowerCase().trim();
+    renderRoutes();
+})
+stationsSearch.addEventListener("input", function (e) {
+    keyword = stationsSearch.value.toLowerCase().trim();
+    renderStations();
+})
+busCompaniesSearch.addEventListener("input", function (e) {
+    keyword = busCompaniesSearch.value.toLowerCase().trim();
+    renderBusCompanies();
+})
+ticketsSearch.addEventListener("input", function (e) {
+    keyword = ticketsSearch.value.toLowerCase().trim();
+    renderTickets();
+})
+
+renderTotalQuantity();
 renderSchedules();
 renderRoutes();
 renderStations();
