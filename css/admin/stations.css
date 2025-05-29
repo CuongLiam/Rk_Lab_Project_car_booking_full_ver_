@@ -1,0 +1,21 @@
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  background: rgba(0,0,0,0.5);
+}
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-dialog {
+  transform: translateY(-40px);
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+}
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+td{
+    height: 59px;
+}

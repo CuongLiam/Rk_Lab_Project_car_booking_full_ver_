@@ -29,23 +29,23 @@
         <main class="main-content">
             <div class="summary-cards">
                 <div class="card">
-                    <div class="value">150</div>
+                    <div class="value" id="totalSchedules">150</div>
                     <div class="label">Schedules</div>
                 </div>
                 <div class="card">
-                    <div class="value">25</div>
+                    <div class="value" id="totalRoutes">25</div>
                     <div class="label">Routes</div>
                 </div>
                 <div class="card">
-                    <div class="value">40</div>
+                    <div class="value" id="totalStations">40</div>
                     <div class="label">Stations</div>
                 </div>
                 <div class="card">
-                    <div class="value">12</div>
+                    <div class="value" id="totalBusCompanies">12</div>
                     <div class="label">Buses Companies</div>
                 </div>
                 <div class="card">
-                    <div class="value">850</div>
+                    <div class="value" id="totalTickets">850</div>
                     <div class="label">Tickets Sold</div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
 
                 <div class="table-wrapper">
                     <h3>Routes</h3>
-                    <input type="text" class="form-control" id="routesSearch" placeholder="Id">
+                    <input type="text" class="form-control" id="routesSearch" placeholder="Id or Departure or Arrival">
                     <table class="table">
                         <thead>
                             <tr>
@@ -105,7 +105,7 @@
 
                 <div class="table-wrapper">
                     <h3>Stations</h3>
-                    <input type="text" class="form-control" id="stationsSearch" placeholder="Id or Name">
+                    <input type="text" class="form-control" id="stationsSearch" placeholder="Id or Name or Location">
                     <table class="table">
                         <thead>
                             <tr>
@@ -128,7 +128,7 @@
 
                 <div class="table-wrapper">
                     <h3>Bus Companiese</h3>
-                    <input type="text" class="form-control" id="busCompaniesSearch" placeholder="Id or Name">
+                    <input type="text" class="form-control" id="busCompaniesSearch" placeholder="Id or Name or Base">
                     <table class="table">
                         <thead>
                             <tr>
