@@ -524,6 +524,7 @@ let ticketsData = [
         seatType: "VIP",
         price: 500000,
         status: "BOOKED",
+        phoneUser: "0705134862",
         createdAt: "2025-05-23T09:00:00.000Z",
         updatedAt: "2025-05-23T09:00:00.000Z"
     },
@@ -536,6 +537,7 @@ let ticketsData = [
         seatType: "STANDARD",
         price: 200000,
         status: "CANCELLED",
+        phoneUser: "0883641952",
         createdAt: "2025-05-23T10:00:00.000Z",
         updatedAt: "2025-05-23T10:00:00.000Z"
     },
@@ -548,6 +550,7 @@ let ticketsData = [
         seatType: "LUXURY",
         price: 600000,
         status: "BOOKED",
+        phoneUser: "0857391284",
         createdAt: "2025-05-23T10:05:00.000Z",
         updatedAt: "2025-05-23T10:05:00.000Z"
     },
@@ -560,6 +563,7 @@ let ticketsData = [
         seatType: "STANDARD",
         price: 350000,
         status: "BOOKED",
+        phoneUser: "0917456023",
         createdAt: "2025-05-23T10:10:00.000Z",
         updatedAt: "2025-05-23T10:10:00.000Z"
     },
@@ -572,6 +576,7 @@ let ticketsData = [
         seatType: "VIP",
         price: 450000,
         status: "CANCELLED",
+        phoneUser: "0962381475",
         createdAt: "2025-05-23T10:15:00.000Z",
         updatedAt: "2025-05-23T10:15:00.000Z"
     },
@@ -584,6 +589,7 @@ let ticketsData = [
         seatType: "STANDARD",
         price: 300000,
         status: "BOOKED",
+        phoneUser: "0378492651",
         createdAt: "2025-05-23T10:20:00.000Z",
         updatedAt: "2025-05-23T10:20:00.000Z"
     },
@@ -596,6 +602,7 @@ let ticketsData = [
         seatType: "LUXURY",
         price: 700000,
         status: "BOOKED",
+        phoneUser: "0378492651",
         createdAt: "2025-05-23T10:25:00.000Z",
         updatedAt: "2025-05-23T10:25:00.000Z"
     },
@@ -608,6 +615,7 @@ let ticketsData = [
         seatType: "VIP",
         price: 480000,
         status: "BOOKED",
+        phoneUser: "0378492651",
         createdAt: "2025-05-23T10:30:00.000Z",
         updatedAt: "2025-05-23T10:30:00.000Z"
     },
@@ -620,6 +628,7 @@ let ticketsData = [
         seatType: "STANDARD",
         price: 280000,
         status: "CANCELLED",
+        phoneUser: "0378492651",
         createdAt: "2025-05-23T10:35:00.000Z",
         updatedAt: "2025-05-23T10:35:00.000Z"
     },
@@ -632,6 +641,7 @@ let ticketsData = [
         seatType: "LUXURY",
         price: 650000,
         status: "BOOKED",
+        phoneUser: "0378492651",
         createdAt: "2025-05-23T10:40:00.000Z",
         updatedAt: "2025-05-23T10:40:00.000Z"
     }
@@ -1150,42 +1160,42 @@ let usersData = [
         email: "alice@example.com",
         phone: "0378492651",
         password: "hashed_password_1",
-        role:"USER"
+        role: "USER"
     },
     {
         id: 2,
         email: "bob@example.com",
         phone: "0962381475",
         password: "hashed_password_2",
-        role:"USER"
+        role: "USER"
     },
     {
         id: 3,
         email: "charlie@example.com",
         phone: "0917456023",
         password: "hashed_password_3",
-        role:"USER"
+        role: "USER"
     },
     {
         id: 4,
         email: "david@example.com",
         phone: "0857391284",
         password: "hashed_password_4",
-        role:"USER"
+        role: "USER"
     },
     {
         id: 5,
         email: "eva@example.com",
         phone: "0883641952",
         password: "hashed_password_5",
-        role:"USER"
+        role: "USER"
     },
     {
         id: 6,
         email: "trantai180506@gmail.com",
         phone: "0705134862",
         password: "Trantai180506@#",
-        role:"ADMIN"
+        role: "ADMIN"
     }
 ];
 if (!localStorage.getItem("users")) {
@@ -1194,6 +1204,7 @@ if (!localStorage.getItem("users")) {
 
 let articlesData = [
     {
+        id: 1,
         banner: "../assets/imgs/bai_viet/BX-GIA-LAM-6-2.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Gia Lâm – thông tin địa điểm, giá vé 16 hãng xe đi từ bến",
@@ -1208,6 +1219,7 @@ let articlesData = [
         ]
     },
     {
+        id: 2,
         banner: "../assets/imgs/bai_viet/Frame 53.png",
         subTitle: "BẾN XE",
         title: "Bến xe Mỹ Đình – thông tin địa điểm, giá vé các hãng xe nổi bật",
@@ -1222,6 +1234,7 @@ let articlesData = [
         ]
     },
     {
+        id: 3,
         banner: "../assets/imgs/bai_viet/oho-1.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Nước Ngầm – thông tin địa điểm, giá vé các tuyến miền Trung",
@@ -1236,6 +1249,7 @@ let articlesData = [
         ]
     },
     {
+        id: 4,
         banner: "../assets/imgs/bai_viet/BX-GIA-LAM-6-2.jpg.png",
         subTitle: "BẾN XE",
         title: "Bến xe Giáp Bát – thông tin địa điểm, giá vé các tuyến phía Nam",
@@ -1250,6 +1264,7 @@ let articlesData = [
         ]
     },
     {
+        id: 5,
         banner: "../assets/imgs/bai_viet/Frame 53.png",
         subTitle: "BẾN XE",
         title: "Bến xe Yên Nghĩa – thông tin địa điểm, giá vé các tuyến phía Tây",
@@ -1264,6 +1279,6 @@ let articlesData = [
         ]
     }
 ]
-if(!localStorage.getItem("articles")){
+if (!localStorage.getItem("articles")) {
     localStorage.setItem("articles", JSON.stringify(articlesData))
 }
