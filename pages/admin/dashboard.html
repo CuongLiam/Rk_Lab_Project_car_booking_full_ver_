@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -51,98 +53,127 @@
             <div class="tables">
                 <div class="table-wrapper">
                     <h3>Schedules</h3>
-                    <table>
+                    <input type="text" class="form-control" id="schedulesSearch" placeholder="Id or Route">
+                    <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">ID</th>
                                 <th>Route</th>
                                 <th>Bus</th>
                                 <th>Departure</th>
                                 <th>Arrival</th>
+                                <th>Available Seats</th>
+                                <th>Total Seats</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>New York to Washington</td>
-                                <td>Bus 101</td>
-                                <td>2024-05-10 08:00</td>
-                                <td>12:00</td>
-                            </tr>
-                            <tr>
-                                <td>Los Angeles-San Francisco</td>
-                                <td>Bus 202</td>
-                                <td>2024-05-11 08:30</td>
-                                <td>14:50</td>
-                            </tr>
-                            <tr>
-                                <td>Chicago to Detroit</td>
-                                <td>Bus 303</td>
-                                <td>2024-05-12 07:45</td>
-                                <td>11:15</td>
-                            </tr>
+                        <tbody id="schedulesArea">
+
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul id="paginationSchedules" class="pagination justify-content-end">
+
+                        </ul>
+                    </nav>
                 </div>
 
                 <div class="table-wrapper">
                     <h3>Routes</h3>
-                    <table>
+                    <input type="text" class="form-control" id="routesSearch" placeholder="Id">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>Origin</th>
-                                <th>Destination</th>
-                                <th>Distance</th>
+                                <th scope="col">id</th>
+                                <th scope="col">Departure station</th>
+                                <th scope="col">Arrival station</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Distance</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>New York</td>
-                                <td>Washington</td>
-                                <td>360 km</td>
-                            </tr>
-                            <tr>
-                                <td>Los Angeles</td>
-                                <td>San Francisco</td>
-                                <td>500 km</td>
-                            </tr>
-                            <tr>
-                                <td>Chicago</td>
-                                <td>Detroit</td>
-                                <td>450 km</td>
-                            </tr>
+                        <tbody id="routesArea">
+
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul id="paginationRoutes" class="pagination justify-content-end">
+
+                        </ul>
+                    </nav>
                 </div>
 
                 <div class="table-wrapper">
-                    <h3>Bus Companies</h3>
-                    <table>
+                    <h3>Stations</h3>
+                    <input type="text" class="form-control" id="stationsSearch" placeholder="Id or Name">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Headquarters</th>
-                                <th>Logo</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Location</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Express Lines</td>
-                                <td>New York</td>
-                                <td>🚍</td>
-                            </tr>
-                            <tr>
-                                <td>City Transit</td>
-                                <td>Los Angeles</td>
-                                <td>🚌</td>
-                            </tr>
-                            <tr>
-                                <td>Rapid Transit</td>
-                                <td>Chicago</td>
-                                <td>🚎</td>
-                            </tr>
+                        <tbody id="stationsArea">
+
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul id="paginationStations" class="pagination justify-content-end">
+
+                        </ul>
+                    </nav>
                 </div>
-            </div>
+
+                <div class="table-wrapper">
+                    <h3>Bus Companiese</h3>
+                    <input type="text" class="form-control" id="busCompaniesSearch" placeholder="Id or Name">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Base</th>
+                            </tr>
+                        </thead>
+                        <tbody id="busCompaniesArea">
+
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul id="paginationBusCompanies" class="pagination justify-content-end">
+
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="table-wrapper">
+                    <h3>Tickets</h3>
+                    <input type="text" class="form-control" id="ticketsSearch" placeholder="Id">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Schedule Id</th>
+                                <th scope="col">Seat Id</th>
+                                <th scope="col">Departure Time</th>
+                                <th scope="col">Arrival Time</th>
+                                <th scope="col">Seat Type</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketsArea">
+
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul id="paginationTickets" class="pagination justify-content-end">
+
+                        </ul>
+                    </nav>
+                </div>
         </main>
 
         <script src="../../js/admin/nav.js"></script>
