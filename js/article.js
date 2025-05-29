@@ -72,9 +72,17 @@
 // ];
 
 
-import { fakeData } from "./fake-data.js";
+// import { fakeData } from "./fake-data.js";
 
-const articles = fakeData.articles;
+// const articles = fakeData.articles;
+
+let articles = [];
+
+try {
+    articles = JSON.parse(localStorage.getItem("articles")) || [];
+} catch {
+    stations = [];
+}
 
 function getArticleIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
