@@ -67,34 +67,12 @@ document.getElementById('delete-schedule').onclick = function () {
     scheduleIdToDelete = null;
 };
 
-
-
-
-
-// Hàm định dạng ngày giờ
-function formatDateTime(dateString) {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const hh = String(date.getHours()).padStart(2, '0');
-    const min = String(date.getMinutes()).padStart(2, '0');
-    return `${yyyy}-${mm}-${dd} ${hh}:${min}`;
-}
-
-
-
-
 let currentPage = 1;
 const itemsPerPage = 5;
 let searchQuery = "";
 
-// Hàm render bảng vé với tìm kiếm theo seatId và scheduleId
 function renderSchedulesTable(list) {
     let dataTicket = list || getSticket();
-
-    // Lọc theo từ khóa tìm kiếm (chỉ seatId và scheduleId)
     if (searchQuery && searchQuery.trim() !== "") {
         const keyword = searchQuery.trim().toLowerCase();
         dataTicket = dataTicket.filter(ticket =>
@@ -191,15 +169,6 @@ function changePage(page) {
     renderSchedulesTable();
 }
 
-// Khi load trang, render lần đầu
-document.addEventListener("DOMContentLoaded", function () {
-    renderSchedulesTable();
-});
-
-
-
-// ...existing code...
-
 let editingTicketId = null;
 
 // Bắt sự kiện click nút Edit
@@ -235,10 +204,22 @@ document.getElementById('save-ticket-status').onclick = function () {
     document.getElementById('edit-ticket-status-model').classList.add('d-none');
     editingTicketId = null;
 };
-
 // Hủy sửa status
 document.getElementById('cancel-edit-status').onclick = function () {
     document.getElementById('edit-ticket-status-model').classList.add('d-none');
     editingTicketId = null;
 };
-// ...existing code...
+
+// Hàm định dạng ngày giờ
+function formatDateTime(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    const hh = String(date.getHours()).padStart(2, '0');
+    const min = String(date.getMinutes()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd} ${hh}:${min}`;
+}
+
+
