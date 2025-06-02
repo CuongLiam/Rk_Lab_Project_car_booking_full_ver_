@@ -1,32 +1,18 @@
 
-// DOM Loaded
 document.addEventListener("DOMContentLoaded", function () {
   renderSchedulesTable();
 });
 
-function getSchedules() {
-  return JSON.parse(localStorage.getItem('schedule')) || [];
-}
-function getStations() {
-  return JSON.parse(localStorage.getItem('stations')) || [];
-}
-function getBuses() {
-  return JSON.parse(localStorage.getItem('buses')) || [];
-}
-function getBusCompanies() {
-  return JSON.parse(localStorage.getItem('busCompanies')) || [];
-}
-function getRoutes() {
-  return JSON.parse(localStorage.getItem('routes')) || [];
+function getData(key) {
+  return JSON.parse(localStorage.getItem(key)) || [];
 }
 
-// Render schedules table with pagination
 function renderSchedulesTable(list, page = 1, pageSize = 5) {
-  const schedules = list || getSchedules();
-  const routes = getRoutes();
-  const buses = getBuses();
-  const stations = getStations();
-  const companies = getBusCompanies();
+  const schedules = getData('schedule');
+  const stations = getData('stations');
+  const buses = getData('buses');
+  const busCompanies = getData('busCompanies');
+  const routes = getData('routes');
 
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
@@ -75,8 +61,8 @@ document.getElementById('add-schedule-form').onsubmit = function (e) {
   e.preventDefault();
   const formData = new FormData(this);
 
-  let schedules = getSchedules();
-  const buses = getBuses();
+  const schedules = getData('schedule');
+  const buses = getData('buses');
 
   const scheduleData = {
     routeId: Number(formData.get('routeId')),
@@ -112,7 +98,6 @@ document.getElementById('add-schedule-form').onsubmit = function (e) {
     schedules.push(scheduleData);
   }
 
-  // Lưu và render lại
   localStorage.setItem('schedule', JSON.stringify(schedules));
   this.reset();
   currentScheduleId = null;
@@ -123,27 +108,38 @@ document.getElementById('add-schedule-form').onsubmit = function (e) {
 
 // Render route and bus options
 function renderRouteAndBusOptions() {
-  const routes = getRoutes();
-  const buses = getBuses();
-  const stations = getStations();
-  const companies = getBusCompanies();
+  const stations = getData('stations');
+  const buses = getData('buses');
+  const busCompanies = getData('busCompanies');
+  const routes = getData('routes');
 
   const routeSelect = document.getElementById('route-select');
   const busSelect = document.getElementById('bus-select');
 
-  routeSelect.innerHTML = routes.map(route => {
+  // Render route options
+  let routeOptions = '';
+  routes.forEach(route => {
     const departure = stations.find(st => st.id === route.departureStationId);
     const arrival = stations.find(st => st.id === route.arrivalStationId);
-    return `<option value="${route.id}">
-      ${departure ? departure.name : 'Không rõ'} → ${arrival ? arrival.name : 'Không rõ'}
-    </option>`;
-  }).join('');
+    if (departure && arrival) {
+      routeOptions += `<option value="${route.id}">${departure.name} → ${arrival.name}</option>`;
+    }
+  });
+  routeSelect.innerHTML = routeOptions;
 
-  busSelect.innerHTML = buses.map(bus => {
-    const company = companies.find(c => c.id === bus.companyId);
-    return `<option value="${bus.id}">${bus.name} (${company ? company.companyName : 'Không rõ nhà xe'})</option>`;
-  }).join('');
+  // Render bus options
+  let busOptions = '';
+  buses.forEach(bus => {
+    const company = busCompanies.find(c => c.id === bus.companyId);
+    if (company) {
+      busOptions += `<option value="${bus.id}">${bus.name} (${company.companyName})</option>`;
+    } else {
+      busOptions += `<option value="${bus.id}">${bus.name}</option>`;
+    }
+  });
+  busSelect.innerHTML = busOptions;
 }
+
 
 // Mở modal thêm
 document.getElementById('add-schedule').onclick = function () {
@@ -173,7 +169,7 @@ document.getElementById('close-modal-schedule').onclick = function () {
 };
 
 document.getElementById('delete-schedule').onclick = function () {
-  let schedules = getSchedules();
+  let schedules = getData('schedule');
   if (scheduleIdToDelete !== null) {
     const idx = schedules.findIndex(s => s.id === scheduleIdToDelete);
     if (idx !== -1) {
@@ -213,9 +209,8 @@ function renderPagination(total, page, pageSize) {
   `;
 
   const paginationUl = document.querySelector('ul.pagination');
-  if (paginationUl) {
     paginationUl.innerHTML = html;
-  }
+  
 }
 
 // Pagination event
@@ -223,7 +218,7 @@ document.addEventListener('click', function (e) {
   if (e.target.classList.contains('page-link') && e.target.dataset.page) {
     e.preventDefault();
     const page = Number(e.target.dataset.page);
-    const total = getSchedules().length;
+    const total = getData('schedule').length;
     const pageSize = 5;
     const totalPages = Math.ceil(total / pageSize);
     if (!isNaN(page) && page > 0 && page <= totalPages) {
@@ -236,10 +231,10 @@ document.addEventListener('click', function (e) {
 
 function handleSearch() {
   const keyword = document.getElementById('search-input').value.toLowerCase().trim();
-  const schedules = getSchedules();
-  const routes = getRoutes();
-  const buses = getBuses();
-  const stations = getStations();
+  const routes = getData('routes');
+  const buses = getData('buses');
+  const stations = getData('stations');
+  const companies = getData('busCompanies');
 
   const filtered = schedules.filter(schedule => {
     const bus = buses.find(b => b.id === schedule.busId);
@@ -260,12 +255,12 @@ function handleSearch() {
 }
 
 
-let currentScheduleId = null; 
+let currentScheduleId = null;
 
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('edit-schedule')) {
     const scheduleId = Number(e.target.dataset.id);
-    const schedules = getSchedules();
+    const schedules = getData('schedule');
     const schedule = schedules.find(s => s.id === scheduleId);
 
     if (!schedule) return;
@@ -277,8 +272,8 @@ document.addEventListener('click', function (e) {
     // Gán giá trị vào form
     document.querySelector('#route-select').value = schedule.routeId;
     document.querySelector('#bus-select').value = schedule.busId;
-    document.querySelector('[name="departureTime"]').value = formatInputDateTime(schedule.departureTime);
-    document.querySelector('[name="arrivalTime"]').value = formatInputDateTime(schedule.arrivalTime);
+    document.querySelector('[name="departureTime"]').value = formatDateTime(schedule.departureTime);
+    document.querySelector('[name="arrivalTime"]').value = formatDateTime(schedule.arrivalTime);
     document.querySelector('[name="status"]').value = schedule.status;
     document.querySelector('[name="availableSeats"]').value = schedule.availableSeats;
 
@@ -290,7 +285,7 @@ document.addEventListener('click', function (e) {
 
 
 
-
+// Format date to dd/mm/yyyy hh:mm
 function formatDateTime(dateStr) {
   const date = new Date(dateStr);
   const yyyy = date.getFullYear();
@@ -299,13 +294,4 @@ function formatDateTime(dateStr) {
   const hh = String(date.getHours()).padStart(2, '0');
   const min = String(date.getMinutes()).padStart(2, '0');
   return `${dd}/${mm}/${yyyy} ${hh}:${min}`;
-}
-function formatInputDateTime(dateStr) {
-  const date = new Date(dateStr);
-  const yyyy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const dd = String(date.getDate()).padStart(2, '0');
-  const hh = String(date.getHours()).padStart(2, '0');
-  const min = String(date.getMinutes()).padStart(2, '0');
-  return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
 }
