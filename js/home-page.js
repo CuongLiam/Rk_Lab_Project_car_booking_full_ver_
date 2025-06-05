@@ -1,27 +1,18 @@
 
-
-
-// lấy dũ liệu từ file fake-data.js
-import { fakeData } from "./fake-data.js";
-const dataStation = fakeData.stations;
-const dataRoute = fakeData.routes;
-const dataCompanies = fakeData.busCompanies;
-
-
-let imageRoute = [
-  "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
-  "../assets/imgs/tuyen_duong/nha-xe-minh-anh-ben-xe-phia-nam-buon-ma-thuot-di-sai-gon-1-414x283.jpg.png",
-  "../assets/imgs/tuyen_duong/nha-xe-minh-ha-tuyen-ben-xe-nga-tu-ga-di-bac-giang-414x283.jpg.png",
-  "../assets/imgs/tuyen_duong/nha-xe-phuc-an-express-binh-thuan-cam-ranh.webp-414x297.png.png",
-  "../assets/imgs/tuyen_duong/nha-xe-tu-tien-tuyen-sai-gon-di-kien-rach-gia-kien-giang-414x283.jpg.png",
-  "../assets/imgs/tuyen_duong/nha-xe-tuan-hiep-ben-xe-duc-long-gia-lai-sai-gon.jpg-414x298.jpg.png",
-  "../assets/imgs/tuyen_duong/nha-xe-viet-thanh-tuyen-sai-gon-di-bac-lieu-414x283.jpg.png",
-];
-
 const banners = [
   "../assets/imgs/uu_dai_noi_bat/banner-pc_1170x155-2.jpg.jpg",
   "https://prod-nhapthuoc-cms.s3-sgn09.fptcloud.com/mob_giam_0_5_7c1e312434.jpg"
 ];
+
+
+
+const dataRoute = getDataFromLocalStorage("routes");
+const dataStation = getDataFromLocalStorage("stations");
+
+function getDataFromLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key)) || [];
+}
+
 
 
 // render and animation  for banner
@@ -59,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const track = document.querySelector(".all-Bus-Card");
   const btnLeft = document.querySelector(".arrow-left-1");
   const btnRight = document.querySelector(".arrow-right-1");
-
   let currentIndex = 0;
 
   function getVisibleCount() {                                              // ham này sẽ trả về số lượng card hiển thị dựa trên kích thước
@@ -77,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index >= currentIndex && index < currentIndex + visible) {      // nếu index nằm trong khoảng từ currentIndex đến currentIndex + visible thì sẽ render card  
         cardsHTML += `
   <div class="bus-card">
-    <img src="${imageRoute[index]}" alt="Tuyến ${item.id}">
+    <img src="${item.img}" alt="Tuyến ${item.id}">
     <div class="textInCard">
       <p>
         ${dataStation.find(st => st.id === item.departureStationId)?.location || "?"} 
@@ -129,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // render and animation for BuseCompany
 document.addEventListener("DOMContentLoaded", function () {
+  const dataCompanies = getDataFromLocalStorage("busCompanies");
   const trackLac = document.querySelector(".all-Bus-Card-lac");
   const btnLeftLac = document.querySelector(".arrow-left-3");
   const btnRightLac = document.querySelector(".arrow-right-3");
@@ -191,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // render and animation for Stations
 document.addEventListener("DOMContentLoaded", function () {
+  const dataStation = getDataFromLocalStorage("stations");
   const trackBenXe = document.getElementById("station-cards-container");
   const btnLeftBenXe = document.getElementById("arrow-left-station");
   const btnRightBenXe = document.getElementById("arrow-right-station");

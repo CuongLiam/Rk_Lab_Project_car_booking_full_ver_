@@ -97,6 +97,7 @@ function renderSchedulesTable(list) {
             <td>${startIndex + index + 1}</td>
             <td>${ticket.seatId}</td>
             <td>${ticket.scheduleId}</td>
+            <td>${ticket.phoneUser}</td>
             <td>${formatDateTime(ticket.departureTime)}</td>
             <td>${formatDateTime(ticket.arrivalTime)}</td>
             <td>${ticket.seatType}</td>

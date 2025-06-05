@@ -57,11 +57,8 @@
             </table>
 
 
-
-
-
             <div class="add-schedule-modal" id="add-modal" style="display:none;">
-                
+
                 <div class="modal-content w-50">
                     <h3>Thêm Lịch Trình Mới</h3>
                     <form id="add-schedule-form">
@@ -87,49 +84,32 @@
                         </div>
                     </form>
                 </div>
-                <<<<<<< pages/admin/schedules.html </div>
+            </div>
 
-                    <div class="pagination-wrapper">
-                        <nav aria-label="...">
-                            <ul class="pagination">
+            <div class="pagination-wrapper">
+                <nav aria-label="...">
+                    <ul class="pagination">
 
-                            </ul>
-                        </nav>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="overlay" id="overlay" style="display:none;"></div>
+            <div class="delete-modal" id="delete-modal" style="display:none;">
+                <div class="modal-content">
+                    <h3>Are you sure you want to delete this schedule?</h3>
+                    <div class="all-button-delete">
+                        <button class="btn btn-secondary" id="close-modal-schedule">Hủy bỏ</button>
+                        <button class="btn btn-primary" id="delete-schedule">Delete</button>
                     </div>
-                    =======
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Route</th>
-                                <th>Bus</th>
-                                <th>Departure Time</th>
-                                <th>Arrival Time</th>
-                                <th>Status</th>
-                                <th>Available Seats</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="schedule-list"> </tbody>
-                    </table>
-                    >>>>>>> pages/admin/schedules.html
+                </div>
+            </div>
 
-
-                    <div class="overlay" id="overlay" style="display:none;"></div>
-                    <div class="delete-modal" id="delete-modal" style="display:none;">
-                        <div class="modal-content">
-                            <h3>Are you sure you want to delete this schedule?</h3>
-                            <div class="all-button-delete">
-                                <button class="btn btn-secondary" id="close-modal-schedule">Hủy bỏ</button>
-                                <button class="btn btn-primary" id="delete-schedule">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="edit-schedule-modal col-md-6 col-lg-4 col-xl-3" id="edit-modal">
-                    </div>
+            <div class="edit-schedule-modal col-md-6 col-lg-4 col-xl-3" id="edit-modal">
+            </div>
         </main>
 
-
+      
 
         <script src="../../js/admin/nav.js"></script>
         <script src="../../js/admin/schedules.js"></script>
