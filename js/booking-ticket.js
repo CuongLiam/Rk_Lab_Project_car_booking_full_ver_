@@ -74,12 +74,49 @@ window.addEventListener('load', () => {
 });
 
 //=================================FAKE-DATA========================================
-import { fakeData } from "./fake-data.js";
+// import { fakeData } from "./fake-data.js";
+
+
+// real data ========================================================
+// import "./data.js";
+
+let data = [];
+let routes = [];
+let buses = [];
+let stations = [];
+
+try {
+  data = JSON.parse(localStorage.getItem("schedule")) || [];
+} catch {
+  data = [];
+}
+try {
+  routes = JSON.parse(localStorage.getItem("routes")) || [];
+} catch {
+  routes = [];
+}
+try {
+  buses = JSON.parse(localStorage.getItem("buses")) || [];
+} catch {
+  buses = [];
+}
+try {
+  stations = JSON.parse(localStorage.getItem("stations")) || [];
+} catch {
+  stations = [];
+}
+
 //=================================Chức năng========================================
 let right = document.getElementById("right");
-let data = fakeData.schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
+// let data = fakeData.schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
 let timeStartSelect = document.getElementById("timeStart");
 let sortPriceSelect = document.getElementById("sortPrice");
+
+// let data = JSON.parse(localStorage.getItem("schedule")) || [];
+// let routes = JSON.parse(localStorage.getItem("routes")) || [];
+// let buses = JSON.parse(localStorage.getItem("buses")) || [];
+// let stations = JSON.parse(localStorage.getItem("stations")) || [];
+
 
 //Lấy các input cho bộ lọc nhà xe
 const garageCheckboxes = [
@@ -126,10 +163,15 @@ const renderDashboard = () => {
   let html = '';
 
   data.forEach(item => {
-    let currRoute = fakeData.routes.find(route => route.id == item.routeId);
-    let currBus = fakeData.buses.find(bus => bus.id == item.busId);
-    let departureStation = fakeData.stations.find(station => station.id == currRoute.departureStationId);
-    let arrivalStation = fakeData.stations.find(station => station.id == currRoute.arrivalStationId);
+    // let currRoute = fakeData.routes.find(route => route.id == item.routeId);
+    // let currBus = fakeData.buses.find(bus => bus.id == item.busId);
+    // let departureStation = fakeData.stations.find(station => station.id == currRoute.departureStationId);
+    // let arrivalStation = fakeData.stations.find(station => station.id == currRoute.arrivalStationId);
+
+    let currRoute = routes.find(route => route.id == item.routeId);
+    let currBus = buses.find(bus => bus.id == item.busId);
+    let departureStation = stations.find(station => station.id == currRoute.departureStationId);
+    let arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
 
     html += ` <div class="card">
                 <div class="detailCard">
@@ -212,7 +254,7 @@ const renderDashboard = () => {
 
 // Hàm xử lý chung
 const processData = () => {
-  data = fakeData.schedule // Lấy lại dữ liệu để xử lý
+  data = JSON.parse(localStorage.getItem("schedule")) || [];
 
   // Lọc theo search tab
   const from = sessionStorage.getItem("from");
@@ -220,10 +262,9 @@ const processData = () => {
   const date = JSON.parse(sessionStorage.getItem("date"));
   if (from || to) {
     data = data.filter(item => {
-      const route = fakeData.routes.find(route => route.id === item.routeId);
-      const departureStation = fakeData.stations.find(station => station.id === route.departureStationId);
-      const arrivalStation = fakeData.stations.find(station => station.id === route.arrivalStationId);
-      const departureDate = fakeData.schedule.find(d => formatDateYMD(d.departureTime) == formatDateYMD(date));
+      const route = routes.find(route => route.id === item.routeId);
+      const departureStation = stations.find(station => station.id === route.departureStationId);
+      const arrivalStation = stations.find(station => station.id === route.arrivalStationId);
       let match = true;
       if (from) {
         match = match && (
@@ -259,7 +300,7 @@ const processData = () => {
   const minPrice = parseInt(minSliderPrice.value, 10);
   const maxPrice = parseInt(maxSliderPrice.value, 10);
   data = data.filter(item => {
-    const route = fakeData.routes.find(route => route.id === item.routeId);
+    const route = routes.find(route => route.id === item.routeId);
     if (!route) return false;
     const price = route.price;
     return price >= Math.min(minPrice, maxPrice) && price <= Math.max(minPrice, maxPrice);
@@ -270,7 +311,7 @@ const processData = () => {
   const garageText = garageInput.value.trim().toLowerCase();
   if (checkedGarages.length > 0 || garageText) {
     data = data.filter(item => {
-      const bus = fakeData.buses.find(bus => bus.id === item.busId);
+      const bus = buses.find(bus => bus.id === item.busId);
       if (!bus) return false;
       const name = bus.name.toLowerCase();
       // Nếu có chọn checkbox, lọc theo checkbox
@@ -296,14 +337,14 @@ const processData = () => {
   if (sortPriceDirection !== "Mức giá") {
     if (sortPriceDirection === "true") {
       data = data.sort((a, b) => {
-        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
         return priceA - priceB
       })
     } else {
       data = data.sort((a, b) => {
-        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
         return priceB - priceA
       })
     }
