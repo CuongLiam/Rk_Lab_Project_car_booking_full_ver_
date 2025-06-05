@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Companies</title>
+    <link rel="stylesheet" href="../../css/admin/bus-companie.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <nav>
+                <ul>
+                    <li id="dashboard">Dashboard</li>
+                    <li id="schedules">Schedules</li>
+                    <li id="routes">Routes</li>
+                    <li id="stations">Stations</li>
+                    <li id="busCompanies" class="active">Bus Companies</li>
+                    <li id="tickets">Tickets</li>
+                </ul>
+            </nav>
+        </div>
+        <main class="main-content">
+            <div class="header">
+            <h1>Bus Companies</h1>
+            <button class="btn btn-primary" id="addCompany">Add Company</button>
+        </div>
+        <input type="text" placeholder="name">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Thanh Nhung</td>
+                        <td>Trụ sở: Cà Mau</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>An Hòa</td>
+                        <td>Trụ sở: Kon Tum</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Mai Linh</td>
+                        <td>Trụ sở: TP. HCM</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Phương Trang</td>
+                        <td>Trụ sở: TP. HCM</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Thành Bưởi</td>
+                        <td>Trụ sở: Đà Lạt</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Hoàng Long</td>
+                        <td>Trụ sở: Hải Phòng</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Sao Việt</td>
+                        <td>Trụ sở: Hà Nội</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Hạnh Cafe</td>
+                        <td>Trụ sở: TP. HCM</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Liên Hưng</td>
+                        <td>Trụ sở: Nha Trang</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Cúc Tùng</td>
+                        <td>Trụ sở: Bình Định</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td>Phúc Xuyên</td>
+                        <td>Trụ sở: Quảng Ninh</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td>Minh Quốc</td>
+                        <td>Trụ sở: Gia Lai</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td>Bình An</td>
+                        <td>Trụ sở: Cần Thơ</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14</th>
+                        <td>Hưng Long</td>
+                        <td>Trụ sở: Vũng Tàu</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15</th>
+                        <td>Trọng Minh</td>
+                        <td>Trụ sở: An Giang</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">16</th>
+                        <td>Ngọc Ánh</td>
+                        <td>Trụ sở: Bắc Giang</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">17</th>
+                        <td>Kim Chi</td>
+                        <td>Trụ sở: Hà Tĩnh</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">18</th>
+                        <td>Việt Tân Phát</td>
+                        <td>Trụ sở: Đồng Nai</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">19</th>
+                        <td>Hải Âu</td>
+                        <td>Trụ sở: Nam Định</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">20</th>
+                        <td>Thuận Thảo</td>
+                        <td>Trụ sở: Phú Yên</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+
+        <script src="../../js/admin/nav.js"></script>
+        <script src="../../js/admin/bus-companie.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+            crossorigin="anonymous"></script>
+    </div>
+</body>
+
+</html>
