@@ -1,3 +1,4 @@
+localStorage.setItem("loggedUsers", JSON.stringify(["alice@example.com"]));
 //JS cho bộ lọc
 const minSlider = document.getElementById('min-time');
 const maxSlider = document.getElementById('max-time');
@@ -450,21 +451,57 @@ function showTicketModal(itemId) {
         tickets = JSON.parse(localStorage.getItem("tickets")) || [];
       } catch { tickets = []; }
 
+      // Get schedules array
+      let schedules = [];
+      try {
+        schedules = JSON.parse(localStorage.getItem("schedule")) || [];
+      } catch { schedules = []; }
+
+      // Find the schedule for this ticket
+        const scheduleIndex = schedules.findIndex(sch => sch.id === item.id);
+        if (scheduleIndex === -1) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Lỗi!',
+            text: 'Không tìm thấy lịch trình!',
+            confirmButtonText: 'OK'
+          });
+          return;
+        }
+        // Check availableSeats
+        if (schedules[scheduleIndex].availableSeats <= 0) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Hết chỗ!',
+            text: 'Chuyến này đã hết vé, vui lòng chọn chuyến khác.',
+            confirmButtonText: 'OK'
+          });
+          return;
+        }
+
       // Generate new id (auto-increment)
       const newId = tickets.length ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
 
-      // Get user phone if available (example: from sessionStorage or set to null)
+      // Generate new seatId (auto-increment)
+      const newSeatId = tickets.length ? Math.max(...tickets.map(t => t.seatId || 0)) + 1 : 1;
+
+      // Get phoneUser from loggedUsers and users
       let phoneUser = null;
       try {
-        const user = JSON.parse(sessionStorage.getItem("currentUser"));
-        phoneUser = user?.phone || null;
+        const loggedUsers = JSON.parse(localStorage.getItem("loggedUsers")) || [];
+        const lastEmail = loggedUsers.length ? loggedUsers[loggedUsers.length - 1] : null;
+        if (lastEmail) {
+          const users = JSON.parse(localStorage.getItem("users")) || [];
+          const foundUser = users.find(u => u.email === lastEmail);
+          phoneUser = foundUser ? foundUser.phone : null;
+        }
       } catch { phoneUser = null; }
 
       // Push new ticket object
       tickets.push({
         id: newId,
         scheduleId: item.id,
-        seatId: null, // or let user pick seat later
+        seatId: newSeatId,
         departureTime: item.departureTime,
         arrivalTime: item.arrivalTime,
         seatType: "STANDARD", // or your default
@@ -475,7 +512,16 @@ function showTicketModal(itemId) {
         updatedAt: new Date().toISOString()
       });
 
+      // Decrease availableSeats
+      schedules[scheduleIndex].availableSeats -= 1;
+      // Optionally, update status if now 0
+      if (schedules[scheduleIndex].availableSeats === 0) {
+        schedules[scheduleIndex].status = "FULL";
+      }
+
+
       localStorage.setItem("tickets", JSON.stringify(tickets));
+      localStorage.setItem("schedule", JSON.stringify(schedules));
       confirmModal.hide();
 
       // SweetAlert2 success
@@ -484,6 +530,8 @@ function showTicketModal(itemId) {
         title: 'Thành công!',
         text: 'Bạn đã mua vé tại quầy thành công!',
         confirmButtonText: 'OK'
+      }).then(() => {
+        processData(); // Refresh the UI to show updated seats
       });
     };
   };
