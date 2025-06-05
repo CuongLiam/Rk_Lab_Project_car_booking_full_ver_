@@ -399,7 +399,7 @@ function showTicketModal(itemId) {
   const arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
 
   // Build ticket info HTML
-  const html = `
+  const ticketInfoHtml = `
     <div>
       <p><b>Nhà xe:</b> ${currBus.name}</p>
       <p><b>Giờ đi:</b> ${getHoursAndMinutes(item.departureTime)} - <b>Giờ đến:</b> ${getHoursAndMinutes(item.arrivalTime)}</p>
@@ -408,8 +408,12 @@ function showTicketModal(itemId) {
       <p><b>Giá vé:</b> ${formatCurrency(currRoute.price)}đ</p>
       <p><b>Số ghế còn trống:</b> ${item.availableSeats}</p>
     </div>
+  `;
+
+  const html = `
+    ${ticketInfoHtml}
     <hr>
-    <div class="text-center">
+    <div class="text-center mb-3">
       <b>Bạn muốn mua vé bằng cách nào?</b>
     </div>
     <div class="d-flex justify-content-center gap-3">
@@ -420,16 +424,73 @@ function showTicketModal(itemId) {
   document.getElementById('ticketInfoModalBody').innerHTML = html;
 
   // Show modal using Bootstrap's JS API
-  const modal = new bootstrap.Modal(document.getElementById('ticketInfoModal'));
-  modal.show();
+  const ticketModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'));
+  ticketModal.show();
 
-  // Optionally: handle button clicks
+  // Handle "Mua vé tại quầy"
   document.getElementById('buyAtCounterBtn').onclick = function() {
-    alert('Bạn đã chọn mua vé tại quầy!');
-    modal.hide();
+    ticketModal.hide();
+    // Show confirmation modal with ticket info
+    document.getElementById('buyAtCounterModalBody').innerHTML = `
+      <div class="mb-3">
+        ${ticketInfoHtml}
+      </div>
+      <div class="text-center">
+        <b>Bạn có chắc chắn muốn mua vé này tại quầy?</b>
+      </div>
+    `;
+    const confirmModal = new bootstrap.Modal(document.getElementById('buyAtCounterModal'));
+    confirmModal.show();
+
+    // Set up confirm button
+    document.getElementById('confirmBuyAtCounterBtn').onclick = function() {
+      // Get tickets array
+      let tickets = [];
+      try {
+        tickets = JSON.parse(localStorage.getItem("tickets")) || [];
+      } catch { tickets = []; }
+
+      // Generate new id (auto-increment)
+      const newId = tickets.length ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
+
+      // Get user phone if available (example: from sessionStorage or set to null)
+      let phoneUser = null;
+      try {
+        const user = JSON.parse(sessionStorage.getItem("currentUser"));
+        phoneUser = user?.phone || null;
+      } catch { phoneUser = null; }
+
+      // Push new ticket object
+      tickets.push({
+        id: newId,
+        scheduleId: item.id,
+        seatId: null, // or let user pick seat later
+        departureTime: item.departureTime,
+        arrivalTime: item.arrivalTime,
+        seatType: "STANDARD", // or your default
+        price: currRoute.price,
+        status: "BOOKED",
+        phoneUser: phoneUser,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+
+      localStorage.setItem("tickets", JSON.stringify(tickets));
+      confirmModal.hide();
+
+      // SweetAlert2 success
+      Swal.fire({
+        icon: 'success',
+        title: 'Thành công!',
+        text: 'Bạn đã mua vé tại quầy thành công!',
+        confirmButtonText: 'OK'
+      });
+    };
   };
+
+  // Handle "Book online" (optional)
   document.getElementById('bookOnlineBtn').onclick = function() {
-    alert('Bạn đã chọn book online!');
-    modal.hide();
+    window.console.log("Book online");
+    ticketModal.hide();
   };
 }
