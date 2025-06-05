@@ -74,12 +74,49 @@ window.addEventListener('load', () => {
 });
 
 //=================================FAKE-DATA========================================
-import { fakeData } from "./fake-data.js";
+// import { fakeData } from "./fake-data.js";
+
+
+// real data ========================================================
+// import "./data.js";
+
+let data = [];
+let routes = [];
+let buses = [];
+let stations = [];
+
+try {
+  data = JSON.parse(localStorage.getItem("schedule")) || [];
+} catch {
+  data = [];
+}
+try {
+  routes = JSON.parse(localStorage.getItem("routes")) || [];
+} catch {
+  routes = [];
+}
+try {
+  buses = JSON.parse(localStorage.getItem("buses")) || [];
+} catch {
+  buses = [];
+}
+try {
+  stations = JSON.parse(localStorage.getItem("stations")) || [];
+} catch {
+  stations = [];
+}
+
 //=================================Chức năng========================================
 let right = document.getElementById("right");
-let data = fakeData.schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
+// let data = fakeData.schedule; // Biến để lấy dữ liệu từ Schedule để thực hiện các chức năng
 let timeStartSelect = document.getElementById("timeStart");
 let sortPriceSelect = document.getElementById("sortPrice");
+
+// let data = JSON.parse(localStorage.getItem("schedule")) || [];
+// let routes = JSON.parse(localStorage.getItem("routes")) || [];
+// let buses = JSON.parse(localStorage.getItem("buses")) || [];
+// let stations = JSON.parse(localStorage.getItem("stations")) || [];
+
 
 //Lấy các input cho bộ lọc nhà xe
 const garageCheckboxes = [
@@ -126,10 +163,15 @@ const renderDashboard = () => {
   let html = '';
 
   data.forEach(item => {
-    let currRoute = fakeData.routes.find(route => route.id == item.routeId);
-    let currBus = fakeData.buses.find(bus => bus.id == item.busId);
-    let departureStation = fakeData.stations.find(station => station.id == currRoute.departureStationId);
-    let arrivalStation = fakeData.stations.find(station => station.id == currRoute.arrivalStationId);
+    // let currRoute = fakeData.routes.find(route => route.id == item.routeId);
+    // let currBus = fakeData.buses.find(bus => bus.id == item.busId);
+    // let departureStation = fakeData.stations.find(station => station.id == currRoute.departureStationId);
+    // let arrivalStation = fakeData.stations.find(station => station.id == currRoute.arrivalStationId);
+
+    let currRoute = routes.find(route => route.id == item.routeId);
+    let currBus = buses.find(bus => bus.id == item.busId);
+    let departureStation = stations.find(station => station.id == currRoute.departureStationId);
+    let arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
 
     html += ` <div class="card">
                 <div class="detailCard">
@@ -164,9 +206,9 @@ const renderDashboard = () => {
                             <p class="cost text-nowrap">Từ <b class="font-size-20">${currRoute.price}</b>đ</p>
                             <p class="font-size-14 slot">${item.availableSeats} Còn trống</p>
                         </div>
-                        <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
-                            <span>Chọn
-                                xe</span>
+                        <button class="btnChoose font-size-14" data-ticket-id="${item.id}">
+                          <i class="fa-solid fa-car"></i>
+                          <span>Chọn xe</span>
                         </button>
                     </div>
                 </div>
@@ -208,11 +250,19 @@ const renderDashboard = () => {
             </div>`
   })
   right.innerHTML = html
+
+  // Add event listeners for all "Chọn xe" buttons
+  right.querySelectorAll('.btnChoose[data-ticket-id]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const ticketId = this.getAttribute('data-ticket-id');
+      showTicketModal(ticketId);
+    });
+  });
 }
 
 // Hàm xử lý chung
 const processData = () => {
-  data = fakeData.schedule // Lấy lại dữ liệu để xử lý
+  data = JSON.parse(localStorage.getItem("schedule")) || [];
 
   // Lọc theo search tab
   const from = sessionStorage.getItem("from");
@@ -220,10 +270,9 @@ const processData = () => {
   const date = JSON.parse(sessionStorage.getItem("date"));
   if (from || to) {
     data = data.filter(item => {
-      const route = fakeData.routes.find(route => route.id === item.routeId);
-      const departureStation = fakeData.stations.find(station => station.id === route.departureStationId);
-      const arrivalStation = fakeData.stations.find(station => station.id === route.arrivalStationId);
-      const departureDate = fakeData.schedule.find(d => formatDateYMD(d.departureTime) == formatDateYMD(date));
+      const route = routes.find(route => route.id === item.routeId);
+      const departureStation = stations.find(station => station.id === route.departureStationId);
+      const arrivalStation = stations.find(station => station.id === route.arrivalStationId);
       let match = true;
       if (from) {
         match = match && (
@@ -259,7 +308,7 @@ const processData = () => {
   const minPrice = parseInt(minSliderPrice.value, 10);
   const maxPrice = parseInt(maxSliderPrice.value, 10);
   data = data.filter(item => {
-    const route = fakeData.routes.find(route => route.id === item.routeId);
+    const route = routes.find(route => route.id === item.routeId);
     if (!route) return false;
     const price = route.price;
     return price >= Math.min(minPrice, maxPrice) && price <= Math.max(minPrice, maxPrice);
@@ -270,7 +319,7 @@ const processData = () => {
   const garageText = garageInput.value.trim().toLowerCase();
   if (checkedGarages.length > 0 || garageText) {
     data = data.filter(item => {
-      const bus = fakeData.buses.find(bus => bus.id === item.busId);
+      const bus = buses.find(bus => bus.id === item.busId);
       if (!bus) return false;
       const name = bus.name.toLowerCase();
       // Nếu có chọn checkbox, lọc theo checkbox
@@ -296,14 +345,14 @@ const processData = () => {
   if (sortPriceDirection !== "Mức giá") {
     if (sortPriceDirection === "true") {
       data = data.sort((a, b) => {
-        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
         return priceA - priceB
       })
     } else {
       data = data.sort((a, b) => {
-        let priceA = fakeData.routes.find(item => item.id === a.routeId)?.price || 0;
-        let priceB = fakeData.routes.find(item => item.id === b.routeId)?.price || 0;
+        let priceA = routes.find(item => item.id === a.routeId)?.price || 0;
+        let priceB = routes.find(item => item.id === b.routeId)?.price || 0;
         return priceB - priceA
       })
     }
@@ -338,3 +387,110 @@ clearGarageBtn.addEventListener('click', () => {
 });
 
 renderDashboard();
+
+function showTicketModal(itemId) {
+  // Find the ticket info
+  const item = data.find(d => d.id == itemId);
+  if (!item) return;
+
+  const currRoute = routes.find(route => route.id == item.routeId);
+  const currBus = buses.find(bus => bus.id == item.busId);
+  const departureStation = stations.find(station => station.id == currRoute.departureStationId);
+  const arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
+
+  // Build ticket info HTML
+  const ticketInfoHtml = `
+    <div>
+      <p><b>Nhà xe:</b> ${currBus.name}</p>
+      <p><b>Giờ đi:</b> ${getHoursAndMinutes(item.departureTime)} - <b>Giờ đến:</b> ${getHoursAndMinutes(item.arrivalTime)}</p>
+      <p><b>Điểm đi:</b> ${departureStation.location} - <b>Điểm đến:</b> ${arrivalStation.location}</p>
+      <p><b>Ngày đi:</b> ${formatDateYMD(item.departureTime)}</p>
+      <p><b>Giá vé:</b> ${formatCurrency(currRoute.price)}đ</p>
+      <p><b>Số ghế còn trống:</b> ${item.availableSeats}</p>
+    </div>
+  `;
+
+  const html = `
+    ${ticketInfoHtml}
+    <hr>
+    <div class="text-center mb-3">
+      <b>Bạn muốn mua vé bằng cách nào?</b>
+    </div>
+    <div class="d-flex justify-content-center gap-3">
+      <button type="button" class="btn btn-warning" id="buyAtCounterBtn">Mua vé tại quầy</button>
+      <button type="button" class="btn btn-primary" id="bookOnlineBtn">Book online</button>
+    </div>
+  `;
+  document.getElementById('ticketInfoModalBody').innerHTML = html;
+
+  // Show modal using Bootstrap's JS API
+  const ticketModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'));
+  ticketModal.show();
+
+  // Handle "Mua vé tại quầy"
+  document.getElementById('buyAtCounterBtn').onclick = function() {
+    ticketModal.hide();
+    // Show confirmation modal with ticket info
+    document.getElementById('buyAtCounterModalBody').innerHTML = `
+      <div class="mb-3">
+        ${ticketInfoHtml}
+      </div>
+      <div class="text-center">
+        <b>Bạn có chắc chắn muốn mua vé này tại quầy?</b>
+      </div>
+    `;
+    const confirmModal = new bootstrap.Modal(document.getElementById('buyAtCounterModal'));
+    confirmModal.show();
+
+    // Set up confirm button
+    document.getElementById('confirmBuyAtCounterBtn').onclick = function() {
+      // Get tickets array
+      let tickets = [];
+      try {
+        tickets = JSON.parse(localStorage.getItem("tickets")) || [];
+      } catch { tickets = []; }
+
+      // Generate new id (auto-increment)
+      const newId = tickets.length ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
+
+      // Get user phone if available (example: from sessionStorage or set to null)
+      let phoneUser = null;
+      try {
+        const user = JSON.parse(sessionStorage.getItem("currentUser"));
+        phoneUser = user?.phone || null;
+      } catch { phoneUser = null; }
+
+      // Push new ticket object
+      tickets.push({
+        id: newId,
+        scheduleId: item.id,
+        seatId: null, // or let user pick seat later
+        departureTime: item.departureTime,
+        arrivalTime: item.arrivalTime,
+        seatType: "STANDARD", // or your default
+        price: currRoute.price,
+        status: "BOOKED",
+        phoneUser: phoneUser,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+
+      localStorage.setItem("tickets", JSON.stringify(tickets));
+      confirmModal.hide();
+
+      // SweetAlert2 success
+      Swal.fire({
+        icon: 'success',
+        title: 'Thành công!',
+        text: 'Bạn đã mua vé tại quầy thành công!',
+        confirmButtonText: 'OK'
+      });
+    };
+  };
+
+  // Handle "Book online" (optional)
+  document.getElementById('bookOnlineBtn').onclick = function() {
+    window.console.log("Book online");
+    ticketModal.hide();
+  };
+}
