@@ -206,9 +206,9 @@ const renderDashboard = () => {
                             <p class="cost text-nowrap">Từ <b class="font-size-20">${currRoute.price}</b>đ</p>
                             <p class="font-size-14 slot">${item.availableSeats} Còn trống</p>
                         </div>
-                        <button class="btnChoose font-size-14"><i class="fa-solid fa-car"></i>
-                            <span>Chọn
-                                xe</span>
+                        <button class="btnChoose font-size-14" data-ticket-id="${item.id}">
+                          <i class="fa-solid fa-car"></i>
+                          <span>Chọn xe</span>
                         </button>
                     </div>
                 </div>
@@ -250,6 +250,14 @@ const renderDashboard = () => {
             </div>`
   })
   right.innerHTML = html
+
+  // Add event listeners for all "Chọn xe" buttons
+  right.querySelectorAll('.btnChoose[data-ticket-id]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const ticketId = this.getAttribute('data-ticket-id');
+      showTicketModal(ticketId);
+    });
+  });
 }
 
 // Hàm xử lý chung
@@ -379,3 +387,49 @@ clearGarageBtn.addEventListener('click', () => {
 });
 
 renderDashboard();
+
+function showTicketModal(itemId) {
+  // Find the ticket info
+  const item = data.find(d => d.id == itemId);
+  if (!item) return;
+
+  const currRoute = routes.find(route => route.id == item.routeId);
+  const currBus = buses.find(bus => bus.id == item.busId);
+  const departureStation = stations.find(station => station.id == currRoute.departureStationId);
+  const arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
+
+  // Build ticket info HTML
+  const html = `
+    <div>
+      <p><b>Nhà xe:</b> ${currBus.name}</p>
+      <p><b>Giờ đi:</b> ${getHoursAndMinutes(item.departureTime)} - <b>Giờ đến:</b> ${getHoursAndMinutes(item.arrivalTime)}</p>
+      <p><b>Điểm đi:</b> ${departureStation.location} - <b>Điểm đến:</b> ${arrivalStation.location}</p>
+      <p><b>Ngày đi:</b> ${formatDateYMD(item.departureTime)}</p>
+      <p><b>Giá vé:</b> ${formatCurrency(currRoute.price)}đ</p>
+      <p><b>Số ghế còn trống:</b> ${item.availableSeats}</p>
+    </div>
+    <hr>
+    <div class="text-center">
+      <b>Bạn muốn mua vé bằng cách nào?</b>
+    </div>
+    <div class="d-flex justify-content-center gap-3">
+      <button type="button" class="btn btn-warning" id="buyAtCounterBtn">Mua vé tại quầy</button>
+      <button type="button" class="btn btn-primary" id="bookOnlineBtn">Book online</button>
+    </div>
+  `;
+  document.getElementById('ticketInfoModalBody').innerHTML = html;
+
+  // Show modal using Bootstrap's JS API
+  const modal = new bootstrap.Modal(document.getElementById('ticketInfoModal'));
+  modal.show();
+
+  // Optionally: handle button clicks
+  document.getElementById('buyAtCounterBtn').onclick = function() {
+    alert('Bạn đã chọn mua vé tại quầy!');
+    modal.hide();
+  };
+  document.getElementById('bookOnlineBtn').onclick = function() {
+    alert('Bạn đã chọn book online!');
+    modal.hide();
+  };
+}
