@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   renderSchedulesTable();
 });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedules</title>
+    <title>Ticket</title>
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
     <link rel="stylesheet" href="../../css/admin/ticket.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -17,12 +17,12 @@
             <h2>Admin</h2>
             <nav>
                 <ul>
-                    <li id="dashboard" class="active">Dashboard</li>
+                    <li id="dashboard">Dashboard</li>
                     <li id="schedules">Schedules</li>
                     <li id="routes">Routes</li>
                     <li id="stations">Stations</li>
                     <li id="busCompanies">Bus Companies</li>
-                    <li id="tickets">Tickets</li>
+                    <li id="tickets" class="active">Tickets</li>
                 </ul>
             </nav>
         </div>
@@ -44,6 +44,7 @@
                         <th>ID</th>
                         <th>seatId</th>
                         <th>schedule</th>
+                        <th>Phone user</th>
                         <th>Departure Time</th>
                         <th>Arrival Time</th>
                         <th>Seats type</th>
@@ -57,17 +58,16 @@
             <div class="pagination-wrapper">
                 <nav aria-label="...">
                     <ul class="pagination">
-
                     </ul>
                 </nav>
             </div>
 
-            
+
 
             <div class="overlay" id="overlay" style="display:none;"></div>
             <div class="delete-modal" id="delete-modal" style="display:none;">
                 <div class="modal-content">
-                    <h3>Are you sure you want to delete this schedule?</h3>
+                    <h3>Are you sure you want to delete this ticket?</h3>
                     <div class="all-button-delete">
                         <button class="btn btn-secondary" id="close-modal-schedule">Hủy bỏ</button>
                         <button class="btn btn-primary" id="delete-schedule">Delete</button>
@@ -86,10 +86,10 @@
                             <option value="completed">Completed</option>
                         </select>
                     </div>
-                  <div class="all-button-edit">
-                      <button id="save-ticket-status" class="btn btn-primary mt-2">Save</button>
-                    <button id="cancel-edit-status" class="btn btn-secondary mt-2">Cancel</button>
-                  </div>
+                    <div class="all-button-edit">
+                        <button id="save-ticket-status" class="btn btn-primary mt-2">Save</button>
+                        <button id="cancel-edit-status" class="btn btn-secondary mt-2">Cancel</button>
+                    </div>
                 </div>
             </div>
 

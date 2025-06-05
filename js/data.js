@@ -186,6 +186,7 @@ if (!localStorage.getItem("schedule")) {
 let routesData = [
     {
         id: 1,
+        img: "../../assets/imgs/tuyen_duong/tuyen-nha-trang-da-lat.webp.jpg",
         departureStationId: 1,
         arrivalStationId: 4,
         price: 500000,
@@ -196,6 +197,7 @@ let routesData = [
     },
     {
         id: 2,
+        img:  "../../assets/imgs/tuyen_duong/tuyen-sai-gon-mui-ne.webp.jpg",
         departureStationId: 2,
         arrivalStationId: 3,
         price: 350000,
@@ -206,6 +208,7 @@ let routesData = [
     },
     {
         id: 3,
+        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-nha-trang.webp.jpg",
         departureStationId: 3,
         arrivalStationId: 4,
         price: 300000,
@@ -216,6 +219,7 @@ let routesData = [
     },
     {
         id: 4,
+        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-vung-tau.webp.png",
         departureStationId: 1,
         arrivalStationId: 5,
         price: 250000,
@@ -226,6 +230,7 @@ let routesData = [
     },
     {
         id: 5,
+        img: "../../assets/imgs/tuyen_duong/nha-xe-tu-tien-tuyen-sai-gon-di-kien-rach-gia-kien-giang-414x283.jpg.png",
         departureStationId: 5,
         arrivalStationId: 2,
         price: 200000,
@@ -361,7 +366,7 @@ let busCompaniesData = [
     {
         id: 2,
         companyName: "An Hòa",
-        image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
+        image: "../assets/imgs/nha_xe/nha-xe-binh-ha-nam-dinh-vinh-phuc-414x297.jpg.png",
         descriptions: "Trụ sở: Kon Tum",
         createdAt: "2025-05-23T08:00:00.000Z",
         updatedAt: "2025-05-23T08:00:00.000Z"
@@ -369,7 +374,7 @@ let busCompaniesData = [
     {
         id: 3,
         companyName: "Mai Linh",
-        image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
+        image: "../assets/imgs/nha_xe/nha-xe-chi-tam-414x297.jpg.png",
         descriptions: "Trụ sở: TP. HCM",
         createdAt: "2025-05-23T08:00:00.000Z",
         updatedAt: "2025-05-23T08:00:00.000Z"
@@ -377,7 +382,7 @@ let busCompaniesData = [
     {
         id: 4,
         companyName: "Phương Trang",
-        image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
+        image: "../assets/imgs/nha_xe/nha-xe-futa-ha-son.jpg.png",
         descriptions: "Trụ sở: TP. HCM",
         createdAt: "2025-05-23T08:00:00.000Z",
         updatedAt: "2025-05-23T08:00:00.000Z"
@@ -385,7 +390,7 @@ let busCompaniesData = [
     {
         id: 5,
         companyName: "Thành Bưởi",
-        image: "../assets/imgs/nha_xe/nha-xe-an-hoa-hiep-ca-mau-kon-tum.jpg.jpg",
+        image: "../assets/imgs/nha_xe/nha-xe-hong-thinh-1-e1732000217142-414x298.jpg.png",
         descriptions: "Trụ sở: Đà Lạt",
         createdAt: "2025-05-23T08:00:00.000Z",
         updatedAt: "2025-05-23T08:00:00.000Z"
@@ -1281,4 +1286,18 @@ let articlesData = [
 ]
 if (!localStorage.getItem("articles")) {
     localStorage.setItem("articles", JSON.stringify(articlesData))
+}
+
+let bannerData = [
+    {
+        id:1,
+        img:"../assets/imgs/uu_dai_noi_bat/banner-pc_1170x155-2.jpg.jpg",
+    },
+    {
+        id: 2,
+        img: "https://prod-nhapthuoc-cms.s3-sgn09.fptcloud.com/mob_giam_0_5_7c1e312434.jpg",
+    }
+]
+if (!localStorage.getItem("articles")) {
+    localStorage.setItem("articles", JSON.stringify(bannerData))
 }

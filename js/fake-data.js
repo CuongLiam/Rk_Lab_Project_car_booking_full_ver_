@@ -189,6 +189,7 @@ export const fakeData = {
             price: 500000,
             duration: "30h",
             distance: 1700,
+            image: "../assets/imgs/tuyen_duong/nha-xe-minh-ha-tuyen-ben-xe-nga-tu-ga-di-bac-giang-414x283.jpg.png",
             createdAt: "2025-05-22T00:00:00.000Z",
             updatedAt: "2025-05-22T00:00:00.000Z"
         },
