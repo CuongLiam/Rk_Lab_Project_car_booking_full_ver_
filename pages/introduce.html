@@ -15,7 +15,7 @@
     <img src="../assets/imgs/introduce/ben-phai.png" alt="Bên trái" class="bg-left">
     <img src="../assets/imgs/introduce/ben-trai.png" alt="Bên phải" class="bg-right">
   </div>
-  <iframe src="header.html" width="100%" frameborder="0"></iframe>
+  <div id="header-container"></div>
   <!-- BANNER -->
   <div class="banner">
     <img src="../assets/imgs/introduce/img-0.png" alt="" class="banner-img">
@@ -66,8 +66,10 @@
       <div class="why-columns">
         <div>
           <h4 class="orange">Tìm Kiếm Thông Tin Một Cách Dễ Dàng</h4>
-          <p class="text">Giao diện của VivuToday.com được thiết kế để <br> giúp bạn tìm kiếm thông tin nhà xe, giờ khởi <br>
-            hành, điểm xuất phát và đích một cách nhanh <br> chóng và dễ dàng. Thông qua việc nhập các <br> thông tin cơ bản, bạn
+          <p class="text">Giao diện của VivuToday.com được thiết kế để <br> giúp bạn tìm kiếm thông tin nhà xe, giờ khởi
+            <br>
+            hành, điểm xuất phát và đích một cách nhanh <br> chóng và dễ dàng. Thông qua việc nhập các <br> thông tin cơ
+            bản, bạn
             có thể tìm kiếm lịch trình br phù hợp chỉ trong vài giây.</p>
 
           <h4 class="orange">Tùy Chỉnh Theo Tài Chính Của Bạn</h4>
@@ -80,8 +82,10 @@
         </div>
         <div>
           <h4 class="orange">Lựa Chọn Nhà Xe Có Đánh Giá Cao</h4>
-          <p class="text">Chất lượng là một yếu tố quan trọng. Trên giao <br> diện của VivuToday.com, bạn có thể chọn lựa <br>
-            những nhà xe được đánh giá cao với mục đánh <br> giá 5 sao. Điều này đảm bảo rằng bạn đang chọn <br> một dịch vụ uy
+          <p class="text">Chất lượng là một yếu tố quan trọng. Trên giao <br> diện của VivuToday.com, bạn có thể chọn
+            lựa <br>
+            những nhà xe được đánh giá cao với mục đánh <br> giá 5 sao. Điều này đảm bảo rằng bạn đang chọn <br> một
+            dịch vụ uy
             tín và chất lượng cho hành trình <br> của mình.</p>
           <h4 class="orange">Thanh Toán An Toàn</h4>
           <p class="text">Việc thanh toán không còn là vấn đề khiến bạn lo lắng. Chúng tôi cung cấp các phương thức
@@ -124,14 +128,10 @@
       </form>
     </div>
   </div>
-  <iframe src="footer.html" width="100%" frameborder="0" onload="resizeIframe(this)"></iframe>
-  <script>
-    function resizeIframe(iframe) {
-      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
-    }
-  </script>
+  <div id="footer-container"></div>
+  <script src="../js/header.js"></script>
+  <script src="../js/footer.js"></script>
 
 </body>
 
 </html>
-
