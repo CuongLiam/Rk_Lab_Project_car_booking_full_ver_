@@ -44,18 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initNavLinks();
 
-      const currUser = JSON.parse(localStorage.getItem("currUser") || "null");
+      const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "null");
       const users = JSON.parse(localStorage.getItem("users") || "[]");
 
       const emailEl = document.getElementById("user-email");
       const phoneEl = document.getElementById("user-phone");
 
-      if (currUser && currUser.email) {
+      if (loggedUser && loggedUser.email) {
         // Show email in header
-        if (emailEl) emailEl.textContent = currUser.email;
+        if (emailEl) emailEl.textContent = loggedUser.email;
 
         // Find user info by email
-        const userInfo = users.find(u => u.email === currUser.email);
+        const userInfo = users.find(u => u.email === loggedUser.email);
         if (phoneEl) phoneEl.textContent = "SĐT: " + (userInfo?.phone || "Chưa cập nhật");
       } else {
         // Not logged in
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const logoutBtn = document.getElementById("user-logout-btn");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", function () {
-          localStorage.removeItem("currUser");
+          // localStorage.removeItem("currUser");
           window.location.href = "../pages/login.html";
         });
       }
