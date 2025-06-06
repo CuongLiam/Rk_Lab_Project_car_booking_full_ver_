@@ -19,7 +19,7 @@ function initNavLinks() {
       e.preventDefault();
       const href = link.getAttribute("href");
       localStorage.setItem(NAV_KEY, href);
-      sessionStorage.removeItem(DONE_KEY);  // reset for next session
+      sessionStorage.removeItem(DONE_KEY);
       window.location.href = href;
     });
   });
@@ -33,22 +33,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const savedHref = localStorage.getItem(NAV_KEY);
       const redirected = sessionStorage.getItem(DONE_KEY);
-      // if you have a saved page, haven't yet redirected,
-      // and you're not already there → do one replace
-      // if (savedHref
-      //  && !window.location.href.endsWith(savedHref)
-      //  && !redirected
-      // ) {
-      //   sessionStorage.setItem(DONE_KEY, "1");
-      //   return window.location.replace(savedHref);
-      // }
+      if (
+        savedHref &&
+        !window.location.href.endsWith(savedHref) &&
+        !redirected
+      ) {
+        sessionStorage.setItem(DONE_KEY, "1");
+        return window.location.replace(savedHref);
+      }
 
       initNavLinks();
-    })
+
+      const currUser = JSON.parse(localStorage.getItem("currUser") || "null");
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const emailEl = document.getElementById("user-email");
+      const phoneEl = document.getElementById("user-phone");
+
+      if (currUser && currUser.email) {
+        // Show email in header
+        if (emailEl) emailEl.textContent = currUser.email;
+
+        // Find user info by email
+        const userInfo = users.find(u => u.email === currUser.email);
+        if (phoneEl) phoneEl.textContent = "SĐT: " + (userInfo?.phone || "Chưa cập nhật");
+      } else {
+        // Not logged in
+        if (emailEl) emailEl.textContent = "User";
+        if (phoneEl) phoneEl.textContent = "SĐT: Chưa cập nhật";
+      }
+
+      const logoutBtn = document.getElementById("user-logout-btn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+          localStorage.removeItem("currUser");
+          window.location.href = "../pages/login.html";
+        });
+      }
+    }) // <-- this closes the .then(html => { ... }) block
     .catch(console.error);
 });
-
-
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     fetch("../pages/header.html")
