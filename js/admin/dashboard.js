@@ -350,6 +350,17 @@ ticketsSearch.addEventListener("input", function (e) {
     renderTickets();
 })
 
+
+document.getElementById("logout").addEventListener("click", () => {
+  const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+  modal.hide();
+
+  document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+    window.location.href = "../login.html";
+  }, { once: true });
+});
+
+
 renderTotalQuantity();
 renderSchedules();
 renderRoutes();

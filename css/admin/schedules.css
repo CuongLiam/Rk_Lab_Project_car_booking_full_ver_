@@ -3,6 +3,7 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #f9f9fb;
   color: #333;
+  position: relative;
 }
 
 .admin-container {
@@ -44,6 +45,7 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
+  
 }
 
 @media (max-width: 391px) {
@@ -161,7 +163,8 @@ table {
   flex-direction: column;
   gap: 16px;
   align-items: center;
-  width: 50%;
+  width: 40%;
+  text-align: center;
 }
 
 .search-bar-wrapper {
@@ -193,4 +196,14 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.icon-logout {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  top: 720px;
+  border-radius: 5px;
+  
 }

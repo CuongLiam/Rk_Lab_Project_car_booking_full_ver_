@@ -23,15 +23,16 @@
                     <li id="stations">Stations</li>
                     <li id="busCompanies" class="active">Bus Companies</li>
                     <li id="tickets">Tickets</li>
+                    <li id="logout-icon" data-bs-toggle="modal" data-bs-target="#logout-modal">Logout</li>
                 </ul>
             </nav>
         </div>
         <main class="main-content">
             <div class="header">
-            <h1>Bus Companies</h1>
-            <button class="btn btn-primary" id="addCompany">Add Company</button>
-        </div>
-        <input type="text" placeholder="name">
+                <h1>Bus Companies</h1>
+                <button class="btn btn-primary" id="addBusCompany">Add Company</button>
+            </div>
+            <input type="text" placeholder="Search by name or id" class="search" id="busCompaniesSearch">
             <table class="table">
                 <thead>
                     <tr>
@@ -42,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row">1</th>
                         <td>Thanh Nhung</td>
                         <td>Trụ sở: Cà Mau</td>
@@ -221,10 +222,10 @@
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
-
+            <div class="pagination text-center mt-3"></div>
         </main>
 
         <script src="../../js/admin/nav.js"></script>
@@ -233,6 +234,69 @@
             integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
             crossorigin="anonymous"></script>
     </div>
+    <!-- Modal Thêm/Sửa Công Ty -->
+    <div class="modal fade" id="busCompanyModal" tabindex="-1" aria-labelledby="busCompanyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="busCompanyForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="busCompanyModalLabel">Thông tin nhà xe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="companyName" class="form-label">Tên công ty</label>
+                        <input type="text" class="form-control" id="companyName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyAddress" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="companyAddress" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary ">Add Bus Company</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal xác nhận xóa công ty -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Xác nhận xóa</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa công ty này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="logout-modal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">LOGOUT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

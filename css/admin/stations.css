@@ -19,3 +19,12 @@
 td{
     height: 59px;
 }
+
+.icon-logout {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  top: 720px;
+  border-radius: 5px;
+  
+}

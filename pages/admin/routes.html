@@ -23,6 +23,7 @@
                     <li id="stations">Stations</li>
                     <li id="busCompanies">Bus Companies</li>
                     <li id="tickets">Tickets</li>
+                    <li id="logout-icon" data-bs-toggle="modal" data-bs-target="#logout-modal">Logout</li>
                 </ul>
             </nav>
         </div>
@@ -31,7 +32,7 @@
                 <h1>ROUTES</h1>
                 <button class="btn btn-primary" id="addRoute">Add Route</button>
             </div>
-            <input type="text" placeholder="Search by name or id" class="search"  id="routesSearch">
+            <input type="text" placeholder="Search by name or id" class="search" id="routesSearch">
             <table class="table">
                 <thead>
                     <tr>
@@ -50,7 +51,7 @@
                         <td>Bến xe Miền Đông</td>
                         <td>Bến xe Mỹ Đình</td>
                         <td>500.000 VND</td>
-                        <td>30h</td>    
+                        <td>30h</td>
                         <td>1700km</td>
                         <td>
                             <button class="btn btn-warning">Edit</button>
@@ -109,6 +110,24 @@
                 </tbody>
             </table>
             <div class="pagination text-center mt-3"></div>
+            <div class="modal fade" id="logout-modal" tabindex="-1" aria-labelledby="logoutModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="logoutModalLabel">LOGOUT</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to logout?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="logout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </main>
 
@@ -117,6 +136,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
             crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
     </div>
     <!-- Add Route Modal -->
     <div class="modal fade" id="routeModal" tabindex="-1" aria-labelledby="routeModalLabel" aria-hidden="true">
@@ -148,13 +169,48 @@
                             <label for="distance" class="form-label">Distance (km)</label>
                             <input type="number" class="form-control" id="distance" required />
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Route</button>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary ">Add Bus Company</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal xác nhận xóa tuyến -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Xác nhận xóa</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">Bạn có chắc chắn muốn xóa tuyến này không?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="logout-modal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">LOGOUT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

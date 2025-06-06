@@ -390,7 +390,6 @@ clearGarageBtn.addEventListener('click', () => {
 renderDashboard();
 
 function showTicketModal(itemId) {
-  // Find the ticket info
   const item = data.find(d => d.id == itemId);
   if (!item) return;
 
@@ -399,7 +398,6 @@ function showTicketModal(itemId) {
   const departureStation = stations.find(station => station.id == currRoute.departureStationId);
   const arrivalStation = stations.find(station => station.id == currRoute.arrivalStationId);
 
-  // Build ticket info HTML
   const ticketInfoHtml = `
     <div>
       <p><b>Nhà xe:</b> ${currBus.name}</p>
@@ -424,7 +422,6 @@ function showTicketModal(itemId) {
   `;
   document.getElementById('ticketInfoModalBody').innerHTML = html;
 
-  // Show modal using Bootstrap's JS API
   const ticketModal = new bootstrap.Modal(document.getElementById('ticketInfoModal'));
   ticketModal.show();
 
@@ -443,15 +440,12 @@ function showTicketModal(itemId) {
     const confirmModal = new bootstrap.Modal(document.getElementById('buyAtCounterModal'));
     confirmModal.show();
 
-    // Set up confirm button
     document.getElementById('confirmBuyAtCounterBtn').onclick = function() {
-      // Get tickets array
       let tickets = [];
       try {
         tickets = JSON.parse(localStorage.getItem("tickets")) || [];
       } catch { tickets = []; }
 
-      // Get schedules array
       let schedules = [];
       try {
         schedules = JSON.parse(localStorage.getItem("schedule")) || [];
@@ -479,32 +473,29 @@ function showTicketModal(itemId) {
           return;
         }
 
-      // Generate new id (auto-increment)
       const newId = tickets.length ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
 
-      // Generate new seatId (auto-increment)
       const newSeatId = tickets.length ? Math.max(...tickets.map(t => t.seatId || 0)) + 1 : 1;
 
       // Get phoneUser from loggedUsers and users
       let phoneUser = null;
       try {
-        const loggedUsers = JSON.parse(localStorage.getItem("loggedUsers")) || [];
-        const lastEmail = loggedUsers.length ? loggedUsers[loggedUsers.length - 1] : null;
+        const loggedUser = localStorage.getItem("loggedUser") || [];
+        const lastEmail = loggedUser.length ? loggedUser[loggedUser.length - 1] : null;
         if (lastEmail) {
           const users = JSON.parse(localStorage.getItem("users")) || [];
-          const foundUser = users.find(u => u.email === lastEmail);
+          const foundUser = users.find(u => u.email === loggedUser);
           phoneUser = foundUser ? foundUser.phone : null;
         }
       } catch { phoneUser = null; }
 
-      // Push new ticket object
       tickets.push({
         id: newId,
         scheduleId: item.id,
         seatId: newSeatId,
         departureTime: item.departureTime,
         arrivalTime: item.arrivalTime,
-        seatType: "STANDARD", // or your default
+        seatType: "STANDARD",
         price: currRoute.price,
         status: "BOOKED",
         phoneUser: phoneUser,
@@ -512,9 +503,8 @@ function showTicketModal(itemId) {
         updatedAt: new Date().toISOString()
       });
 
-      // Decrease availableSeats
       schedules[scheduleIndex].availableSeats -= 1;
-      // Optionally, update status if now 0
+
       if (schedules[scheduleIndex].availableSeats === 0) {
         schedules[scheduleIndex].status = "FULL";
       }
@@ -524,19 +514,18 @@ function showTicketModal(itemId) {
       localStorage.setItem("schedule", JSON.stringify(schedules));
       confirmModal.hide();
 
-      // SweetAlert2 success
       Swal.fire({
         icon: 'success',
         title: 'Thành công!',
         text: 'Bạn đã mua vé tại quầy thành công!',
         confirmButtonText: 'OK'
       }).then(() => {
-        processData(); // Refresh the UI to show updated seats
+        processData();
       });
     };
   };
 
-  // Handle "Book online" (optional)
+  // Handle "Book online"
   document.getElementById('bookOnlineBtn').onclick = function() {
     window.console.log("Book online");
     ticketModal.hide();

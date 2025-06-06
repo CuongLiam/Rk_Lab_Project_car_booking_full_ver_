@@ -2,6 +2,8 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const submit = document.getElementById("submit");
 const swapPageLogin = document.getElementById("swapPageLogin");
+const verificationModal = new bootstrap.Modal(document.getElementById('verification'));
+let verificationCode = ""; // Mã xác nhận sẽ được tạo ngẫu nhiên
 //Các thành phần trong trang cần chuyển đổi
 let please = document.getElementById("please");
 let information = document.getElementById("information");
@@ -42,6 +44,8 @@ submit.addEventListener("click", function (e) {
                 location.href = "../pages/admin/dashboard.html"
             } else {
                 location.href = "../pages/home-page.html"
+                localStorage.setItem("activeNavLinkHref", "./home-page.html")
+                localStorage.setItem("loggedUser", user.email)
             }
 
         } else {
@@ -64,11 +68,11 @@ submit.addEventListener("click", function (e) {
 
         const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const regexPhone = /^(0|\+84)(3[2-9]|5[6|8|9]|7[0|6-9]|8[1-5]|9[0-9])[0-9]{7}$/;
-        if (!regexEmail.test(email)){
+        if (!regexEmail.test(email)) {
             errorNotice.innerText = "Email không hợp lệ";
         } else if (emailExists) {
             errorNotice.innerText = "Email đã tồn tại. Vui lòng sử dụng email khác.";
-        } else if(!regexPhone.test(phone)){
+        } else if (!regexPhone.test(phone)) {
             errorNotice.innerText = "Số điện thoại không hợp lệ";
         } else if (password == "") {
             errorNotice.innerText = "Password không được để trống"
@@ -77,29 +81,71 @@ submit.addEventListener("click", function (e) {
         }
         else {
             flag = false
-            let id = users.length + 1
-            const user = {
-                id,
+            emailjs.init("SJ-bBFXNhG0NfyaAg");
+            verificationModal.show();
+            document.getElementById("confirmCode").value = "";
+
+            // Tạo mã xác nhận 6 chữ số
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+            // Gửi mã xác nhận qua email
+            const templateParams = {
                 email,
-                phone,
-                password,
-                role:"USER"
-            }
-            users = [...users, user]
-            localStorage.setItem("users", JSON.stringify(users));
-            successNotice.innerText = "Đăng ký thành công"
-            //Show Succsess Toast
-            const toastEl = document.getElementById('successToast');
-            const toast = new bootstrap.Toast(toastEl);
-            toast.show();
-            document.getElementById("swapPageLogin").click();
+                code: verificationCode
+            };
+
+            emailjs.send("service_rt0q3ti", "template_fxdfybn", templateParams)
+                .then(() => {
+                    successNotice.innerText = `Đã gửi mã xác nhận tới email: ${email}`;
+                    //Show Succsess Toast
+                    const toastEl = document.getElementById('successToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                    document.getElementById("verification").style.display = "block";
+                }, (error) => {
+                    console.log("Lỗi gửi email: " + error.text);
+                    errorNotice.innerText = "Lỗi gửi email: " + error.text;
+                    //Show Error Toast
+                    const toastEl = document.getElementById('errorToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                });
+
+            document.getElementById("submitVerificationCode").addEventListener("click", function (e) {
+                e.preventDefault();
+                const userCode = document.getElementById("confirmCode").value;
+                if (userCode === verificationCode) {
+                    // Thực hiện lưu dữ liệu đăng ký
+                    let id = users.length + 1
+                    const user = {
+                        id,
+                        email,
+                        phone,
+                        password,
+                        role: "USER"
+                    }
+                    verificationModal.hide()
+                    successNotice.innerText = "Đăng ký thành công"
+                    const toastEl = document.getElementById('successToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                    users = [...users, user]
+                    localStorage.setItem("users", JSON.stringify(users));
+                    document.getElementById("swapPageLogin").click();
+                } else {
+                    errorNotice.innerText = "Mã xác nhận không chính xác"
+                    const toastEl = document.getElementById('errorToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                }
+            })
         }
-        if (flag) {
-            //Show Error Toast
-            const toastEl = document.getElementById('errorToast');
-            const toast = new bootstrap.Toast(toastEl);
-            toast.show();
-        }
+    }
+    if (flag) {
+        //Show Error Toast
+        const toastEl = document.getElementById('errorToast');
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
     }
 })
 //Đổi trang đăng ký/ Đăng nhập
