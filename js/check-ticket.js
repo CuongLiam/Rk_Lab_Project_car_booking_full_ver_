@@ -70,9 +70,54 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Ghế:</strong> ${seat.seatNumber}</p>
             <p><strong>Thời gian:</strong> ${new Date(foundTicket.departureTime).toLocaleString('vi-VN')}</p>
             <p><strong>Giá:</strong> ${Number(foundTicket.price).toLocaleString('vi-VN')} VND</p>
-            <p><strong>Trạng thái:</strong> ${foundTicket.status}</p>
+            <p><strong>Trạng thái:</strong> <span id="ticket-status">${foundTicket.status}</span></p>
             `;
 
+            const modalFooter = modal.querySelector('.modal-footer');
+            modalFooter.innerHTML = `
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-danger" id="cancel-ticket-btn"
+                ${(foundTicket.status === "CANCELLED" || foundTicket.status === "BOOKED") ? "disabled" : ""}>
+                Huỷ đặt vé
+            </button>
+            `;
+
+            const cancelBtn = document.getElementById('cancel-ticket-btn');
+            if (cancelBtn) {
+            cancelBtn.onclick = function () {
+                // Fade the ticket modal
+                modal.classList.add('faded');
+                // Show confirmation modal
+                const confirmModalEl = document.getElementById('cancelConfirmModal');
+                const confirmModal = new bootstrap.Modal(confirmModalEl);
+                confirmModal.show();
+
+                // Remove fade when confirmation modal is closed
+                confirmModalEl.addEventListener('hidden.bs.modal', function handler() {
+                modal.classList.remove('faded');
+                confirmModalEl.removeEventListener('hidden.bs.modal', handler);
+                });
+
+                // Set up confirm button
+                const confirmBtn = document.getElementById('confirm-cancel-ticket-btn');
+                confirmBtn.onclick = function () {
+                // ...existing cancel logic...
+                const tickets = getTickets();
+                const idx = tickets.findIndex(t => t.id === foundTicket.id);
+                if (idx !== -1 && tickets[idx].status !== "CANCELLED") {
+                    tickets[idx].status = "CANCELLED";
+                    localStorage.setItem('tickets', JSON.stringify(tickets));
+                    const statusEl = document.querySelector('.modal-body #ticket-status');
+                    if (statusEl) statusEl.textContent = "CANCELLED";
+                    cancelBtn.disabled = true;
+                    greenBanner.textContent = 'Vé đã được huỷ thành công!';
+                    greenBanner.style.backgroundColor = '#DFF0D8';
+                    greenBanner.style.color = '#3C763D';
+                }
+                confirmModal.hide();
+                };
+            };
+            }
 
             bootstrapModal.show();
             greenBanner.textContent = 'Đã tìm thấy vé!';

@@ -480,11 +480,13 @@ function showTicketModal(itemId) {
       // Get phoneUser from loggedUsers and users
       let phoneUser = null;
       try {
-        const loggedUser = localStorage.getItem("loggedUser") || [];
-        const lastEmail = loggedUser.length ? loggedUser[loggedUser.length - 1] : null;
-        if (lastEmail) {
+        // const loggedUser = localStorage.getItem("loggedUser") || [];
+        // const lastEmail = loggedUser.length ? loggedUser[loggedUser.length - 1] : null;
+        const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "null");
+        const loggedEmail = loggedUser && loggedUser.email ? loggedUser.email : null;
+        if (loggedEmail) {
           const users = JSON.parse(localStorage.getItem("users")) || [];
-          const foundUser = users.find(u => u.email === loggedUser);
+          const foundUser = users.find(u => u.email === loggedEmail);
           phoneUser = foundUser ? foundUser.phone : null;
         }
       } catch { phoneUser = null; }
