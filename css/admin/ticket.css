@@ -123,6 +123,8 @@ table {
   flex-direction: column;
   gap: 16px;
   align-items: center;
+  width: 30%;
+  text-align: center;
 }
 
 .search-bar-wrapper {
@@ -189,4 +191,13 @@ table {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.icon-logout {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  top: 720px;
+  border-radius: 5px;
+  
 }
