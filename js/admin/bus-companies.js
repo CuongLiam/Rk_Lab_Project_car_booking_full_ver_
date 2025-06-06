@@ -131,7 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const newCompany = {
             id: editingId ?? (companies.length ? Math.max(...companies.map(c => c.id)) + 1 : 1),
             companyName: nameInput.value.trim(),
-            descriptions: addressInput.value.trim()
+            descriptions: addressInput.value.trim(),
+            createAt: new Date(),
+            updateAt: new Date(),
         };
 
         // Kiểm tra dữ liệu đầu vào
@@ -177,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         editingId = company.id;
         nameInput.value = company.companyName;
         addressInput.value = company.descriptions;
+        updateAt = new Date();
         modal.show();
     }
 

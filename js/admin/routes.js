@@ -155,7 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
             arrivalStationId: Number(arrivalSelect.value),
             price: Number(priceInput.value),
             duration: durationInput.value,
-            distance: Number(distanceInput.value)
+            distance: Number(distanceInput.value),
+            createAt: new Date(),
+            updateAt: new Date(),
         };
 
         // Kiểm tra ga đi và đến không được giống nhau
@@ -206,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
         priceInput.value = route.price;
         durationInput.value = route.duration;
         distanceInput.value = route.distance;
-
+        updateAt = new Date();
         modal.show();
     }
 

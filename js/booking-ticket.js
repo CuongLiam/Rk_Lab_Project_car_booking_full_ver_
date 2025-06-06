@@ -254,7 +254,7 @@ const renderDashboard = () => {
 
   // Add event listeners for all "Chọn xe" buttons
   right.querySelectorAll('.btnChoose[data-ticket-id]').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
       const ticketId = this.getAttribute('data-ticket-id');
       showTicketModal(ticketId);
     });
@@ -426,7 +426,7 @@ function showTicketModal(itemId) {
   ticketModal.show();
 
   // Handle "Mua vé tại quầy"
-  document.getElementById('buyAtCounterBtn').onclick = function() {
+  document.getElementById('buyAtCounterBtn').onclick = function () {
     ticketModal.hide();
     // Show confirmation modal with ticket info
     document.getElementById('buyAtCounterModalBody').innerHTML = `
@@ -440,7 +440,7 @@ function showTicketModal(itemId) {
     const confirmModal = new bootstrap.Modal(document.getElementById('buyAtCounterModal'));
     confirmModal.show();
 
-    document.getElementById('confirmBuyAtCounterBtn').onclick = function() {
+    document.getElementById('confirmBuyAtCounterBtn').onclick = function () {
       let tickets = [];
       try {
         tickets = JSON.parse(localStorage.getItem("tickets")) || [];
@@ -452,26 +452,26 @@ function showTicketModal(itemId) {
       } catch { schedules = []; }
 
       // Find the schedule for this ticket
-        const scheduleIndex = schedules.findIndex(sch => sch.id === item.id);
-        if (scheduleIndex === -1) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Lỗi!',
-            text: 'Không tìm thấy lịch trình!',
-            confirmButtonText: 'OK'
-          });
-          return;
-        }
-        // Check availableSeats
-        if (schedules[scheduleIndex].availableSeats <= 0) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Hết chỗ!',
-            text: 'Chuyến này đã hết vé, vui lòng chọn chuyến khác.',
-            confirmButtonText: 'OK'
-          });
-          return;
-        }
+      const scheduleIndex = schedules.findIndex(sch => sch.id === item.id);
+      if (scheduleIndex === -1) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi!',
+          text: 'Không tìm thấy lịch trình!',
+          confirmButtonText: 'OK'
+        });
+        return;
+      }
+      // Check availableSeats
+      if (schedules[scheduleIndex].availableSeats <= 0) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Hết chỗ!',
+          text: 'Chuyến này đã hết vé, vui lòng chọn chuyến khác.',
+          confirmButtonText: 'OK'
+        });
+        return;
+      }
 
       const newId = tickets.length ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
 
@@ -489,7 +489,7 @@ function showTicketModal(itemId) {
         }
       } catch { phoneUser = null; }
 
-      tickets.push({
+      let newTicket = {
         id: newId,
         scheduleId: item.id,
         seatId: newSeatId,
@@ -497,11 +497,38 @@ function showTicketModal(itemId) {
         arrivalTime: item.arrivalTime,
         seatType: "STANDARD",
         price: currRoute.price,
-        status: "BOOKED",
+        status: "PENDING",
         phoneUser: phoneUser,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
-      });
+      }
+      tickets.push(newTicket);
+
+      //Mail JS
+      emailjs.init("SJ-bBFXNhG0NfyaAg");
+
+      let currRouteForParams = routes.find(route => route.id == item.routeId);
+      let currDepartureStation = stations.find(station => station.id == currRouteForParams.departureStationId);
+      let currArrivalStation = stations.find(station => station.id == currRouteForParams.arrivalStationId);
+      function formatDateTime(datetimeString) {
+        const date = new Date(datetimeString);
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+        return `${hours}:${minutes} ${day}-${month}-${year}`;
+      }
+      const templateParams = {
+        id: newTicket.id,
+        scheduleName: `${currDepartureStation.location} - ${currArrivalStation.location}`,
+        price: newTicket.price,
+        phoneUser: newTicket.phoneUser,
+        departureTime: formatDateTime(item.departureTime),
+        email: localStorage.getItem("loggedUser"),
+      };
+
+      emailjs.send("service_rt0q3ti", "template_30q0sa9", templateParams)
 
       schedules[scheduleIndex].availableSeats -= 1;
 
@@ -517,7 +544,7 @@ function showTicketModal(itemId) {
       Swal.fire({
         icon: 'success',
         title: 'Thành công!',
-        text: 'Bạn đã mua vé tại quầy thành công!',
+        text: 'Bạn đã mua vé tại quầy thành công! Kiểm tra email để lấy thông tin vé',
         confirmButtonText: 'OK'
       }).then(() => {
         processData();
@@ -526,7 +553,7 @@ function showTicketModal(itemId) {
   };
 
   // Handle "Book online"
-  document.getElementById('bookOnlineBtn').onclick = function() {
+  document.getElementById('bookOnlineBtn').onclick = function () {
     window.console.log("Book online");
     ticketModal.hide();
   };
