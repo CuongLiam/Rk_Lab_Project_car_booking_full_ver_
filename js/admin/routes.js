@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Các phần tử DOM được sử dụng
+    // Các phần tử DOM
     const tbody = document.querySelector("tbody");
     const addBtn = document.getElementById("addRoute");
     const form = document.getElementById("routeForm");
@@ -12,11 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const paginationContainer = document.querySelector(".pagination");
     const routesSearchInput = document.getElementById("routesSearch");
 
+    // Modal xác nhận xóa
+    const confirmDeleteModal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
+    const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+    let deleteId = null;
+
     // Biến trạng thái
-    let editingId = null;      // ID của tuyến đang sửa (null nếu đang thêm mới)
-    let currentPage = 1;       // Trang hiện tại
-    const pageSize = 10;       // Số tuyến hiển thị mỗi trang
-    let keyword = "";          // Từ khóa tìm kiếm
+    let editingId = null;
+    let currentPage = 1;
+    const pageSize = 10;
+    let keyword = "";
 
     // Lấy danh sách tuyến từ localStorage
     function getRoutes() {
@@ -28,17 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("routes", JSON.stringify(routes));
     }
 
-    // Lấy danh sách bến từ localStorage
+    // Lấy danh sách bến xe từ localStorage
     function getStations() {
         return JSON.parse(localStorage.getItem("stations")) || [];
     }
 
-    // Hiển thị danh sách tuyến (có lọc theo từ khóa tìm kiếm)
+    // Hiển thị danh sách tuyến (có tìm kiếm và phân trang)
     function renderRoutes() {
         const allRoutes = getRoutes();
         const stations = getStations();
 
-        // Lọc tuyến theo từ khóa tìm kiếm
+        // Lọc theo từ khóa tìm kiếm
         const filteredRoutes = allRoutes.filter(route => {
             const departureStation = stations.find(s => s.id === route.departureStationId);
             const arrivalStation = stations.find(s => s.id === route.arrivalStationId);
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const end = start + pageSize;
         const pageRoutes = filteredRoutes.slice(start, end);
 
-        // Tạo HTML hiển thị danh sách tuyến
+        // Tạo từng dòng dữ liệu
         pageRoutes.forEach(route => {
             const departureStation = stations.find(s => s.id === route.departureStationId);
             const arrivalStation = stations.find(s => s.id === route.arrivalStationId);
@@ -82,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderPagination(filteredRoutes.length);
     }
 
-    // Tạo phân trang
+    // Hiển thị các nút phân trang
     function renderPagination(totalItems) {
         paginationContainer.innerHTML = "";
         const totalPages = Math.ceil(totalItems / pageSize);
@@ -109,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             btn.addEventListener("click", () => {
                 currentPage = i;
-                renderRoutes(); 
+                renderRoutes();
             });
 
             paginationContainer.appendChild(btn);
@@ -129,20 +134,17 @@ document.addEventListener("DOMContentLoaded", function () {
         paginationContainer.appendChild(nextBtn);
     }
 
-    // Mở modal thêm tuyến mới
+    // Mở modal thêm mới tuyến
     addBtn.addEventListener("click", () => {
         editingId = null;
         form.reset();
         const stations = getStations();
-
-        // Hiển thị danh sách bến xe trong form
         departureSelect.innerHTML = stations.map(s => `<option value="${s.id}">${s.name}</option>`);
         arrivalSelect.innerHTML = stations.map(s => `<option value="${s.id}">${s.name}</option>`);
-
         modal.show();
     });
 
-    // Xử lý form khi submit
+    // Xử lý khi gửi form
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             distance: Number(distanceInput.value)
         };
 
-        // Kiểm tra ga đi và ga đến không được trùng nhau
+        // Kiểm tra ga đi và đến không được giống nhau
         if (newRoute.departureStationId === newRoute.arrivalStationId) {
             alert("Ga đi và đến không được giống nhau!");
             return;
@@ -176,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.reset();
     });
 
-    // Lắng nghe sự kiện click vào nút sửa hoặc xóa tuyến
+    // Bắt sự kiện click nút sửa / xóa
     tbody.addEventListener("click", function (e) {
         const id = Number(e.target.id);
 
@@ -185,11 +187,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (e.target.classList.contains("delete-btn")) {
-            handleDelete(id);
+            deleteId = id;
+            confirmDeleteModal.show();
         }
     });
 
-    // Xử lý khi click nút sửa tuyến
+    // Xử lý nút sửa
     function handleEdit(id) {
         const routes = getRoutes();
         const route = routes.find(r => r.id === id);
@@ -198,10 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         editingId = route.id;
 
-        // Gán dữ liệu tuyến vào form
         departureSelect.innerHTML = stations.map(s => `<option value="${s.id}" ${s.id === route.departureStationId ? "selected" : ""}>${s.name}</option>`);
         arrivalSelect.innerHTML = stations.map(s => `<option value="${s.id}" ${s.id === route.arrivalStationId ? "selected" : ""}>${s.name}</option>`);
-
         priceInput.value = route.price;
         durationInput.value = route.duration;
         distanceInput.value = route.distance;
@@ -209,22 +210,21 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.show();
     }
 
-    // Xử lý khi click nút xóa tuyến
-    function handleDelete(id) {
-        if (!confirm("Bạn có chắc muốn xóa tuyến này không?")) return;
-
-        const routes = getRoutes().filter(r => r.id !== id);
+    // Xử lý xác nhận xóa
+    confirmDeleteBtn.addEventListener("click", function () {
+        const routes = getRoutes().filter(r => r.id !== deleteId);
         saveRoutes(routes);
         renderRoutes();
-    }
+        confirmDeleteModal.hide();
+    });
 
-    // Xử lý sự kiện tìm kiếm tuyến
+    // Tìm kiếm tuyến
     routesSearchInput.addEventListener("input", function (e) {
         keyword = e.target.value.toLowerCase().trim();
         currentPage = 1;
         renderRoutes();
     });
 
-    // Gọi lần đầu để hiển thị
+    // Gọi hiển thị ban đầu
     renderRoutes();
 });

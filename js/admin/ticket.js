@@ -1,40 +1,10 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     renderSchedulesTable();
 });
 
-
 function getSticket() {
     return JSON.parse(localStorage.getItem('tickets')) || [];
 }
-
-function renderSchedulesTable(list) {
-    const dataTicket = getSticket();
-    const tbody = document.querySelector('.schedule-list');
-    let html = ''; // Bổ sung khai báo biến html
-
-    dataTicket.forEach((ticket, index) => {
-        html += `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${ticket.seatId}</td>
-            <td>${ticket.scheduleId}</td>
-            <td>${ticket.seatType}</td>
-            <td>${formatDateTime(ticket.departureTime)}</td>
-            <td>${formatDateTime(ticket.arrivalTime)}</td>
-            <td style="color: ${ticket.status === 'AVAILABLE' ? 'green' : 'red'}; font-weight: bold;">${ticket.status}</td>
-            <td>${ticket.price}</td>
-            <td>
-              <button class="btn btn-danger delete-schedule" data-id="${ticket.id}">Delete</button>
-              <button class="btn btn-warning edit-schedule" data-id="${ticket.id}">Edit</button>
-            </td>
-          </tr>
-        `;
-    });
-    tbody.innerHTML = html;
-}
-
 
 // Xóa lịch trình
 let scheduleIdToDelete = null;
@@ -101,8 +71,11 @@ function renderSchedulesTable(list) {
             <td>${formatDateTime(ticket.departureTime)}</td>
             <td>${formatDateTime(ticket.arrivalTime)}</td>
             <td>${ticket.seatType}</td>
-            <td style="color: ${ticket.status === 'AVAILABLE' ? 'green' : 'red'}; font-weight: bold;">${ticket.status}</td>
-            <td>${ticket.price} đ</td>
+<td style="color: ${
+              ticket.status === 'COMPLETED' ? 'green' :
+              ticket.status === 'BOOKED' ? 'orange' :
+              'red'
+            }; font-weight: bold;">${ticket.status}</td>            <td>${ticket.price} đ</td>
             <td>
               <button class="btn btn-danger delete-schedule" data-id="${ticket.id}">Delete</button>
               <button class="btn btn-warning edit-schedule" data-id="${ticket.id}">Edit</button>

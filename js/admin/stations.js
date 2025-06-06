@@ -1,3 +1,17 @@
+const stationModal = document.getElementById('station-modal');
+const stationForm = document.getElementById('station-form');
+const stationModalTitle = document.getElementById('station-modal-title');
+const closeModalBtn = document.getElementById('close-modal');
+const cancelModalBtn = document.getElementById('cancel-modal');
+const addStationBtn = document.getElementById('add-station');
+
+const deleteModal = document.getElementById('delete-modal');
+const cancelDeleteBtn = document.getElementById('cancel-delete');
+const confirmDeleteBtn = document.getElementById('confirm-delete');
+
+let editingStationId = null;
+let deletingStationId = null;
+
 function loadStations() {
     try {
         return JSON.parse(localStorage.getItem("stations")) || [];
@@ -9,7 +23,6 @@ function saveStations(data) {
     localStorage.setItem("stations", JSON.stringify(data));
 }
 
-// Use these helpers everywhere
 let stations = loadStations();
 
 let currentPage = 1;
@@ -17,11 +30,10 @@ const itemsPerPage = 10;
 
 let searchKeyword = "";
 
-// Update renderStations to use filtered data
 function renderStations() {
-    stations = loadStations(); // Always reload latest
+    stations = loadStations();
 
-    // Filter by id or name (case-insensitive)
+    // search
     let filtered = stations.filter(item => {
         return (
             String(item.id).includes(searchKeyword) ||
@@ -42,7 +54,7 @@ function renderStations() {
             <td>${s.wallpaper}</td>
             <td>${s.descriptions}</td>
             <td>${s.location}</td>
-            <td colspan="2" class="d-flex justify-content-between p-2">
+            <td colspan="2" class="d-flex justify-content-between p-2" style="gap: 5px;">
                 <button class="btn btn-warning btn-sm">Edit</button>
                 <button class="btn btn-danger btn-sm">Delete</button>
             </td>
@@ -52,7 +64,6 @@ function renderStations() {
     renderPagination(filtered.length);
 }
 
-// Update renderPagination to accept totalItems
 function renderPagination(totalItems) {
     let pagination = document.getElementById('station-pagination');
     if (!pagination) {
@@ -75,7 +86,6 @@ function renderPagination(totalItems) {
 
     pagination.innerHTML = html;
 
-    // Add event listeners
     pagination.querySelectorAll('button[data-page]').forEach(btn => {
         btn.onclick = function () {
             const page = Number(this.getAttribute('data-page'));
@@ -87,34 +97,17 @@ function renderPagination(totalItems) {
     });
 }
 
-// Listen for search input changes
 document.getElementById('search-station').addEventListener('input', function (e) {
     searchKeyword = e.target.value.toLowerCase().trim();
-    currentPage = 1; // Reset to first page on search
+    currentPage = 1; // Reset to 1st page on search
     renderStations();
 });
 
-// ...rest of your code...
 
 
 document.addEventListener('DOMContentLoaded', renderStations);
 
-// Modal elements
-const stationModal = document.getElementById('station-modal');
-const stationForm = document.getElementById('station-form');
-const stationModalTitle = document.getElementById('station-modal-title');
-const closeModalBtn = document.getElementById('close-modal');
-const cancelModalBtn = document.getElementById('cancel-modal');
-const addStationBtn = document.getElementById('add-station');
-
-const deleteModal = document.getElementById('delete-modal');
-const cancelDeleteBtn = document.getElementById('cancel-delete');
-const confirmDeleteBtn = document.getElementById('confirm-delete');
-
-let editingStationId = null;
-let deletingStationId = null;
-
-// Show/Hide modal helpers (unchanged)
+// Modal ---
 function showModal(modal) {
     modal.style.display = 'block';
     setTimeout(() => {
@@ -149,7 +142,7 @@ addStationBtn.addEventListener('click', () => {
     editingStationId = null;
     stationForm.reset();
     stationModalTitle.textContent = 'Add Station';
-    document.getElementById('station-error').innerHTML = ""; // Clear error
+    document.getElementById('station-error').innerHTML = "";
     showModal(stationModal);
 });
 
@@ -168,7 +161,7 @@ document.getElementById('station-list').addEventListener('click', function(e) {
             document.getElementById('station-descriptions').value = station.descriptions;
             document.getElementById('station-location').value = station.location;
             stationModalTitle.textContent = 'Edit Station';
-            document.getElementById('station-error').innerHTML = ""; // Clear error
+            document.getElementById('station-error').innerHTML = "";
             showModal(stationModal);
         }
     }
@@ -185,7 +178,7 @@ closeModalBtn.addEventListener('click', () => hideModal(stationModal));
 cancelModalBtn.addEventListener('click', () => hideModal(stationModal));
 cancelDeleteBtn.addEventListener('click', () => hideModal(deleteModal));
 
-// Add/Edit logic with validation
+// Add/Edit logic + validation
 stationForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const id = document.getElementById('station-id').value;
@@ -198,7 +191,6 @@ stationForm.addEventListener('submit', function(e) {
 
     let data = loadStations();
 
-    // Validation: name must be unique (case-insensitive, except for editing itself)
     const nameExists = data.some(
         s => s.name.trim().toLowerCase() === name.toLowerCase() && (!editingStationId || s.id !== editingStationId)
     );
@@ -207,13 +199,11 @@ stationForm.addEventListener('submit', function(e) {
         return;
     }
 
-    // Validation: id must be unique when adding (not editing)
     if (!editingStationId && data.some(s => String(s.id) === id && id !== "")) {
         errorEl.innerHTML = "Station ID must be unique!";
         return;
     }
 
-    // Clear error if passed validation
     errorEl.innerHTML = "";
 
     if (editingStationId) {
@@ -238,23 +228,36 @@ stationForm.addEventListener('submit', function(e) {
     renderStations();
 });
 
-// Delete logic with reindexing
+// Delete logic with reindexing if required but now its not coincide (*/ω＼*)
 confirmDeleteBtn.addEventListener('click', function() {
     let data = loadStations();
-    // Find the deleted station's id
+
     const deletedIdx = data.findIndex(s => s.id === deletingStationId);
     if (deletedIdx === -1) {
         hideModal(deleteModal);
         return;
     }
-    // Remove the station
+
     data.splice(deletedIdx, 1);
+
     // Reindex: set id = index+1 for all
     // data = data.map((s, idx) => ({ ...s, id: idx + 1 }));
+    
     saveStations(data);
     hideModal(deleteModal);
     renderStations();
 });
+
+
+document.getElementById("logout").addEventListener("click", () => {
+  const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+  modal.hide();
+
+  document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+    window.location.href = "../login.html";
+  }, { once: true });
+});
+
 
 // function renderPagination() {
 //     let pagination = document.getElementById('station-pagination');

@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   renderSchedulesTable();
 });
@@ -15,16 +7,23 @@ function getData(key) {
   return JSON.parse(localStorage.getItem(key)) || [];
 }
 
-function renderSchedulesTable(list, page = 1, pageSize = 5) {
-  const schedules = getData('schedule');
-  const stations = getData('stations');
-  const buses = getData('buses');
-  const busCompanies = getData('busCompanies');
-  const routes = getData('routes');
+const stations = getData('stations');
+const buses = getData('buses');
+const busCompanies = getData('busCompanies');
+const routes = getData('routes');
+const schedules = getData('schedule');
+const pageSize = 5;
+document.getElementById('search-input').addEventListener('input', () => handleSearch(1));
 
+
+
+function renderSchedulesTable(list, page = 1) {
+  // Lấy lại dữ liệu mới nhất mỗi lần render
+  const schedulesData = getData('schedule');
+  const data = list || schedulesData;
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
-  const pagedSchedules = schedules.slice(start, end);
+  const pagedSchedules = data.slice(start, end);
 
   const tbody = document.querySelector('.schedule-list');
   let html = '';
@@ -50,7 +49,10 @@ function renderSchedulesTable(list, page = 1, pageSize = 5) {
         <td>${busName}</td>
         <td>${formatDateTime(schedule.departureTime)}</td>
         <td>${formatDateTime(schedule.arrivalTime)}</td>
-        <td style="color: ${schedule.status === 'AVAILABLE' ? 'green' : 'red'}; font-weight: bold;">${schedule.status}</td>
+        <td style="color: ${schedule.status === 'AVAILABLE' ? 'green' :
+        schedule.status === 'CANCELED' || schedule.status === 'CANCELLED' ? 'orange' :
+          'red'
+      }; font-weight: bold;">${schedule.status}</td>
         <td>${schedule.availableSeats}</td>
         <td>
           <button class="btn btn-danger delete-schedule" data-id="${schedule.id}">Delete</button>
@@ -59,18 +61,17 @@ function renderSchedulesTable(list, page = 1, pageSize = 5) {
       </tr>
     `;
   });
+
   tbody.innerHTML = html;
 
-  renderPagination(schedules.length, page, pageSize);
+  // Also use filtered data for pagination
+  renderPagination(data.length, page, pageSize);
 }
-
 // Add schedule
 document.getElementById('add-schedule-form').onsubmit = function (e) {
   e.preventDefault();
   const formData = new FormData(this);
 
-  const schedules = getData('schedule');
-  const buses = getData('buses');
 
   const scheduleData = {
     routeId: Number(formData.get('routeId')),
@@ -97,7 +98,6 @@ document.getElementById('add-schedule-form').onsubmit = function (e) {
       schedules[index] = scheduleData;
     }
   } else {
-    // Thêm mới
     const maxId = schedules.length > 0 ? Math.max(...schedules.map(s => Number(s.id) || 0)) : 0;
     scheduleData.id = maxId + 1;
     scheduleData.createdAt = new Date().toISOString();
@@ -116,10 +116,6 @@ document.getElementById('add-schedule-form').onsubmit = function (e) {
 
 // Render route and bus options
 function renderRouteAndBusOptions() {
-  const stations = getData('stations');
-  const buses = getData('buses');
-  const busCompanies = getData('busCompanies');
-  const routes = getData('routes');
 
   const routeSelect = document.getElementById('route-select');
   const busSelect = document.getElementById('bus-select');
@@ -160,36 +156,38 @@ document.getElementById('close-add-modal').onclick = function () {
   document.getElementById('add-modal').style.display = 'none';
 };
 
-// Xóa lịch trình
-let scheduleIdToDelete = null;
+
+// Gán sự kiện khi bấm nút xóa trên mỗi dòng bảng
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('delete-schedule')) {
-    scheduleIdToDelete = Number(e.target.dataset.id);
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('delete-modal').style.display = 'flex';
+    const scheduleId = e.target.dataset.id;
+
+    // Gán id vào nút trong modal
+    document.getElementById('delete-schedule').dataset.id = scheduleId;
+    const deleteModal = new bootstrap.Modal(document.getElementById('delete-modal'));
+    deleteModal.show();
   }
 });
 
-document.getElementById('close-modal-schedule').onclick = function () {
-  document.getElementById('delete-modal').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-  scheduleIdToDelete = null;
-};
+document.getElementById('delete-schedule').addEventListener('click', function () {
+  const id = Number(this.dataset.id);
+  if (!id) return;
 
-document.getElementById('delete-schedule').onclick = function () {
   let schedules = getData('schedule');
-  if (scheduleIdToDelete !== null) {
-    const idx = schedules.findIndex(s => s.id === scheduleIdToDelete);
-    if (idx !== -1) {
-      schedules.splice(idx, 1);
-      localStorage.setItem('schedule', JSON.stringify(schedules));
-      renderSchedulesTable();
-    }
-  }
-  document.getElementById('delete-modal').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-  scheduleIdToDelete = null;
-};
+  schedules = schedules.filter(s => s.id !== id);
+  localStorage.setItem('schedule', JSON.stringify(schedules));
+
+  renderSchedulesTable(); // cập nhật bảng
+
+  // Ẩn modal xác nhận
+  const deleteModalEl = document.getElementById('delete-modal');
+  const modalInstance = bootstrap.Modal.getInstance(deleteModalEl);
+  if (modalInstance) modalInstance.hide();
+
+  // Xóa id khỏi nút
+  this.dataset.id = "";
+});
+
 
 // Pagination rendering
 function renderPagination(total, page, pageSize) {
@@ -217,8 +215,8 @@ function renderPagination(total, page, pageSize) {
   `;
 
   const paginationUl = document.querySelector('ul.pagination');
-    paginationUl.innerHTML = html;
-  
+  paginationUl.innerHTML = html;
+
 }
 
 // Pagination event
@@ -237,30 +235,6 @@ document.addEventListener('click', function (e) {
 
 
 
-function handleSearch() {
-  const keyword = document.getElementById('search-input').value.toLowerCase().trim();
-  const routes = getData('routes');
-  const buses = getData('buses');
-  const stations = getData('stations');
-  const companies = getData('busCompanies');
-
-  const filtered = schedules.filter(schedule => {
-    const bus = buses.find(b => b.id === schedule.busId);
-    const route = routes.find(r => r.id === schedule.routeId);
-
-    const busName = bus ? bus.name.toLowerCase() : '';
-    let routeName = '';
-    if (route) {
-      const dep = stations.find(s => s.id === route.departureStationId);
-      const arr = stations.find(s => s.id === route.arrivalStationId);
-      routeName = `${dep ? dep.name : ''} → ${arr ? arr.name : ''}`.toLowerCase();
-    }
-
-    return busName.includes(keyword) || routeName.includes(keyword);
-  });
-
-  renderSchedulesTable(filtered);
-}
 
 
 let currentScheduleId = null;
@@ -280,15 +254,47 @@ document.addEventListener('click', function (e) {
     // Gán giá trị vào form
     document.querySelector('#route-select').value = schedule.routeId;
     document.querySelector('#bus-select').value = schedule.busId;
-    document.querySelector('[name="departureTime"]').value = formatDateTime(schedule.departureTime);
-    document.querySelector('[name="arrivalTime"]').value = formatDateTime(schedule.arrivalTime);
+    document.querySelector('[name="departureTime"]').value = formatInputDateTime(schedule.departureTime);
+    document.querySelector('[name="arrivalTime"]').value = formatInputDateTime(schedule.arrivalTime);
     document.querySelector('[name="status"]').value = schedule.status;
     document.querySelector('[name="availableSeats"]').value = schedule.availableSeats;
+
 
     // Mở modal
     document.getElementById('add-modal').style.display = 'flex';
   }
 });
+
+function handleSearch(page = 1) {
+  const keyword = document.getElementById('search-input')?.value?.toLowerCase().trim() || '';
+
+  const filteredSchedules = schedules.filter(schedule => {
+    const bus = buses.find(b => b.id === schedule.busId);
+    const busName = bus ? bus.name.toLowerCase() : '';
+
+    const route = routes.find(r => r.id === schedule.routeId);
+    const departureStation = route ? stations.find(st => st.id === route.departureStationId) : null;
+    const arrivalStation = route ? stations.find(st => st.id === route.arrivalStationId) : null;
+
+    const departureName = departureStation ? departureStation.name.toLowerCase() : '';
+    const arrivalName = arrivalStation ? arrivalStation.name.toLowerCase() : '';
+    const routeName = `${departureName} → ${arrivalName}`;
+
+    return (
+      busName.includes(keyword) ||
+      departureName.includes(keyword) ||
+      arrivalName.includes(keyword) ||
+      routeName.includes(keyword)
+    );
+  });
+
+  renderSchedulesTable(filteredSchedules, page);
+}
+
+const logoutModal = document.getElementById('logout-modal');
+document.getElementById('logout').onclick = function () {
+  logoutModal.style.display = 'flex';
+};
 
 
 
@@ -303,3 +309,24 @@ function formatDateTime(dateStr) {
   const min = String(date.getMinutes()).padStart(2, '0');
   return `${dd}/${mm}/${yyyy} ${hh}:${min}`;
 }
+
+
+function formatInputDateTime(dateStr) {
+  const date = new Date(dateStr);
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+  const hh = String(date.getHours()).padStart(2, '0');
+  const min = String(date.getMinutes()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+}
+
+
+document.getElementById("logout").addEventListener("click", () => {
+  const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+  modal.hide();
+
+  document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+    window.location.href = "../login.html";
+  }, { once: true });
+});
