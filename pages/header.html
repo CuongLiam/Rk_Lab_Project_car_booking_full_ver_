@@ -36,6 +36,27 @@
           <a href="tel:19000152" class="ms-3">
             <i class="fa-solid fa-phone"></i> 1900 0152
           </a>
+          <span class="mx-2 d-none d-md-inline">|</span>
+          <!-- User Dropdown -->
+          <div class="dropdown d-inline-block" id="user-dropdown-container" style="min-width: 180px;">
+            <a href="#" class="dropdown-toggle text-white" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration:none;">
+              <i class="fa-solid fa-user me-1"></i>
+              <span id="user-email">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <span class="dropdown-item-text" id="user-phone">
+                  <!-- Phone will be injected here -->
+                </span>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <button class="dropdown-item text-danger" id="user-logout-btn">
+                  <i class="fa-solid fa-right-from-bracket me-2"></i>Đăng xuất
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
