@@ -45,7 +45,8 @@ submit.addEventListener("click", function (e) {
             } else {
                 location.href = "../pages/home-page.html"
                 localStorage.setItem("activeNavLinkHref", "./home-page.html")
-                localStorage.setItem("loggedUser", user.email)
+                // localStorage.setItem("loggedUser", user.email)
+                localStorage.setItem("loggedUser", JSON.stringify({ email: user.email }));
             }
 
         } else {
