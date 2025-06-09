@@ -4,7 +4,7 @@ body {
 
 .wrapper {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin-bottom: 96px;
     margin-top: 48px;
@@ -14,8 +14,7 @@ body {
 
 .container {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
     max-width: 1440px; 
     width: 100%;
 }
@@ -136,11 +135,14 @@ h2 {
     }
     .form-container {
         width: 232px;
-        margin-right: 20px;
+        margin-left: -4px;
+
+        margin-right: 0px;
     }
     
     .right-side {
-        width: calc(100% - 232px - 20px);
+        width: 484px;
+        margin-left: 20px;
     }
     .green-banner{
         width: 484px;
