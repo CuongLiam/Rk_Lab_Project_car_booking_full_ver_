@@ -3,121 +3,121 @@ let scheduleData = [
         "id": 1,
         "routeId": 2,
         "busId": 4,
-        "departureTime": "2025-05-22T07:00:00.000Z",
-        "arrivalTime": "2025-05-22T16:00:00.000Z",
+        "departureTime": "2025-06-22T07:00:00.000Z",
+        "arrivalTime": "2025-06-22T16:00:00.000Z",
         "availableSeats": 15,
         "totalSeats": 42,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 2,
         "routeId": 1,
         "busId": 1,
-        "departureTime": "2025-05-23T07:00:00.000Z",
-        "arrivalTime": "2025-05-23T16:00:00.000Z",
+        "departureTime": "2025-06-23T07:00:00.000Z",
+        "arrivalTime": "2025-06-23T16:00:00.000Z",
         "availableSeats": 0,
         "totalSeats": 40,
         "status": "FULL",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 3,
         "routeId": 3,
         "busId": 3,
-        "departureTime": "2025-05-24T07:00:00.000Z",
-        "arrivalTime": "2025-05-24T16:00:00.000Z",
+        "departureTime": "2025-06-24T07:00:00.000Z",
+        "arrivalTime": "2025-06-24T16:00:00.000Z",
         "availableSeats": 10,
         "totalSeats": 20,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 4,
         "routeId": 4,
         "busId": 2,
-        "departureTime": "2025-05-25T08:00:00.000Z",
-        "arrivalTime": "2025-05-25T16:00:00.000Z",
+        "departureTime": "2025-06-25T08:00:00.000Z",
+        "arrivalTime": "2025-06-25T16:00:00.000Z",
         "availableSeats": 5,
         "totalSeats": 30,
         "status": "CANCELLED",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 5,
         "routeId": 5,
         "busId": 5,
-        "departureTime": "2025-05-26T08:00:00.000Z",
-        "arrivalTime": "2025-05-26T16:00:00.000Z",
+        "departureTime": "2025-06-26T08:00:00.000Z",
+        "arrivalTime": "2025-06-26T16:00:00.000Z",
         "availableSeats": 18,
         "totalSeats": 35,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 6,
         "routeId": 2,
         "busId": 1,
-        "departureTime": "2025-05-27T08:00:00.000Z",
-        "arrivalTime": "2025-05-27T16:00:00.000Z",
+        "departureTime": "2025-06-27T08:00:00.000Z",
+        "arrivalTime": "2025-06-27T16:00:00.000Z",
         "availableSeats": 8,
         "totalSeats": 40,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 7,
         "routeId": 3,
         "busId": 2,
-        "departureTime": "2025-05-28T08:00:00.000Z",
-        "arrivalTime": "2025-05-28T16:00:00.000Z",
+        "departureTime": "2025-06-28T08:00:00.000Z",
+        "arrivalTime": "2025-06-28T16:00:00.000Z",
         "availableSeats": 0,
         "totalSeats": 30,
         "status": "FULL",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 8,
         "routeId": 1,
         "busId": 3,
-        "departureTime": "2025-05-29T08:00:00.000Z",
-        "arrivalTime": "2025-05-29T16:00:00.000Z",
+        "departureTime": "2025-06-29T08:00:00.000Z",
+        "arrivalTime": "2025-06-29T16:00:00.000Z",
         "availableSeats": 4,
         "totalSeats": 20,
         "status": "CANCELLED",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 9,
         "routeId": 4,
         "busId": 4,
-        "departureTime": "2025-05-30T08:00:00.000Z",
-        "arrivalTime": "2025-05-30T16:00:00.000Z",
+        "departureTime": "2025-06-30T08:00:00.000Z",
+        "arrivalTime": "2025-06-30T16:00:00.000Z",
         "availableSeats": 30,
         "totalSeats": 42,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 10,
         "routeId": 5,
         "busId": 5,
-        "departureTime": "2025-05-31T08:00:00.000Z",
-        "arrivalTime": "2025-05-31T16:00:00.000Z",
+        "departureTime": "2025-06-31T08:00:00.000Z",
+        "arrivalTime": "2025-06-31T16:00:00.000Z",
         "availableSeats": 0,
         "totalSeats": 35,
         "status": "FULL",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 11,
@@ -128,8 +128,8 @@ let scheduleData = [
         "availableSeats": 35,
         "totalSeats": 40,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 12,
@@ -140,8 +140,8 @@ let scheduleData = [
         "availableSeats": 12,
         "totalSeats": 30,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 13,
@@ -152,8 +152,8 @@ let scheduleData = [
         "availableSeats": 3,
         "totalSeats": 20,
         "status": "FULL",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 14,
@@ -164,20 +164,20 @@ let scheduleData = [
         "availableSeats": 20,
         "totalSeats": 42,
         "status": "AVAILABLE",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     },
     {
         "id": 15,
         "routeId": 5,
         "busId": 5,
-        "departureTime": "2025-06-05T08:00:00.000Z",
-        "arrivalTime": "2025-06-05T16:00:00.000Z",
+        "departureTime": "2025-06-06T08:00:00.000Z",
+        "arrivalTime": "2025-06-06T16:00:00.000Z",
         "availableSeats": 5,
         "totalSeats": 35,
         "status": "CANCELLED",
-        "createdAt": "2025-05-22T00:00:00.000Z",
-        "updatedAt": "2025-05-22T00:00:00.000Z"
+        "createdAt": "2025-06-22T00:00:00.000Z",
+        "updatedAt": "2025-06-22T00:00:00.000Z"
     }
 ]
 if (!localStorage.getItem("schedule")) {
@@ -188,7 +188,7 @@ let routesData = [
         id: 1,
         departureStationId: 1,
         arrivalStationId: 4,
-        img: "../../assets/imgs/tuyen_duong/tuyen-nha-trang-da-lat.webp.jpg",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-minh-ha-tuyen-ben-xe-nga-tu-ga-di-bac-giang-414x283.jpg.png",
         title: "Đặt vé xe tuyến Bến xe Ngã Tư Ga đi Bắc Giang",
         desc: "Đặt vé xe tuyến Bến xe Ngã Tư Ga đi Bắc Giang",
         price: 500000,
@@ -201,7 +201,7 @@ let routesData = [
         id: 2,
         departureStationId: 2,
         arrivalStationId: 3,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-mui-ne.webp.jpg",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-tu-tien-tuyen-sai-gon-di-kien-rach-gia-kien-giang-414x283.jpg.png",
         title: "Đặt vé xe tuyến Sài Gòn đi Rạch Giá – Kiên Giang",
         desc: "Bạn đang tìm kiếm phương tiện di chuyển thuận tiện và nhanh chóng giữa Sài Gòn và Kiên Giang",
         price: 350000,
@@ -214,7 +214,7 @@ let routesData = [
         id: 3,
         departureStationId: 3,
         arrivalStationId: 4,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-nha-trang.webp.jpg",
+        img: "/assets/imgs/tuyen_duong/NX-TRA-LAN-VIEN-e1712287293178.jpg.png",
         title: "Tuyến Sài Gòn đi Cam Ranh Khánh Hòa",
         desc: "Top 10 nhà xe tuyến Sài Gòn đi Cam Ranh Khánh Hòa được đánh giá...",
         price: 300000,
@@ -227,7 +227,7 @@ let routesData = [
         id: 4,
         departureStationId: 1,
         arrivalStationId: 5,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-vung-tau.webp.png",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-phuc-an-express-binh-thuan-cam-ranh.webp-414x297.png.png",
         title: "Đặt vé xe Bình Thuận đi Cam Ranh – Khánh Hòa",
         desc: "Bạn đang tìm kiếm chuyến xe chất lượng trên tuyến đường Bình Thuận...",
         price: 250000,
@@ -240,7 +240,7 @@ let routesData = [
         id: 5,
         departureStationId: 5,
         arrivalStationId: 2,
-        img: "../../assets/imgs/tuyen_duong/nha-xe-tu-tien-tuyen-sai-gon-di-kien-rach-gia-kien-giang-414x283.jpg.png",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-tuan-hiep-ben-xe-duc-long-gia-lai-sai-gon.jpg-414x298.jpg.png",
         title: "Top 8 nhà xe từ Bến xe Gia Lai đi Sài Gòn",
         desc: "Bạn đang tìm kiếm một chuyến xe chất lượng cao từ Bến xe Ngã Tư...",
         price: 200000,
@@ -253,7 +253,7 @@ let routesData = [
         id: 6,
         departureStationId: 1,
         arrivalStationId: 4,
-        img: "../../assets/imgs/tuyen_duong/tuyen-nha-trang-da-lat.webp.jpg",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-minh-anh-ben-xe-phia-nam-buon-ma-thuot-di-sai-gon-1-414x283.jpg.png",
         title: "Đặt vé xe tuyến Bến xe Ngã Tư Ga đi Bắc Giang",
         desc: "Đặt vé xe tuyến Bến xe Ngã Tư Ga đi Bắc Giang",
         price: 500000,
@@ -266,7 +266,7 @@ let routesData = [
         id: 7,
         departureStationId: 2,
         arrivalStationId: 3,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-mui-ne.webp.jpg",
+        img: "../../assets/imgs/tuyen_duong/NX-PHUC-XUYEN-e1704868882137-414x297.jpg.png",
         title: "Đặt vé xe tuyến Sài Gòn đi Rạch Giá – Kiên Giang",
         desc: "Bạn đang tìm kiếm phương tiện di chuyển thuận tiện và nhanh chóng giữa Sài Gòn và Kiên Giang",
         price: 350000,
@@ -279,7 +279,7 @@ let routesData = [
         id: 8,
         departureStationId: 3,
         arrivalStationId: 4,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-nha-trang.webp.jpg",
+        img: "../../assets/imgs/tuyen_duong/NX-VIE.jpg.png",
         title: "Tuyến Sài Gòn đi Cam Ranh Khánh Hòa",
         desc: "Top 10 nhà xe tuyến Sài Gòn đi Cam Ranh Khánh Hòa được đánh giá...",
         price: 300000,
@@ -292,7 +292,7 @@ let routesData = [
         id: 9,
         departureStationId: 1,
         arrivalStationId: 5,
-        img: "../../assets/imgs/tuyen_duong/tuyen-sai-gon-vung-tau.webp.png",
+        img: "../../assets/imgs/tuyen_duong/nha-xe-minh-ha-tuyen-ben-xe-nga-tu-ga-di-bac-giang-414x283.jpg.png",
         title: "Đặt vé xe Bình Thuận đi Cam Ranh – Khánh Hòa",
         desc: "Bạn đang tìm kiếm chuyến xe chất lượng trên tuyến đường Bình Thuận...",
         price: 250000,
