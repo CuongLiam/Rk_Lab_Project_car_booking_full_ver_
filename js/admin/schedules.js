@@ -321,7 +321,7 @@ function formatInputDateTime(dateStr) {
   return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
 }
 
-
+//logout account 
 document.getElementById("logout").addEventListener("click", () => {
   const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
   modal.hide();

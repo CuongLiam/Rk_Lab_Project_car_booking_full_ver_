@@ -116,7 +116,7 @@ function showModal(modal) {
     modal.setAttribute('aria-modal', 'true');
     modal.removeAttribute('aria-hidden');
     document.body.classList.add('modal-open');
-    modal._outsideClickHandler = function(e) {
+    modal._outsideClickHandler = function (e) {
         if (e.target === modal) {
             hideModal(modal);
         }
@@ -147,7 +147,7 @@ addStationBtn.addEventListener('click', () => {
 });
 
 // Edit/Delete Station
-document.getElementById('station-list').addEventListener('click', function(e) {
+document.getElementById('station-list').addEventListener('click', function (e) {
     if (e.target.classList.contains('btn-warning')) {
         const tr = e.target.closest('tr');
         const id = Number(tr.children[0].textContent);
@@ -179,7 +179,7 @@ cancelModalBtn.addEventListener('click', () => hideModal(stationModal));
 cancelDeleteBtn.addEventListener('click', () => hideModal(deleteModal));
 
 // Add/Edit logic + validation
-stationForm.addEventListener('submit', function(e) {
+stationForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const id = document.getElementById('station-id').value;
     const name = document.getElementById('station-name').value.trim();
@@ -229,7 +229,7 @@ stationForm.addEventListener('submit', function(e) {
 });
 
 // Delete logic with reindexing if required but now its not coincide (*/ω＼*)
-confirmDeleteBtn.addEventListener('click', function() {
+confirmDeleteBtn.addEventListener('click', function () {
     let data = loadStations();
 
     const deletedIdx = data.findIndex(s => s.id === deletingStationId);
@@ -242,20 +242,20 @@ confirmDeleteBtn.addEventListener('click', function() {
 
     // Reindex: set id = index+1 for all
     // data = data.map((s, idx) => ({ ...s, id: idx + 1 }));
-    
+
     saveStations(data);
     hideModal(deleteModal);
     renderStations();
 });
 
-
+//logout account 
 document.getElementById("logout").addEventListener("click", () => {
-  const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
-  modal.hide();
+    const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+    modal.hide();
 
-  document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
-    window.location.href = "../login.html";
-  }, { once: true });
+    document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+        window.location.href = "../login.html";
+    }, { once: true }); 
 });
 
 

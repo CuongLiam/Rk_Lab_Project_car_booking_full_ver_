@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const index = companies.findIndex(c => c.id === editingId);
             if (index !== -1) companies[index] = newCompany;
         } else {
-            companies.push(newCompany);
+            companies.unshift(newCompany);
         }
 
         saveBusCompanies(companies);
@@ -200,4 +200,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hiển thị lần đầu
     renderBusCompanies();
+
+    //logout account 
+    document.getElementById("logout").addEventListener("click", () => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+        modal.hide();
+
+        document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+            window.location.href = "../login.html";
+        }, { once: true });
+    });
+
 });
+
