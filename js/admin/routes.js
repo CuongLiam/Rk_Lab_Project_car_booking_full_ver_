@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const index = routes.findIndex(r => r.id === editingId);
             routes[index] = newRoute;
         } else {
-            routes.push(newRoute);
+            routes.unshift(newRoute);
         }
 
         saveRoutes(routes);
@@ -229,4 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Gọi hiển thị ban đầu
     renderRoutes();
+
+    //logout account 
+    document.getElementById("logout").addEventListener("click", () => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById("logout-modal"));
+        modal.hide();
+
+        document.getElementById("logout-modal").addEventListener('hidden.bs.modal', function () {
+            window.location.href = "../login.html";
+        }, { once: true });
+    });
 });

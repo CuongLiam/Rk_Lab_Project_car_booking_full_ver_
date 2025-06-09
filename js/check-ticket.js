@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const arrivalStation = stations.find(s => s.id === route.arrivalStationId);
 
             modalBody.innerHTML = `
-            <p><strong>Mã vé:</strong>${foundTicket.id}</p>
+            <p><strong>Mã vé:</strong> ${foundTicket.id}</p>
             <p><strong>Tuyến:</strong> ${departureStation.name} → ${arrivalStation.name}</p>
             <p><strong>Nhà xe:</strong> ${company.companyName}</p>
             <p><strong>Xe:</strong> ${bus.name} - Biển số: ${bus.licensePlate}</p>
